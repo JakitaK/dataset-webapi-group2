@@ -1,3 +1,6 @@
+# ER Diagram
+
+```mermaid
 erDiagram
     MOVIE ||--o{ MOVIE_GENRE : "has"
     MOVIE ||--o{ MOVIE_ACTOR : "features"

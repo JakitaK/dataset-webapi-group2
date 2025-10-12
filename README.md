@@ -15,7 +15,7 @@ Our dataset focuses on movies from the last 30 years, and this API will allow us
 ---
 
 ## Alpha Sprint Contribution
-- **Primitivo Bambao** — Created the ER diagram and led the planning of the API’s proposed functionality.  
+- **Primitivo Bambao** — Created the ER diagram, designed and wrote the SQL initialization script, and led the planning of the API’s proposed functionality.
 - **Jakita Kaur** — Set up the GitHub repository, organized and added all project files, reviewed the ER diagram and functionality plan, and contributed to testing the hosting setup.  
 - **Evan Tran** — Reviewed the ER diagram and functionality plan, assisted with testing and verifying the hosting setup on ......
 - **George Njane** — Documentationn? 

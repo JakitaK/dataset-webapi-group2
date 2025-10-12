@@ -4,7 +4,7 @@ This document evaluates **two free cloud options** for hosting our Web API and (
 
 ---
 
-## TL;DR
+## Summary
 - **Render (Web Service + Managed Postgres)** — Best fit for a traditional Express server and a managed Postgres instance on one platform.  
 - **Vercel (Serverless Functions + External Postgres)** — Great for low-latency, auto-scaling serverless endpoints; pair with Neon/Supabase/Render for Postgres.
 

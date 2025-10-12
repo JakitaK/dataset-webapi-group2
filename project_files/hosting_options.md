@@ -1,6 +1,6 @@
 # Hosting Options for a Node.js/Express + Postgres Web API
 
-This document evaluates **two free cloud options** for hosting our Web API and (in later sprints) a PostgreSQL database. It includes **pros/cons**, our **HelloWorld demos**, and a **recommendation**.
+This document evaluates **two free cloud options** for hosting our Web API and (in later sprints) a PostgreSQL database. It includes **pros/cons** and our **HelloWorld demos**.
 
 ---
 

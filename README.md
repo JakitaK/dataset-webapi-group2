@@ -19,8 +19,13 @@
 - Evan Tran — <contribution>
 
 ## Alpha Sprint Meetings
-- Cadence and format (e.g., Discord + in-person)
-- Decision log: brief bullets of key decisions
+- **Cadence and Format:** Communication occurred via Discord and in class.
+- **Decision Log:**  
+  - Selected the *Movies (Last 30 Years)* dataset for the API project.  
+  - Chose Node.js/Express for backend and PostgreSQL for database.  
+  - Tested ..... for hosting.  
+  - Finalized ER diagram and database schema.  
+  - Standardized all documentation in Markdown format.
 
 ## Alpha Sprint Comments
 - Risks, blockers, dataset caveats, “code weirdness,” requests for feedback

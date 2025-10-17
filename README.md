@@ -8,6 +8,15 @@ Our dataset focuses on movies from the last 30 years, and this API will allow us
 - `npm run dev` for local
 - Environment: `PORT=3000`
 
+## Importing Movie Data
+To load your CSV data into the database, run:
+
+```powershell
+# Example: import movies from CSV (run from project root)
+psql -h localhost -U <youruser> -d <yourdb> -c "\copy movie(title, release_year, runtime_minutes, rating, box_office, director_id, country_id) FROM './data/movies_last30years.csv' CSV HEADER;"
+```
+Replace `<youruser>` and `<yourdb>` with your Postgres username and database name. The column list must match your CSV header.
+
 ## Endpoints
 - `GET /api/hello` – sanity check
 - See `/project_files/openapi.yaml` for full design.

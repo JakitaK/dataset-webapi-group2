@@ -36,11 +36,11 @@ Replace `<youruser>` and `<yourdb>` with your Postgres username and database nam
 - **George Njane** — Built the **Postman collection** and tests covering `moviebyyear` (valid/invalid years) and `hello`.  
   
 ## Beta Sprint Meetings
-- **10/15, 10:00–10:52 PM (Discord call, all members):**  
+- **10/15, 10:00PM–10:52 PM (Discord call, all members):**  
   Walked through scope, split ownership, selected **Render** for hosting, outlined DB → API path.
-- **10/17, 4:00–4:47 PM (Discord call, all members):**  
+- **10/17, 4:00PM–4:47 PM (Discord call, all members):**  
   Status check; confirmed progress; identified no blockers; aligned on remaining tasks.
-- **10/19, 9:00–10:35 AM (Discord call, all members):**  
+- **10/19, 9:00AM–10:35 AM (Discord call, all members):**  
   Resolved Render ↔ PostgreSQL connection issues; validated `/api/v1/moviebyyear`; finalized submission list.
 
 **Primary communication during Beta:**  

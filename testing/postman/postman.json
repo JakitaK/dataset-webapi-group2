@@ -1,0 +1,305 @@
+{
+	"info": {
+		"_postman_id": "5b6c3b1d-4140-497f-8805-4602d11ad801",
+		"name": "Dataset Web API - Beta Sprint Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49381083",
+		"_collection_link": "https://jakitak-70788.postman.co/workspace/Jakita-Kaur's-Workspace~4bb6a05f-d7f6-4ebd-8b46-8154879d9105/collection/49381083-5b6c3b1d-4140-497f-8805-4602d11ad801?action=share&source=collection_link&creator=49381083"
+	},
+	"item": [
+		{
+			"name": "GET /api/hello",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is JSON and has message\", function () {",
+							"    pm.response.to.be.json;",
+							"    const data = pm.response.json();",
+							"    pm.expect(data).to.have.property(\"message\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dataset-webapi-group2-1.onrender.com/api/hello",
+					"protocol": "https",
+					"host": [
+						"dataset-webapi-group2-1",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/moviebyyear (2023)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 OK\", () => pm.response.to.have.status(200));",
+							"",
+							"pm.test(\"JSON with data[]\", () => {",
+							"  pm.response.to.be.json;",
+							"  const d = pm.response.json();",
+							"  pm.expect(d).to.have.property(\"data\");",
+							"  pm.expect(Array.isArray(d.data)).to.be.true;",
+							"});",
+							"",
+							"pm.test(\"first item looks like a movie\", () => {",
+							"  const d = pm.response.json();",
+							"  if (d.data.length > 0) {",
+							"    pm.expect(d.data[0]).to.have.property(\"movie_id\");",
+							"    pm.expect(d.data[0]).to.have.property(\"title\");",
+							"    pm.expect(d.data[0]).to.have.property(\"release_year\");",
+							"  }",
+							"});",
+							"",
+							"pm.test(\"count equals data.length\", () => {",
+							"  const d = pm.response.json();",
+							"  pm.expect(typeof d.data.length).to.eql(\"number\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dataset-webapi-group2-1.onrender.com/api/v1/moviebyyear?year=2023",
+					"protocol": "https",
+					"host": [
+						"dataset-webapi-group2-1",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"moviebyyear"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2023"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/moviebyyear (missing year → 400)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"400 Bad Request\", () => pm.response.to.have.status(400));",
+							"pm.test(\"error message present\", () => {",
+							"  pm.response.to.be.json;",
+							"  const d = pm.response.json();",
+							"  pm.expect(d).to.have.property(\"error\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dataset-webapi-group2-1.onrender.com/api/v1/moviebyyear",
+					"protocol": "https",
+					"host": [
+						"dataset-webapi-group2-1",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"moviebyyear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/moviebyyear (invalid year → 400)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"400 Bad Request\", () => pm.response.to.have.status(400));",
+							"pm.test(\"error message present\", () => {",
+							"  pm.response.to.be.json;",
+							"  const d = pm.response.json();",
+							"  pm.expect(d).to.have.property(\"error\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dataset-webapi-group2-1.onrender.com/api/v1/moviebyyear?year=abc",
+					"protocol": "https",
+					"host": [
+						"dataset-webapi-group2-1",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"moviebyyear"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "abc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/moviebyyear (2019)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 OK\", () => pm.response.to.have.status(200));",
+							"pm.test(\"JSON with data[]\", () => {",
+							"  pm.response.to.be.json;",
+							"  const d = pm.response.json();",
+							"  pm.expect(d).to.have.property(\"data\");",
+							"  pm.expect(Array.isArray(d.data)).to.be.true;",
+							"});",
+							"pm.test(\"every item has release_year = 2019\", () => {",
+							"  const d = pm.response.json();",
+							"  d.data.forEach(m => pm.expect(m.release_year).to.eql(2019));",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dataset-webapi-group2-1.onrender.com/api/v1/moviebyyear?year=2019",
+					"protocol": "https",
+					"host": [
+						"dataset-webapi-group2-1",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"moviebyyear"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2019"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/moviebyyear (no results case)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 OK\", () => pm.response.to.have.status(200));",
+							"pm.test(\"empty data[] when no matches\", () => {",
+							"  pm.response.to.be.json;",
+							"  const d = pm.response.json();",
+							"  pm.expect(Array.isArray(d.data)).to.be.true;",
+							"  pm.expect(d.data.length).to.eql(0);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dataset-webapi-group2-1.onrender.com/api/v1/moviebyyear?year=2035",
+					"protocol": "https",
+					"host": [
+						"dataset-webapi-group2-1",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"moviebyyear"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2035"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

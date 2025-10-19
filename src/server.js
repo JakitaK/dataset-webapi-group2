@@ -32,6 +32,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs, {
   customSiteTitle: 'Movies API - Group 2'
 }));
 
+// Optional: make the base URL redirect to /api-docs
+app.get('/', (_req, res) => res.redirect('/api-docs'));
+
 // Mount API routes
 const movieByYearRouter = require('./routes/moviebyyear');
 app.use('/api/v1', movieByYearRouter);

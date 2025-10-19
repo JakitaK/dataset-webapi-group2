@@ -1,12 +1,36 @@
 // src/server.js
 require('dotenv').config();
 const express = require('express');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpecs = require('./swagger');
 const app = express();
 
-// health/sanity route
+/**
+ * @swagger
+ * /api/hello:
+ *   get:
+ *     summary: Health check endpoint
+ *     description: Returns a simple greeting message to verify the API is working
+ *     tags: [Health]
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/HelloResponse'
+ *             example:
+ *               message: "Hello from Group 2 👋"
+ */
 app.get('/api/hello', (_req, res) => {
   res.json({ message: 'Hello from Group 2 👋' });
 });
+
+// API Documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs, {
+  customCss: '.swagger-ui .topbar { display: none }',
+  customSiteTitle: 'Movies API - Group 2'
+}));
 
 // Mount API routes
 const movieByYearRouter = require('./routes/moviebyyear');

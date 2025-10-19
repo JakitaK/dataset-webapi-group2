@@ -2,9 +2,55 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../db');
 
-// GET /api/v1/moviebyyear?year=YYYY
-// Returns an array of movies released in the specified year.
-// Response shape: { data: [ { movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id } ], total }
+/**
+ * @swagger
+ * /api/v1/moviebyyear:
+ *   get:
+ *     summary: Get movies by release year
+ *     description: Returns all movies released in the specified year
+ *     tags: [Movies]
+ *     parameters:
+ *       - in: query
+ *         name: year
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           example: 2019
+ *         description: The year to filter movies by
+ *     responses:
+ *       200:
+ *         description: Successful response with movies data
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/MovieResponse'
+ *             example:
+ *               data:
+ *                 - movie_id: 7350
+ *                   title: "1917"
+ *                   release_year: 2019
+ *                   runtime_minutes: 119
+ *                   rating: "7.5"
+ *                   box_office: "394638258.00"
+ *                   director_id: 1
+ *                   country_id: 1
+ *               total: 486
+ *       400:
+ *         description: Bad request - invalid year parameter
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Invalid year"
+ *               details: "year query parameter must be an integer"
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 router.get('/moviebyyear', async (req, res) => {
   const year = parseInt(req.query.year, 10);
   if (Number.isNaN(year)) {

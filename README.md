@@ -31,9 +31,9 @@ Replace `<youruser>` and `<yourdb>` with your Postgres username and database nam
 
 ## Alpha Sprint Contribution
 - **Primitivo Bambao** — Implemented the **DB-backed route** `/api/v1/moviebyyear`, wrote SQL/queries, and paired on Render environment configuration and query-parameter handling.
-- **Jakita Kaur** — Co-led Render troubleshooting (env variables, connection string, port), verified the route end-to-end, **updated README**, and prepared the final submission.  
+- **Jakita Kaur** — Set up and troubleshot **Render** (service + env vars), verified the live routes, **built and exported the Postman collection** (`/testing/postman/postman.json`), finalized the README, and submitted the sprint.  
 - **Evan Tran** — Wrote and refined the **hosted API docs** (Swagger at `/api-docs`) for currently implemented routes.
-- **George Njane** — Built the **Postman collection** and tests covering `moviebyyear` (valid/invalid years) and `hello`.  
+- **George Njane** — **Reviewed the Postman collection and tests**, checked response shapes and edge cases, and provided feedback on request/response consistency.  
 
 ### 10/15, 10:00PM–10:52PM (Discord call — all members)
 - **Where/How:** 52-minute voice call on Discord.
@@ -57,8 +57,7 @@ Replace `<youruser>` and `<yourdb>` with your Postgres username and database nam
   - Confirmed the database schema and connection string format.
   - Reviewed early Postman tests and Swagger entries for accuracy.
 - **Action items:** 
-  - Primitivo + Jakita: finish connecting the route to the live DB on Render.
-  - George: expand Postman tests (valid/invalid years).
+  - Primitivo + Jakita: finish connecting the route to the live DB on Render. Jakita to complete the Postman tests.
   - Evan: refine `/api-docs` examples to match current responses.
 
 ### 10/19, 9:00AM–10:35 AM (Discord call — all members)

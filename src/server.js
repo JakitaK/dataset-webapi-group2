@@ -3,6 +3,17 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
+// --- Swagger UI @ /api-docs ---
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+
+const openapiDocument = YAML.load('./project_files/openapi.yaml');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiDocument));
+
+// Optional: make the base URL redirect to /api-docs
+app.get('/', (_req, res) => res.redirect('/api-docs'));
+
+
 // health/sanity route
 app.get('/api/hello', (_req, res) => {
   res.json({ message: 'Hello from Group 2 👋' });

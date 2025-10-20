@@ -148,7 +148,8 @@ INSERT INTO movie_actor (movie_id, actor_id) VALUES
 
 -- List top-rated movies
 -- SELECT title, rating FROM movie ORDER BY rating DESC LIMIT 10;
--- CSV import example (commented for this sprint):
--- \COPY movie(title, release_year, runtime_minutes, rating, box_office)
--- FROM './data/movies_last30years.csv' DELIMITER ',' CSV HEADER;
+
+-- CSV import example:
+\COPY movie(title, release_year, runtime_minutes, rating, box_office, director_id, country_id)
+FROM './data/movies_last30years.csv' DELIMITER ',' CSV HEADER;
 

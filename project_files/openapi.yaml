@@ -1,150 +1,49 @@
-
 openapi: 3.0.3
 info:
-  title: Movie Database Web API
+  title: Dataset Web API (Beta Sprint)
   version: 0.1.0
   description: |
-    Read-only Alpha API exposing movies from the last ~30 years.
-    Focus: discoverability (search, filters, sorting) and analytics (top lists, summaries).
-    NOTE: Writes (create/update/delete) are out of scope for Alpha.
+    Documentation for the routes that are currently implemented.
+    This beta is read-only. Responses reflect the API's actual shape.
 
 servers:
-  - url: https://YOUR-ALPHA-HOST.example.com
-    description: Alpha deployment
+  - url: https://dataset-webapi-group2-1.onrender.com
+    description: Production (Render)
   - url: http://localhost:3000
     description: Local development
-
-tags:
-  - name: Movies
-  - name: People
-  - name: Taxonomy
-  - name: Analytics
-  - name: System
 
 paths:
   /api/hello:
     get:
       tags: [System]
-      summary: Health check
+      summary: Sanity / health check
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  message: { type: string, example: Hello World }
+                  message:
+                    type: string
+                    example: Hello from Group 2 👋
 
-  /api/v1/movies:
+  /api/v1/moviebyyear:
     get:
       tags: [Movies]
-      summary: List movies (search, filter, sort, paginate)
+      summary: List movies released in a given year
       parameters:
         - in: query
-          name: q
-          schema: { type: string }
-          description: Free-text search in title (case-insensitive, partial match)
-        - in: query
-          name: genre
-          schema: { type: string }
-          description: Filter by exact genre name (e.g., Action). Multiple allowed via comma.
-        - in: query
-          name: director
-          schema: { type: string }
-          description: Filter by director name (partial allowed)
-        - in: query
-          name: actor
-          schema: { type: string }
-          description: Filter by actor name (partial allowed)
-        - in: query
-          name: country
-          schema: { type: string }
-          description: Filter by country name (exact, case-insensitive)
-        - in: query
           name: year
-          schema: { type: integer, minimum: 1900, maximum: 2100 }
-          description: Exact release year
-        - in: query
-          name: yearMin
-          schema: { type: integer }
-          description: Minimum release year (inclusive)
-        - in: query
-          name: yearMax
-          schema: { type: integer }
-          description: Maximum release year (inclusive)
-        - in: query
-          name: ratingMin
-          schema: { type: number, format: float, minimum: 0, maximum: 10 }
-          description: Minimum rating (0–10)
-        - in: query
-          name: ratingMax
-          schema: { type: number, format: float, minimum: 0, maximum: 10 }
-          description: Maximum rating (0–10)
-        - in: query
-          name: boxOfficeMin
-          schema: { type: number, format: double, minimum: 0 }
-          description: Minimum global box office (USD)
-        - in: query
-          name: sort
+          required: true
           schema:
-            type: string
-            enum: [title, release_year, rating, box_office]
-          description: Sort field (default release_year)
-        - in: query
-          name: order
-          schema:
-            type: string
-            enum: [asc, desc]
-          description: Sort direction (default desc)
-        - in: query
-          name: limit
-          schema: { type: integer, default: 25, minimum: 1, maximum: 200 }
-        - in: query
-          name: offset
-          schema: { type: integer, default: 0, minimum: 0 }
+            type: integer
+            example: 2023
+          description: 4-digit release year to filter by
       responses:
-        '200':
-          description: Page of movies
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedMovies'
-        '400':
-          description: Invalid query
-          content:
-            application/json:
-              schema: { $ref: '#/components/schemas/Error' }
-
-  /api/v1/movies/{movie_id}:
-    get:
-      tags: [Movies]
-      summary: Get a single movie by ID
-      parameters:
-        - in: path
-          name: movie_id
-          required: true
-          schema: { type: integer, minimum: 1 }
-      responses:
-        '200':
-          description: Movie found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MovieDetail'
-        '404':
-          description: Movie not found
-          content:
-            application/json:
-              schema: { $ref: '#/components/schemas/Error' }
-
-  /api/v1/genres:
-    get:
-      tags: [Taxonomy]
-      summary: List all genres with counts
-      responses:
-        '200':
-          description: Genres
+        "200":
+          description: Movies for the given year (array may be empty when no matches)
           content:
             application/json:
               schema:
@@ -152,347 +51,50 @@ paths:
                 properties:
                   data:
                     type: array
-                    items: { $ref: '#/components/schemas/GenreWithCount' }
+                    items:
+                      type: object
+                      properties:
+                        movie_id:
+                          type: integer
+                          example: 13046
+                        title:
+                          type: string
+                          example: "2001 Maniacs"
+                        release_year:
+                          type: integer
+                          example: 2005
+                        runtime_minutes:
+                          type: integer
+                          example: 87
+                        rating:
+                          type: string
+                          example: "7.5"        # API returns string
+                        box_office:
+                          type: string
+                          example: "0.00"       # API returns string
+                        director_id:
+                          type: integer
+                          example: 1
+                        country_id:
+                          type: integer
+                          example: 1
                   total:
                     type: integer
-                    example: 18
-
-  /api/v1/directors:
-    get:
-      tags: [People]
-      summary: List directors (filter, search, paginate)
-      parameters:
-        - in: query
-          name: q
-          schema: { type: string }
-          description: Search by director name (partial, case-insensitive)
-        - in: query
-          name: minFilms
-          schema: { type: integer, minimum: 0 }
-          description: Minimum number of films in catalog
-        - in: query
-          name: limit
-          schema: { type: integer, default: 25, minimum: 1, maximum: 200 }
-        - in: query
-          name: offset
-          schema: { type: integer, default: 0, minimum: 0 }
-      responses:
-        '200':
-          description: Directors page
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedDirectors'
-
-  /api/v1/directors/{director_id}/movies:
-    get:
-      tags: [People, Movies]
-      summary: List movies by a director
-      parameters:
-        - in: path
-          name: director_id
-          required: true
-          schema: { type: integer, minimum: 1 }
-        - in: query
-          name: limit
-          schema: { type: integer, default: 25, minimum: 1, maximum: 200 }
-        - in: query
-          name: offset
-          schema: { type: integer, default: 0, minimum: 0 }
-      responses:
-        '200':
-          description: Movies by director
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedMovies'
-        '404':
-          description: Director not found
-          content:
-            application/json:
-              schema: { $ref: '#/components/schemas/Error' }
-
-  /api/v1/actors:
-    get:
-      tags: [People]
-      summary: List actors (search, paginate)
-      parameters:
-        - in: query
-          name: q
-          schema: { type: string }
-          description: Search by actor name (partial, case-insensitive)
-        - in: query
-          name: limit
-          schema: { type: integer, default: 25, minimum: 1, maximum: 200 }
-        - in: query
-          name: offset
-          schema: { type: integer, default: 0, minimum: 0 }
-      responses:
-        '200':
-          description: Actors page
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedActors'
-
-  /api/v1/actors/{actor_id}/movies:
-    get:
-      tags: [People, Movies]
-      summary: List movies featuring an actor
-      parameters:
-        - in: path
-          name: actor_id
-          required: true
-          schema: { type: integer, minimum: 1 }
-        - in: query
-          name: limit
-          schema: { type: integer, default: 25, minimum: 1, maximum: 200 }
-        - in: query
-          name: offset
-          schema: { type: integer, default: 0, minimum: 0 }
-      responses:
-        '200':
-          description: Movies by actor
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedMovies'
-        '404':
-          description: Actor not found
-          content:
-            application/json:
-              schema: { $ref: '#/components/schemas/Error' }
-
-  /api/v1/countries:
-    get:
-      tags: [Taxonomy]
-      summary: List countries with movie counts
-      responses:
-        '200':
-          description: Countries
+                    example: 298
+                    description: Total number of movies returned
+        "400":
+          description: Bad Request - invalid year parameter
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  data:
-                    type: array
-                    items: { $ref: '#/components/schemas/CountryWithCount' }
-                  total:
-                    type: integer
-                    example: 42
-
-  /api/v1/stats/top-rated:
-    get:
-      tags: [Analytics]
-      summary: Top-rated movies
-      parameters:
-        - in: query
-          name: limit
-          schema: { type: integer, default: 10, minimum: 1, maximum: 100 }
-        - in: query
-          name: genre
-          schema: { type: string }
-        - in: query
-          name: year
-          schema: { type: integer }
-      responses:
-        '200':
-          description: Top-rated list
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items: { $ref: '#/components/schemas/Movie' }
-                  total:
-                    type: integer
-                    example: 10
-
-  /api/v1/stats/highest-grossing:
-    get:
-      tags: [Analytics]
-      summary: Highest-grossing movies
-      parameters:
-        - in: query
-          name: limit
-          schema: { type: integer, default: 10, minimum: 1, maximum: 100 }
-        - in: query
-          name: year
-          schema: { type: integer }
-        - in: query
-          name: genre
-          schema: { type: string }
-      responses:
-        '200':
-          description: Highest-grossing list
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items: { $ref: '#/components/schemas/Movie' }
-                  total:
-                    type: integer
-                    example: 10
-
-  /api/v1/stats/summary:
-    get:
-      tags: [Analytics]
-      summary: Catalog summary (totals & averages)
-      responses:
-        '200':
-          description: Summary metrics
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SummaryStats'
-
-components:
-  schemas:
-    Movie:
-      type: object
-      properties:
-        movie_id: { type: integer, example: 123 }
-        title: { type: string, example: Inception }
-        release_year: { type: integer, example: 2010 }
-        runtime_minutes: { type: integer, example: 148 }
-        rating: { type: number, format: float, example: 8.8 }
-        box_office: { type: number, format: double, example: 836800000 }
-        director_id: { type: integer, example: 5 }
-        country_id: { type: integer, example: 1 }
-      required: [movie_id, title, release_year]
-
-    MovieDetail:
-      allOf:
-        - $ref: '#/components/schemas/Movie'
-        - type: object
-          properties:
-            director:
-              $ref: '#/components/schemas/Director'
-            country:
-              $ref: '#/components/schemas/Country'
-            genres:
-              type: array
-              items: { $ref: '#/components/schemas/Genre' }
-            actors:
-              type: array
-              items: { $ref: '#/components/schemas/Actor' }
-
-    Director:
-      type: object
-      properties:
-        director_id: { type: integer, example: 5 }
-        name: { type: string, example: Christopher Nolan }
-
-    Actor:
-      type: object
-      properties:
-        actor_id: { type: integer, example: 12 }
-        name: { type: string, example: Cillian Murphy }
-
-    Genre:
-      type: object
-      properties:
-        genre_id: { type: integer, example: 3 }
-        name: { type: string, example: Drama }
-
-    Country:
-      type: object
-      properties:
-        country_id: { type: integer, example: 1 }
-        name: { type: string, example: United States }
-
-    GenreWithCount:
-      allOf:
-        - $ref: '#/components/schemas/Genre'
-        - type: object
-          properties:
-            movie_count: { type: integer, example: 542 }
-
-    CountryWithCount:
-      allOf:
-        - $ref: '#/components/schemas/Country'
-        - type: object
-          properties:
-            movie_count: { type: integer, example: 1200 }
-
-    DirectorWithCount:
-      allOf:
-        - $ref: '#/components/schemas/Director'
-        - type: object
-          properties:
-            movie_count: { type: integer, example: 9 }
-
-    PagedMovies:
-      type: object
-      properties:
-        data:
-          type: array
-          items: { $ref: '#/components/schemas/Movie' }
-        total: { type: integer, example: 2500 }
-        limit: { type: integer, example: 25 }
-        offset: { type: integer, example: 0 }
-
-    PagedDirectors:
-      type: object
-      properties:
-        data:
-          type: array
-          items: { $ref: '#/components/schemas/DirectorWithCount' }
-        total: { type: integer, example: 400 }
-        limit: { type: integer, example: 25 }
-        offset: { type: integer, example: 0 }
-
-    PagedActors:
-      type: object
-      properties:
-        data:
-          type: array
-          items: { $ref: '#/components/schemas/Actor' }
-        total: { type: integer, example: 12000 }
-        limit: { type: integer, example: 25 }
-        offset: { type: integer, example: 0 }
-
-    SummaryStats:
-      type: object
-      properties:
-        totals:
-          type: object
-          properties:
-            movies: { type: integer, example: 2875 }
-            directors: { type: integer, example: 1040 }
-            actors: { type: integer, example: 18452 }
-            genres: { type: integer, example: 18 }
-            countries: { type: integer, example: 42 }
-        averages:
-          type: object
-          properties:
-            rating: { type: number, format: float, example: 6.9 }
-            runtime_minutes: { type: number, format: float, example: 112.4 }
-            box_office: { type: number, format: double, example: 54000000 }
-        by_genre:
-          type: array
-          items:
-            type: object
-            properties:
-              genre: { type: string, example: Action }
-              avg_rating: { type: number, format: float, example: 7.1 }
-              count: { type: integer, example: 320 }
-
-    Error:
-      type: object
-      properties:
-        error: { type: string, example: Bad Request }
-        details: { type: string, example: ratingMin must be between 0 and 10 }
-
-security:
-  - {}  # Alpha is public/read-only. Add apiKey later if needed.
-
+                  error:
+                    type: string
+                    example: "Invalid year"
+                  details:
+                    type: string
+                    example: "year query parameter must be an integer"
 externalDocs:
-  description: Project documentation
-  url: https://github.com/YOUR-ORG/YOUR-REPO
+  description: Live API (Render)
+  url: https://dataset-webapi-group2-1.onrender.com

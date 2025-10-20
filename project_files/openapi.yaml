@@ -43,7 +43,7 @@ paths:
           description: 4-digit release year to filter by
       responses:
         "200":
-          description: Movies for the given year (empty array if none or invalid)
+          description: Movies for the given year (array may be empty when no matches)
           content:
             application/json:
               schema:
@@ -78,7 +78,16 @@ paths:
                         country_id:
                           type: integer
                           example: 1
-
+        "400":
+          description: Missing or invalid year (must be a 4-digit number)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Query parameter 'year' is required and must be a 4-digit number"
 externalDocs:
-  description: Project documentation
-  url: https://github.com/JakitaK/dataset-webapi-group2
+  description: Live API (Render)
+  url: https://dataset-webapi-group2-1.onrender.com

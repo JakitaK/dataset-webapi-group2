@@ -78,6 +78,23 @@ paths:
                         country_id:
                           type: integer
                           example: 1
+                  total:
+                    type: integer
+                    example: 298
+                    description: Total number of movies returned
+        "400":
+          description: Bad Request - invalid year parameter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid year"
+                  details:
+                    type: string
+                    example: "year query parameter must be an integer"
 
 externalDocs:
   description: Project documentation

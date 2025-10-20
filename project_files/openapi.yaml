@@ -43,7 +43,7 @@ paths:
           description: 4-digit release year to filter by
       responses:
         "200":
-          description: Movies for the given year (empty array if none or invalid)
+          description: Movies for the given year (array may be empty when no matches)
           content:
             application/json:
               schema:
@@ -95,7 +95,6 @@ paths:
                   details:
                     type: string
                     example: "year query parameter must be an integer"
-
 externalDocs:
-  description: Project documentation
-  url: https://github.com/JakitaK/dataset-webapi-group2
+  description: Live API (Render)
+  url: https://dataset-webapi-group2-1.onrender.com

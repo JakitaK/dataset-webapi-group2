@@ -27,7 +27,9 @@ Replace `<youruser>` and `<yourdb>` with your Postgres username and database nam
 ## Hosted Web API (URLs)
 - **Hello (sanity):** https://dataset-webapi-group2-1.onrender.com/api/hello  
 - **Movies by Year (DB-backed):** https://dataset-webapi-group2-1.onrender.com/api/v1/moviebyyear?year=2023  
-  > Change `year` to any valid year to see different results.
+  > Change `year` to any valid year to see different results.  
+- **API Documentation (Swagger UI):** https://dataset-webapi-group2-1.onrender.com/api-docs
+
 
 ## Alpha Sprint Contribution
 - **Primitivo Bambao** — Implemented the **DB-backed route** `/api/v1/moviebyyear`, wrote SQL/queries, and paired on Render environment configuration and query-parameter handling.

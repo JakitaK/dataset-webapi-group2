@@ -14,8 +14,12 @@ const options = {
     },
     servers: [
       {
+        url: 'https://movie-api-group2-20e70498bde4.herokuapp.com',
+        description: 'Production (Heroku)'
+      },
+      {
         url: 'https://dataset-webapi-group2-1.onrender.com',
-        description: 'Production server'
+        description: 'Production (Render)'
       },
       {
         url: 'http://localhost:3000',

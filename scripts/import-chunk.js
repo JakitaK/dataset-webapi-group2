@@ -55,15 +55,27 @@ async function importBatch(movies, startIndex, batchSize) {
     
     // Insert new reference data
     for (const director of newDirectors) {
-      await client.query('INSERT INTO director (name) VALUES ($1) ON CONFLICT (name) DO NOTHING', [director]);
+      try {
+        await client.query('INSERT INTO director (name) VALUES ($1)', [director]);
+      } catch (error) {
+        if (error.code !== '23505') throw error; // Ignore duplicate key errors
+      }
     }
     
     for (const genre of newGenres) {
-      await client.query('INSERT INTO genre (name) VALUES ($1) ON CONFLICT (name) DO NOTHING', [genre]);
+      try {
+        await client.query('INSERT INTO genre (name) VALUES ($1)', [genre]);
+      } catch (error) {
+        if (error.code !== '23505') throw error; // Ignore duplicate key errors
+      }
     }
     
     for (const actor of newActors) {
-      await client.query('INSERT INTO actor (name) VALUES ($1) ON CONFLICT (name) DO NOTHING', [actor]);
+      try {
+        await client.query('INSERT INTO actor (name) VALUES ($1)', [actor]);
+      } catch (error) {
+        if (error.code !== '23505') throw error; // Ignore duplicate key errors
+      }
     }
     
     // Get updated mappings
@@ -122,7 +134,11 @@ async function importBatch(movies, startIndex, batchSize) {
           for (const genreName of movieGenres) {
             const genreId = genreMap.get(genreName);
             if (genreId) {
-              await client.query('INSERT INTO movie_genre (movie_id, genre_id) VALUES ($1, $2) ON CONFLICT DO NOTHING', [movieId, genreId]);
+              try {
+                await client.query('INSERT INTO movie_genre (movie_id, genre_id) VALUES ($1, $2)', [movieId, genreId]);
+              } catch (error) {
+                if (error.code !== '23505') throw error; // Ignore duplicate key errors
+              }
             }
           }
         }
@@ -131,8 +147,12 @@ async function importBatch(movies, startIndex, batchSize) {
         for (const actor of movie.actors) {
           const actorId = actorMap.get(actor.name);
           if (actorId) {
-            await client.query('INSERT INTO movie_actor (movie_id, actor_id, character_name) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING', 
-              [movieId, actorId, actor.character]);
+            try {
+              await client.query('INSERT INTO movie_actor (movie_id, actor_id, character_name) VALUES ($1, $2, $3)', 
+                [movieId, actorId, actor.character]);
+            } catch (error) {
+              if (error.code !== '23505') throw error; // Ignore duplicate key errors
+            }
           }
         }
       } catch (error) {

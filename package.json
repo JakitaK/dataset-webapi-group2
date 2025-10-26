@@ -8,7 +8,8 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "import-data": "node scripts/import-csv.js",
-    "sample-data": "node scripts/insert-sample.js"
+    "sample-data": "node scripts/insert-sample.js",
+    "import-chunk": "node scripts/import-chunk.js"
   },
   "dependencies": {
     "csv-parse": "^6.1.0",

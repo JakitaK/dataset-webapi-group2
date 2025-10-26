@@ -26,7 +26,20 @@ const options = {
         description: 'Development server'
       }
     ],
+    security: [
+      {
+        ApiKeyAuth: []
+      }
+    ],
     components: {
+      securitySchemes: {
+        ApiKeyAuth: {
+          type: 'apiKey',
+          in: 'header',
+          name: 'x-api-key',
+          description: 'API key for authentication'
+        }
+      },
       schemas: {
         Movie: {
           type: 'object',

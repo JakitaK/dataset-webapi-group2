@@ -8,7 +8,7 @@ const pool = new Pool({
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
 });
 
-const BATCH_SIZE = 500; // Import 500 movies at a time
+const BATCH_SIZE = 2500; // Import 2500 movies at a time
 
 async function importBatch(movies, startIndex, batchSize) {
   const client = await pool.connect();

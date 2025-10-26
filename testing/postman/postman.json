@@ -7,6 +7,13 @@
 		"_exporter_id": "49381083",
 		"_collection_link": "https://jakitak-70788.postman.co/workspace/Jakita-Kaur's-Workspace~4bb6a05f-d7f6-4ebd-8b46-8154879d9105/collection/49381083-be127f8d-8a84-4715-80ba-2ef6ccf55315?action=share&source=collection_link&creator=49381083"
 	},
+	"variable": [
+		{
+			"key": "api_key",
+			"value": "0b071ddf-967d-4b1a-b39d-47134d9cb881",
+			"type": "string"
+		}
+	],
 	"item": [
 		{
 			"name": "GET /api/hello – Health Check",

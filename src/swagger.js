@@ -95,6 +95,138 @@ const options = {
             error: {
               type: 'string',
               description: 'Error message'
+            },
+            details: {
+              type: 'string',
+              description: 'Additional error details'
+            }
+          }
+        },
+        Pagination: {
+          type: 'object',
+          properties: {
+            limit: {
+              type: 'integer',
+              description: 'Number of items per page',
+              example: 10
+            },
+            offset: {
+              type: 'integer',
+              description: 'Number of items skipped',
+              example: 0
+            },
+            totalCount: {
+              type: 'integer',
+              description: 'Total number of items available',
+              example: 5432
+            },
+            hasNext: {
+              type: 'boolean',
+              description: 'Whether there are more items after this page',
+              example: true
+            },
+            hasPrevious: {
+              type: 'boolean',
+              description: 'Whether there are items before this page',
+              example: false
+            }
+          }
+        },
+        PaginatedMoviesResponse: {
+          type: 'object',
+          properties: {
+            success: {
+              type: 'boolean',
+              example: true
+            },
+            message: {
+              type: 'string',
+              example: 'Retrieved 10 top-rated movies'
+            },
+            data: {
+              type: 'object',
+              properties: {
+                data: {
+                  type: 'array',
+                  items: {
+                    $ref: '#/components/schemas/Movie'
+                  }
+                },
+                pagination: {
+                  $ref: '#/components/schemas/Pagination'
+                }
+              }
+            }
+          }
+        },
+        PaginatedMoviesWithIdResponse: {
+          type: 'object',
+          properties: {
+            success: {
+              type: 'boolean',
+              example: true
+            },
+            message: {
+              type: 'string',
+              example: 'Retrieved 8 movies for director ID 5'
+            },
+            data: {
+              type: 'object',
+              properties: {
+                data: {
+                  type: 'array',
+                  items: {
+                    $ref: '#/components/schemas/Movie'
+                  }
+                },
+                pagination: {
+                  $ref: '#/components/schemas/Pagination'
+                },
+                directorId: {
+                  type: 'integer',
+                  description: 'Director ID (for director route)',
+                  example: 5
+                },
+                actorId: {
+                  type: 'integer',
+                  description: 'Actor ID (for actor route)',
+                  example: 12
+                }
+              }
+            }
+          }
+        },
+        RecentMoviesResponse: {
+          type: 'object',
+          properties: {
+            success: {
+              type: 'boolean',
+              example: true
+            },
+            message: {
+              type: 'string',
+              example: 'Retrieved 145 movies from 2025'
+            },
+            data: {
+              type: 'object',
+              properties: {
+                data: {
+                  type: 'array',
+                  items: {
+                    $ref: '#/components/schemas/Movie'
+                  }
+                },
+                total: {
+                  type: 'integer',
+                  description: 'Total number of movies for the year',
+                  example: 145
+                },
+                year: {
+                  type: 'integer',
+                  description: 'The year of the movies returned',
+                  example: 2025
+                }
+              }
             }
           }
         }

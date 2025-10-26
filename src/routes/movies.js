@@ -9,6 +9,7 @@ const router = express.Router();
 
 // Import controller functions
 const {
+  getAllMovies,
   getTopRatedMovies,
   getTopGrossingMovies,
   getMoviesByDirector,
@@ -35,6 +36,74 @@ const { validateApiKey } = require('../middleware/apiKeyAuth');
  * Specific routes (like /movies/top-rated) must come BEFORE generic path params (like /movies/:id)
  * Otherwise Express will match "top-rated" as a parameter value
  */
+
+/**
+ * @swagger
+ * /api/v1/movies:
+ *   get:
+ *     summary: Get all movies with pagination
+ *     description: Returns paginated list of all movies with comprehensive metadata including overview, genres, cast, etc.
+ *     tags: [Movies]
+ *     parameters:
+ *       - in: query
+ *         name: limit
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *           minimum: 1
+ *           maximum: 100
+ *         description: Number of movies to return per page
+ *       - in: query
+ *         name: offset
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           default: 0
+ *           minimum: 0
+ *         description: Number of movies to skip
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved movies
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     data:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/Movie'
+ *                     pagination:
+ *                       type: object
+ *                       properties:
+ *                         limit:
+ *                           type: integer
+ *                         offset:
+ *                           type: integer
+ *                         totalCount:
+ *                           type: integer
+ *                         hasNext:
+ *                           type: boolean
+ *                         hasPrevious:
+ *                           type: boolean
+ *       400:
+ *         description: Invalid pagination parameters
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Internal server error
+ */
+router.get('/movies', validateApiKey, validatePagination, getAllMovies);
 
 /**
  * @swagger

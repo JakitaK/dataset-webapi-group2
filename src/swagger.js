@@ -18,10 +18,6 @@ const options = {
         description: 'Production (Heroku)'
       },
       {
-        url: 'https://dataset-webapi-group2-1.onrender.com',
-        description: 'Production (Render)'
-      },
-      {
         url: 'http://localhost:3000',
         description: 'Development server'
       }

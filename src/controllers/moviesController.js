@@ -8,6 +8,61 @@ const pool = require('../db');
 const { sendSuccess, sendError } = require('../utilities/responseUtils');
 
 /**
+ * Get all movies with pagination and enhanced data
+ * Returns movies with comprehensive metadata including overview, genres, cast, etc.
+ *
+ * @route GET /api/v1/movies
+ * @param {Object} req - Express request object
+ * @param {Object} req.query.limit - Number of movies per page (default: 10, max: 100)
+ * @param {Object} req.query.offset - Number of records to skip (default: 0)
+ * @param {Object} res - Express response object
+ * @returns {Promise<void>}
+ */
+const getAllMovies = async (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit) || 10;
+    const offset = parseInt(req.query.offset) || 0;
+
+    // Query for paginated movies with all enhanced fields
+    const moviesSql = `
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
+             overview, genres, director_name, budget, studios, poster_url, backdrop_url, 
+             collection, original_title, actors
+      FROM movie
+      ORDER BY title ASC
+      LIMIT $1 OFFSET $2
+    `;
+
+    // Query for total count
+    const countSql = 'SELECT COUNT(*) FROM movie';
+
+    // Execute both queries in parallel
+    const [moviesResult, countResult] = await Promise.all([
+      pool.query(moviesSql, [limit, offset]),
+      pool.query(countSql)
+    ]);
+
+    const totalCount = parseInt(countResult.rows[0].count);
+
+    const responseData = {
+      data: moviesResult.rows,
+      pagination: {
+        limit,
+        offset,
+        totalCount,
+        hasNext: offset + limit < totalCount,
+        hasPrevious: offset > 0
+      }
+    };
+
+    sendSuccess(res, 'Retrieved all movies', responseData);
+  } catch (error) {
+    console.error('Error getting all movies:', error);
+    sendError(res, 'Failed to retrieve movies', 500);
+  }
+};
+
+/**
  * Get top-rated movies sorted by rating (highest first)
  * Supports pagination with limit and offset
  *
@@ -545,6 +600,7 @@ const getStats = async (req, res) => {
 };
 
 module.exports = {
+  getAllMovies,
   getTopRatedMovies,
   getTopGrossingMovies,
   getMoviesByDirector,

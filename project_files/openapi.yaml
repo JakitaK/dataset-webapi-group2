@@ -1,22 +1,35 @@
 openapi: 3.0.3
 info:
-  title: Dataset Web API (Beta Sprint)
-  version: 0.1.0
+  title: Movies API - Group 2 (Beta II Sprint)
+  version: 1.0.0
   description: |
-    Documentation for the routes that are currently implemented.
-    This beta is read-only. Responses reflect the API's actual shape.
+    Comprehensive Movie API with advanced querying capabilities.
+    Features include pagination, API key authentication, and rich movie data.
+    All routes are read-only and require API key authentication except /api/hello.
 
 servers:
-  - url: https://dataset-webapi-group2-1.onrender.com
-    description: Production (Render)
+  - url: https://movie-api-group2-20e70498bde4.herokuapp.com
+    description: Production (Heroku)
   - url: http://localhost:3000
     description: Local development
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key for authentication
+
+security:
+  - ApiKeyAuth: []
 
 paths:
   /api/hello:
     get:
       tags: [System]
       summary: Sanity / health check
+      security: []
       responses:
         "200":
           description: OK
@@ -33,6 +46,8 @@ paths:
     get:
       tags: [Movies]
       summary: List movies released in a given year
+      security:
+        - ApiKeyAuth: []
       parameters:
         - in: query
           name: year
@@ -95,6 +110,435 @@ paths:
                   details:
                     type: string
                     example: "year query parameter must be an integer"
+        "401":
+          description: Unauthorized - API key required
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: "API key required"
+                  details:
+                    type: string
+                    example: "Please provide an API key in the x-api-key header"
+        "403":
+          description: Forbidden - Invalid API key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: "Invalid API key"
+                  details:
+                    type: string
+                    example: "The provided API key is not valid"
+
+  /api/v1/movies:
+    get:
+      tags: [Movies]
+      summary: List all movies with pagination
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+          description: Number of movies to return (max 100)
+        - in: query
+          name: offset
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+          description: Number of movies to skip
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+          description: Page number (alternative to offset)
+      responses:
+        "200":
+          description: List of movies with pagination info
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Movie'
+                  total:
+                    type: integer
+                    example: 9329
+                  limit:
+                    type: integer
+                    example: 20
+                  offset:
+                    type: integer
+                    example: 0
+                  page:
+                    type: integer
+                    example: 1
+        "401":
+          $ref: '#/components/responses/UnauthorizedError'
+        "403":
+          $ref: '#/components/responses/ForbiddenError'
+
+  /api/v1/movies/top-rated:
+    get:
+      tags: [Movies]
+      summary: Get top-rated movies
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 10
+          description: Number of movies to return
+      responses:
+        "200":
+          description: Top-rated movies sorted by rating
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Movie'
+                  total:
+                    type: integer
+                    example: 10
+        "401":
+          $ref: '#/components/responses/UnauthorizedError'
+        "403":
+          $ref: '#/components/responses/ForbiddenError'
+
+  /api/v1/movies/top-grossing:
+    get:
+      tags: [Movies]
+      summary: Get highest grossing movies
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 10
+          description: Number of movies to return
+      responses:
+        "200":
+          description: Highest grossing movies sorted by box office
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Movie'
+                  total:
+                    type: integer
+                    example: 10
+        "401":
+          $ref: '#/components/responses/UnauthorizedError'
+        "403":
+          $ref: '#/components/responses/ForbiddenError'
+
+  /api/v1/movies/recent:
+    get:
+      tags: [Movies]
+      summary: Get recently released movies
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+          description: Number of movies to return
+        - in: query
+          name: years
+          required: false
+          schema:
+            type: integer
+            default: 5
+          description: Number of recent years to include
+      responses:
+        "200":
+          description: Recently released movies
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Movie'
+                  total:
+                    type: integer
+                    example: 20
+        "401":
+          $ref: '#/components/responses/UnauthorizedError'
+        "403":
+          $ref: '#/components/responses/ForbiddenError'
+
+  /api/v1/movies/director/{id}:
+    get:
+      tags: [Movies]
+      summary: Get movies by director ID
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          description: Director ID
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+          description: Number of movies to return
+        - in: query
+          name: offset
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+          description: Number of movies to skip
+      responses:
+        "200":
+          description: Movies by the specified director
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Movie'
+                  total:
+                    type: integer
+                    example: 15
+                  director_id:
+                    type: integer
+                    example: 1
+        "401":
+          $ref: '#/components/responses/UnauthorizedError'
+        "403":
+          $ref: '#/components/responses/ForbiddenError'
+        "404":
+          description: Director not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: "Director not found"
+                  details:
+                    type: string
+                    example: "No director found with ID 999999"
+
+  /api/v1/movies/actor/{id}:
+    get:
+      tags: [Movies]
+      summary: Get movies by actor ID
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          description: Actor ID
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+          description: Number of movies to return
+        - in: query
+          name: offset
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+          description: Number of movies to skip
+      responses:
+        "200":
+          description: Movies featuring the specified actor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Movie'
+                  total:
+                    type: integer
+                    example: 12
+                  actor_id:
+                    type: integer
+                    example: 1
+        "401":
+          $ref: '#/components/responses/UnauthorizedError'
+        "403":
+          $ref: '#/components/responses/ForbiddenError'
+        "404":
+          description: Actor not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: "Actor not found"
+                  details:
+                    type: string
+                    example: "No actor found with ID 999999"
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key for authentication
+
+  schemas:
+    Movie:
+      type: object
+      properties:
+        movie_id:
+          type: integer
+          example: 13046
+        title:
+          type: string
+          example: "The Dark Knight"
+        release_year:
+          type: integer
+          example: 2008
+        runtime_minutes:
+          type: integer
+          example: 152
+        rating:
+          type: string
+          example: "7.5"
+        box_office:
+          type: string
+          example: "1004558444.00"
+        director_id:
+          type: integer
+          example: 1
+        country_id:
+          type: integer
+          example: 1
+      required:
+        - movie_id
+        - title
+        - release_year
+        - runtime_minutes
+        - rating
+        - box_office
+        - director_id
+        - country_id
+
+  responses:
+    UnauthorizedError:
+      description: Unauthorized - API key required
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              error:
+                type: string
+                example: "API key required"
+              details:
+                type: string
+                example: "Please provide an API key in the x-api-key header"
+    ForbiddenError:
+      description: Forbidden - Invalid API key
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              error:
+                type: string
+                example: "Invalid API key"
+              details:
+                type: string
+                example: "The provided API key is not valid"
+
 externalDocs:
-  description: Live API (Render)
-  url: https://dataset-webapi-group2-1.onrender.com
+  description: Live API (Heroku)
+  url: https://movie-api-group2-20e70498bde4.herokuapp.com

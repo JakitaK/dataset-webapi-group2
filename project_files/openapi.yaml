@@ -14,6 +14,17 @@ servers:
   - url: http://localhost:3000
     description: Local development
 
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key for authentication
+
+security:
+  - ApiKeyAuth: []
+
 paths:
   /api/hello:
     get:
@@ -35,6 +46,8 @@ paths:
     get:
       tags: [Movies]
       summary: List movies released in a given year
+      security:
+        - ApiKeyAuth: []
       parameters:
         - in: query
           name: year

@@ -226,33 +226,54 @@ const getMoviesByDirector = async (req, res) => {
     const limit = parseInt(req.query.limit) || 10;
     const offset = parseInt(req.query.offset) || 0;
 
-    // Query for paginated movies by director
+    // Validate director ID
+    if (isNaN(directorId) || directorId < 1) {
+      return sendError(res, 400, 'Invalid director ID', 'Director ID must be a positive integer');
+    }
+
+    // First, get all unique director names and create a mapping
+    const directorMappingSql = `
+      SELECT DISTINCT director_name
+      FROM movie 
+      WHERE director_name IS NOT NULL AND director_name != ''
+      ORDER BY director_name
+    `;
+
+    const directorMappingResult = await pool.query(directorMappingSql);
+    
+    // Check if the requested director ID exists
+    if (directorId > directorMappingResult.rows.length) {
+      return sendError(res, 404, 'Director not found', `Director ID ${directorId} not found. Available director IDs: 1-${directorMappingResult.rows.length}`);
+    }
+
+    // Get the director name for the requested ID (1-indexed)
+    const targetDirectorName = directorMappingResult.rows[directorId - 1].director_name;
+
+    // Query for paginated movies by this specific director
     const moviesSql = `
       SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
              overview, genres, director_name, budget, studios, poster_url, backdrop_url,
-             collection, original_title, actors,
-             overview, genres, director_name, budget, studios, poster_url, backdrop_url,
              collection, original_title, actors
       FROM movie
-      WHERE director_id = $1
+      WHERE director_name = $1
       ORDER BY release_year DESC, title ASC
       LIMIT $2 OFFSET $3
     `;
 
     // Query for total count for this director
-    const countSql = 'SELECT COUNT(*) FROM movie WHERE director_id = $1';
+    const countSql = 'SELECT COUNT(*) FROM movie WHERE director_name = $1';
 
     // Execute both queries in parallel
     const [moviesResult, countResult] = await Promise.all([
-      pool.query(moviesSql, [directorId, limit, offset]),
-      pool.query(countSql, [directorId])
+      pool.query(moviesSql, [targetDirectorName, limit, offset]),
+      pool.query(countSql, [targetDirectorName])
     ]);
 
     const totalCount = parseInt(countResult.rows[0].count);
 
     // Check if director has any movies
     if (totalCount === 0) {
-      return sendError(res, 404, 'No movies found', `No movies found for director ID ${directorId}`);
+      return sendError(res, 404, 'No movies found', `No movies found for director ID ${directorId} (${targetDirectorName})`);
     }
 
     const responseData = {
@@ -264,10 +285,11 @@ const getMoviesByDirector = async (req, res) => {
         hasNext: offset + limit < totalCount,
         hasPrevious: offset > 0
       },
-      directorId
+      directorId,
+      directorName: targetDirectorName
     };
 
-    return sendSuccess(res, responseData, `Retrieved ${moviesResult.rows.length} movies for director ID ${directorId}`);
+    return sendSuccess(res, responseData, `Retrieved ${moviesResult.rows.length} movies for director ID ${directorId} (${targetDirectorName})`);
 
   } catch (error) {
     console.error('Error in getMoviesByDirector:', error);
@@ -306,37 +328,59 @@ const getMoviesByActor = async (req, res) => {
     const limit = parseInt(req.query.limit) || 10;
     const offset = parseInt(req.query.offset) || 0;
 
-    // Query for paginated movies by actor (using JOIN)
+    // Validate actor ID
+    if (isNaN(actorId) || actorId < 1) {
+      return sendError(res, 400, 'Invalid actor ID', 'Actor ID must be a positive integer');
+    }
+
+    // First, get all unique actor names and create a mapping
+    const actorMappingSql = `
+      SELECT DISTINCT 
+        UNNEST(STRING_TO_ARRAY(actors, ', ')) as actor_name
+      FROM movie 
+      WHERE actors IS NOT NULL AND actors != ''
+      ORDER BY actor_name
+    `;
+
+    const actorMappingResult = await pool.query(actorMappingSql);
+    
+    // Check if the requested actor ID exists
+    if (actorId > actorMappingResult.rows.length) {
+      return sendError(res, 404, 'Actor not found', `Actor ID ${actorId} not found. Available actor IDs: 1-${actorMappingResult.rows.length}`);
+    }
+
+    // Get the actor name for the requested ID (1-indexed)
+    const targetActorName = actorMappingResult.rows[actorId - 1].actor_name;
+
+    // Query for paginated movies by this specific actor name
     const moviesSql = `
-      SELECT m.movie_id, m.title, m.release_year, m.runtime_minutes, m.rating, m.box_office, m.director_id, m.country_id,
-             m.overview, m.genres, m.director_name, m.budget, m.studios, m.poster_url, m.backdrop_url,
-             m.collection, m.original_title, m.actors
-      FROM movie m
-      JOIN movie_actor ma ON m.movie_id = ma.movie_id
-      WHERE ma.actor_id = $1
-      ORDER BY m.release_year DESC, m.title ASC
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
+             overview, genres, director_name, budget, studios, poster_url, backdrop_url,
+             collection, original_title, actors
+      FROM movie
+      WHERE actors ILIKE $1 AND actors IS NOT NULL AND actors != ''
+      ORDER BY release_year DESC, title ASC
       LIMIT $2 OFFSET $3
     `;
 
     // Query for total count for this actor
     const countSql = `
       SELECT COUNT(*)
-      FROM movie m
-      JOIN movie_actor ma ON m.movie_id = ma.movie_id
-      WHERE ma.actor_id = $1
+      FROM movie
+      WHERE actors ILIKE $1 AND actors IS NOT NULL AND actors != ''
     `;
 
     // Execute both queries in parallel
     const [moviesResult, countResult] = await Promise.all([
-      pool.query(moviesSql, [actorId, limit, offset]),
-      pool.query(countSql, [actorId])
+      pool.query(moviesSql, [`%${targetActorName}%`, limit, offset]),
+      pool.query(countSql, [`%${targetActorName}%`])
     ]);
 
     const totalCount = parseInt(countResult.rows[0].count);
 
     // Check if actor has any movies
     if (totalCount === 0) {
-      return sendError(res, 404, 'No movies found', `No movies found for actor ID ${actorId}`);
+      return sendError(res, 404, 'No movies found', `No movies found for actor ID ${actorId} (${targetActorName})`);
     }
 
     const responseData = {
@@ -348,10 +392,11 @@ const getMoviesByActor = async (req, res) => {
         hasNext: offset + limit < totalCount,
         hasPrevious: offset > 0
       },
-      actorId
+      actorId,
+      actorName: targetActorName
     };
 
-    return sendSuccess(res, responseData, `Retrieved ${moviesResult.rows.length} movies for actor ID ${actorId}`);
+    return sendSuccess(res, responseData, `Retrieved ${moviesResult.rows.length} movies for actor ID ${actorId} (${targetActorName})`);
 
   } catch (error) {
     console.error('Error in getMoviesByActor:', error);

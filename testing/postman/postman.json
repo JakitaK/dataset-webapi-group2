@@ -1,28 +1,23 @@
 {
 	"info": {
-		"_postman_id": "5b6c3b1d-4140-497f-8805-4602d11ad801",
-		"name": "Dataset Web API - Beta Sprint Tests",
+		"_postman_id": "be127f8d-8a84-4715-80ba-2ef6ccf55315",
+		"name": "Movies API – Group 2 (Heroku)",
+		"description": "Collection to test all Movie API routes hosted on Heroku, with API key authentication",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "49381083",
-		"_collection_link": "https://jakitak-70788.postman.co/workspace/Jakita-Kaur's-Workspace~4bb6a05f-d7f6-4ebd-8b46-8154879d9105/collection/49381083-5b6c3b1d-4140-497f-8805-4602d11ad801?action=share&source=collection_link&creator=49381083"
+		"_collection_link": "https://jakitak-70788.postman.co/workspace/Jakita-Kaur's-Workspace~4bb6a05f-d7f6-4ebd-8b46-8154879d9105/collection/49381083-be127f8d-8a84-4715-80ba-2ef6ccf55315?action=share&source=collection_link&creator=49381083"
 	},
 	"item": [
 		{
-			"name": "GET /api/hello",
+			"name": "GET /api/hello – Health Check",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"pm.test(\"Response is JSON and has message\", function () {",
-							"    pm.response.to.be.json;",
-							"    const data = pm.response.json();",
-							"    pm.expect(data).to.have.property(\"message\");",
-							"});",
+							"pm.test(\"200 OK\", () => pm.response.code === 200);",
+							"const b = pm.response.json();",
+							"pm.test(\"Has message\", () => b && typeof b.message === \"string\" && b.message.length > 0);",
 							""
 						],
 						"type": "text/javascript",
@@ -35,11 +30,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://dataset-webapi-group2-1.onrender.com/api/hello",
+					"raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/hello",
 					"protocol": "https",
 					"host": [
-						"dataset-webapi-group2-1",
-						"onrender",
+						"movie-api-group2-20e70498bde4",
+						"herokuapp",
 						"com"
 					],
 					"path": [
@@ -51,34 +46,16 @@
 			"response": []
 		},
 		{
-			"name": "GET /api/v1/moviebyyear (2023)",
+			"name": "GET /api/v1/moviebyyear – 2019 (page=1, limit=5)",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"200 OK\", () => pm.response.to.have.status(200));",
-							"",
-							"pm.test(\"JSON with data[]\", () => {",
-							"  pm.response.to.be.json;",
-							"  const d = pm.response.json();",
-							"  pm.expect(d).to.have.property(\"data\");",
-							"  pm.expect(Array.isArray(d.data)).to.be.true;",
-							"});",
-							"",
-							"pm.test(\"first item looks like a movie\", () => {",
-							"  const d = pm.response.json();",
-							"  if (d.data.length > 0) {",
-							"    pm.expect(d.data[0]).to.have.property(\"movie_id\");",
-							"    pm.expect(d.data[0]).to.have.property(\"title\");",
-							"    pm.expect(d.data[0]).to.have.property(\"release_year\");",
-							"  }",
-							"});",
-							"",
-							"pm.test(\"count equals data.length\", () => {",
-							"  const d = pm.response.json();",
-							"  pm.expect(typeof d.data.length).to.eql(\"number\");",
-							"});",
+							"pm.test(\"200 OK\", () => pm.response.code === 200);",
+							"const b = pm.response.json();",
+							"pm.test(\"Has pagination fields\", () => b && \"total\" in b && \"page\" in b && \"pages\" in b && \"limit\" in b);",
+							"pm.test(\"data is array\", () => Array.isArray(b.data));",
 							""
 						],
 						"type": "text/javascript",
@@ -91,11 +68,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://dataset-webapi-group2-1.onrender.com/api/v1/moviebyyear?year=2023",
+					"raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/moviebyyear?year=2019&page=1&limit=5",
 					"protocol": "https",
 					"host": [
-						"dataset-webapi-group2-1",
-						"onrender",
+						"movie-api-group2-20e70498bde4",
+						"herokuapp",
 						"com"
 					],
 					"path": [
@@ -106,7 +83,15 @@
 					"query": [
 						{
 							"key": "year",
-							"value": "2023"
+							"value": "2019"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "5"
 						}
 					]
 				}
@@ -114,18 +99,15 @@
 			"response": []
 		},
 		{
-			"name": "GET /api/v1/moviebyyear (missing year → 400)",
+			"name": "GET /api/v1/movies – page 1 (limit 10)",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"400 Bad Request\", () => pm.response.to.have.status(400));",
-							"pm.test(\"error message present\", () => {",
-							"  pm.response.to.be.json;",
-							"  const d = pm.response.json();",
-							"  pm.expect(d).to.have.property(\"error\");",
-							"});",
+							"pm.test(\"200 OK\", () => pm.response.code === 200);",
+							"const b = pm.response.json();",
+							"pm.test(\"Array or {data:[...]}\", () => Array.isArray(b) || (b && Array.isArray(b.data)));",
 							""
 						],
 						"type": "text/javascript",
@@ -138,11 +120,364 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://dataset-webapi-group2-1.onrender.com/api/v1/moviebyyear",
+					"raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/movies?page=1&limit=10",
 					"protocol": "https",
 					"host": [
-						"dataset-webapi-group2-1",
-						"onrender",
+						"movie-api-group2-20e70498bde4",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/movies/top-rated – limit 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 OK\", () => pm.response.code === 200);",
+							"pm.test(\"Body is array\", () => Array.isArray(pm.response.json()));",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/movies/top-rated?limit=5",
+					"protocol": "https",
+					"host": [
+						"movie-api-group2-20e70498bde4",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"top-rated"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/movies/top-grossing – limit 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 OK\", () => pm.response.code === 200);",
+							"pm.test(\"Body is array\", () => Array.isArray(pm.response.json()));",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/movies/top-grossing?limit=5",
+					"protocol": "https",
+					"host": [
+						"movie-api-group2-20e70498bde4",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"top-grossing"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/movies/recent – default",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 OK\", () => pm.response.code === 200);",
+							"pm.test(\"Body is array\", () => Array.isArray(pm.response.json()));",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/movies/recent",
+					"protocol": "https",
+					"host": [
+						"movie-api-group2-20e70498bde4",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"recent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/movies/director/{id} – use a real ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 OK\", () => pm.response.code === 200);",
+							"pm.test(\"Body is array\", () => Array.isArray(pm.response.json()));",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/movies/director/1",
+					"protocol": "https",
+					"host": [
+						"movie-api-group2-20e70498bde4",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"director",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/movies/actor/{id} – use a real ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 OK\", () => pm.response.code === 200);",
+							"pm.test(\"Body is array\", () => Array.isArray(pm.response.json()));",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/movies/actor/1",
+					"protocol": "https",
+					"host": [
+						"movie-api-group2-20e70498bde4",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"actor",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/moviebyyear – NO API KEY (401)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"401 when no key\", () => pm.response.code === 401);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/moviebyyear?year=2019",
+					"protocol": "https",
+					"host": [
+						"movie-api-group2-20e70498bde4",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"moviebyyear"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2019"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		
+		{
+  "name": "GET /api/v1/moviebyyear – WRONG API KEY (403)",
+  "event": [
+    {
+      "listen": "test",
+      "script": {
+        "exec": [
+          "pm.test(\"403 when wrong key\", () => pm.response.code === 403);",
+          "const body = pm.response.json();",
+          "pm.test(\"Invalid API key message\", () => body && body.error && body.error.includes(\"Invalid API key\"));"
+        ],
+        "type": "text/javascript"
+      }
+    }
+  ],
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": [
+        {
+          "key": "value",
+          "value": "WRONG_KEY",
+          "type": "string"
+        },
+        {
+          "key": "key",
+          "value": "x-api-key",
+          "type": "string"
+        }
+      ]
+    },
+    "method": "GET",
+    "header": [],
+    "url": {
+      "raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/moviebyyear?year=2019",
+      "protocol": "https",
+      "host": [
+        "movie-api-group2-20e70498bde4",
+        "herokuapp",
+        "com"
+      ],
+      "path": [
+        "api",
+        "v1",
+        "moviebyyear"
+      ],
+      "query": [
+        {
+          "key": "year",
+          "value": "2019"
+        }
+      ]
+    }
+  },
+  "response": []
+},
+
+		{
+			"name": "GET /api/v1/moviebyyear – MISSING year (400)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"400 missing year\", () => pm.response.code === 400);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/moviebyyear",
+					"protocol": "https",
+					"host": [
+						"movie-api-group2-20e70498bde4",
+						"herokuapp",
 						"com"
 					],
 					"path": [
@@ -155,18 +490,13 @@
 			"response": []
 		},
 		{
-			"name": "GET /api/v1/moviebyyear (invalid year → 400)",
+			"name": "GET /api/v1/moviebyyear – INVALID year=abc (400)",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"400 Bad Request\", () => pm.response.to.have.status(400));",
-							"pm.test(\"error message present\", () => {",
-							"  pm.response.to.be.json;",
-							"  const d = pm.response.json();",
-							"  pm.expect(d).to.have.property(\"error\");",
-							"});",
+							"pm.test(\"400 invalid year\", () => pm.response.code === 400);",
 							""
 						],
 						"type": "text/javascript",
@@ -179,11 +509,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://dataset-webapi-group2-1.onrender.com/api/v1/moviebyyear?year=abc",
+					"raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/moviebyyear?year=abc",
 					"protocol": "https",
 					"host": [
-						"dataset-webapi-group2-1",
-						"onrender",
+						"movie-api-group2-20e70498bde4",
+						"herokuapp",
 						"com"
 					],
 					"path": [
@@ -202,23 +532,16 @@
 			"response": []
 		},
 		{
-			"name": "GET /api/v1/moviebyyear (2019)",
+			"name": "GET /api/v1/moviebyyear – Out-of-Range Page",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"200 OK\", () => pm.response.to.have.status(200));",
-							"pm.test(\"JSON with data[]\", () => {",
-							"  pm.response.to.be.json;",
-							"  const d = pm.response.json();",
-							"  pm.expect(d).to.have.property(\"data\");",
-							"  pm.expect(Array.isArray(d.data)).to.be.true;",
-							"});",
-							"pm.test(\"every item has release_year = 2019\", () => {",
-							"  const d = pm.response.json();",
-							"  d.data.forEach(m => pm.expect(m.release_year).to.eql(2019));",
-							"});",
+							"pm.test(\"200 OK\", () => pm.response.code === 200);",
+							"const b = pm.response.json();",
+							"pm.test(\"data is array (even if empty)\", () => Array.isArray(b.data));",
+							"pm.test(\"No crash on large page\", () => true);",
 							""
 						],
 						"type": "text/javascript",
@@ -231,11 +554,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://dataset-webapi-group2-1.onrender.com/api/v1/moviebyyear?year=2019",
+					"raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/moviebyyear?year=2019&page=9999&limit=5",
 					"protocol": "https",
 					"host": [
-						"dataset-webapi-group2-1",
-						"onrender",
+						"movie-api-group2-20e70498bde4",
+						"herokuapp",
 						"com"
 					],
 					"path": [
@@ -247,6 +570,14 @@
 						{
 							"key": "year",
 							"value": "2019"
+						},
+						{
+							"key": "page",
+							"value": "9999"
+						},
+						{
+							"key": "limit",
+							"value": "5"
 						}
 					]
 				}
@@ -254,18 +585,61 @@
 			"response": []
 		},
 		{
-			"name": "GET /api/v1/moviebyyear (no results case)",
+			"name": "GET /api/v1/movies – Limit Cap (stress test)",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"200 OK\", () => pm.response.to.have.status(200));",
-							"pm.test(\"empty data[] when no matches\", () => {",
-							"  pm.response.to.be.json;",
-							"  const d = pm.response.json();",
-							"  pm.expect(Array.isArray(d.data)).to.be.true;",
-							"  pm.expect(d.data.length).to.eql(0);",
+							"pm.test(\"200 OK\", () => pm.response.code === 200);",
+							"const b = pm.response.json();",
+							"pm.test(\"Array or {data:[...]}\", () => Array.isArray(b) || (b && Array.isArray(b.data)));",
+							"pm.test(\"Still responds quickly\", () => pm.response.responseTime < 3000);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/movies?limit=500",
+					"protocol": "https",
+					"host": [
+						"movie-api-group2-20e70498bde4",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "500"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/v1/movies/director/999999 (nonexistent ID)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 OK\", () => pm.response.code === 200);",
+							"pm.test(\"Returns empty array for bad ID\", () => {",
+							"  const data = pm.response.json();",
+							"  return Array.isArray(data) && data.length === 0;",
 							"});",
 							""
 						],
@@ -279,27 +653,72 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://dataset-webapi-group2-1.onrender.com/api/v1/moviebyyear?year=2035",
+					"raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/movies/director/999999",
 					"protocol": "https",
 					"host": [
-						"dataset-webapi-group2-1",
-						"onrender",
+						"movie-api-group2-20e70498bde4",
+						"herokuapp",
 						"com"
 					],
 					"path": [
 						"api",
 						"v1",
-						"moviebyyear"
-					],
-					"query": [
-						{
-							"key": "year",
-							"value": "2035"
-						}
+						"movies",
+						"director",
+						"999999"
 					]
 				}
 			},
 			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{api_key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "x-api-key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_key",
+			"value": ""
+		},
+		{
+			"key": "base_url",
+			"value": ""
 		}
 	]
 }

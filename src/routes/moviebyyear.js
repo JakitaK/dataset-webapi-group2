@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../db');
+const { validateApiKey } = require('../middleware/apiKeyAuth');
 
 /**
  * @swagger
@@ -51,7 +52,7 @@ const pool = require('../db');
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.get('/moviebyyear', async (req, res) => {
+router.get('/moviebyyear', validateApiKey, async (req, res) => {
   const year = parseInt(req.query.year, 10);
   if (Number.isNaN(year)) {
     return res.status(400).json({ error: 'Invalid year', details: 'year query parameter must be an integer' });

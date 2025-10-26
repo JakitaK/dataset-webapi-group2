@@ -59,7 +59,9 @@ router.get('/moviebyyear', validateApiKey, async (req, res) => {
   }
 
   try {
-    const sql = `SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id
+    const sql = `SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
+                        overview, genres, director_name, budget, studios, poster_url, backdrop_url,
+                        collection, original_title, actors
                  FROM movie WHERE release_year = $1 ORDER BY title ASC`;
     const { rows } = await pool.query(sql, [year]);
     return res.json({ data: rows, total: rows.length });

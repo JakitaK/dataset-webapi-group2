@@ -11,6 +11,8 @@ console.log('Cleaning problematic characters...');
 // Remove or replace control characters and invalid bytes
 content = content.replace(/[\x80-\x9F]/g, ''); // Remove WIN1252 control chars
 content = content.replace(/\uFFFD/g, ''); // Remove replacement chars
+// Simple approach: remove all non-ASCII characters to avoid encoding issues
+content = content.replace(/[^\x00-\x7F]/g, ''); // Remove all non-ASCII
 
 console.log('Writing UTF-8 output...');
 fs.writeFileSync(outputFile, content, 'utf8');

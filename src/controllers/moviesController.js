@@ -34,9 +34,11 @@ const getTopRatedMovies = async (req, res) => {
     const limit = parseInt(req.query.limit) || 10;
     const offset = parseInt(req.query.offset) || 0;
 
-    // Query for paginated movies sorted by rating
+    // Query for paginated movies sorted by rating  
     const moviesSql = `
-      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
+             overview, genres, director_name, budget, studios, poster_url, backdrop_url, 
+             collection, original_title, actors
       FROM movie
       ORDER BY rating DESC, title ASC
       LIMIT $1 OFFSET $2
@@ -101,9 +103,11 @@ const getTopGrossingMovies = async (req, res) => {
 
     // Query for paginated movies sorted by box office
     const moviesSql = `
-      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
+             overview, genres, director_name, budget, studios, poster_url, backdrop_url,
+             collection, original_title, actors
       FROM movie
-      ORDER BY box_office DESC, title ASC
+      ORDER BY box_office DESC NULLS LAST, title ASC
       LIMIT $1 OFFSET $2
     `;
 
@@ -169,7 +173,11 @@ const getMoviesByDirector = async (req, res) => {
 
     // Query for paginated movies by director
     const moviesSql = `
-      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
+             overview, genres, director_name, budget, studios, poster_url, backdrop_url,
+             collection, original_title, actors,
+             overview, genres, director_name, budget, studios, poster_url, backdrop_url,
+             collection, original_title, actors
       FROM movie
       WHERE director_id = $1
       ORDER BY release_year DESC, title ASC
@@ -245,7 +253,9 @@ const getMoviesByActor = async (req, res) => {
 
     // Query for paginated movies by actor (using JOIN)
     const moviesSql = `
-      SELECT m.movie_id, m.title, m.release_year, m.runtime_minutes, m.rating, m.box_office, m.director_id, m.country_id
+      SELECT m.movie_id, m.title, m.release_year, m.runtime_minutes, m.rating, m.box_office, m.director_id, m.country_id,
+             m.overview, m.genres, m.director_name, m.budget, m.studios, m.poster_url, m.backdrop_url,
+             m.collection, m.original_title, m.actors
       FROM movie m
       JOIN movie_actor ma ON m.movie_id = ma.movie_id
       WHERE ma.actor_id = $1
@@ -323,7 +333,9 @@ const getRecentMovies = async (req, res) => {
 
     // Query for all movies from current year
     const moviesSql = `
-      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
+             overview, genres, director_name, budget, studios, poster_url, backdrop_url,
+             collection, original_title, actors
       FROM movie
       WHERE release_year = $1
       ORDER BY title ASC
@@ -366,7 +378,9 @@ const searchMovies = async (req, res) => {
 
     // Search movies with case-insensitive partial matching
     const moviesSql = `
-      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
+             overview, genres, director_name, budget, studios, poster_url, backdrop_url,
+             collection, original_title, actors
       FROM movie
       WHERE LOWER(title) LIKE LOWER($1)
       ORDER BY title ASC
@@ -421,7 +435,9 @@ const getMoviesByRating = async (req, res) => {
     }
 
     const moviesSql = `
-      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
+             overview, genres, director_name, budget, studios, poster_url, backdrop_url,
+             collection, original_title, actors
       FROM movie
       WHERE UPPER(rating) = $1
       ORDER BY box_office DESC, title ASC
@@ -469,7 +485,9 @@ const getMovieById = async (req, res) => {
     }
 
     const sql = `
-      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
+             overview, genres, director_name, budget, studios, poster_url, backdrop_url,
+             collection, original_title, actors
       FROM movie
       WHERE movie_id = $1
     `;

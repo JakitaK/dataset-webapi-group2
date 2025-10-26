@@ -670,7 +670,116 @@
 				}
 			},
 			"response": []
-		}
+		},
+		{
+  "name": "GET /api/v1/movies — Filter PG-13, 2015–2023 (limit=5)",
+  "event": [
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "pm.test(\"200 OK\", () => pm.response.code === 200);",
+          "const b = pm.response.json();",
+          "pm.test(\"Array or {data:[...]}\", () => Array.isArray(b) || (b && Array.isArray(b.data)));"
+        ]
+      }
+    }
+  ],
+  "request": {
+    "method": "GET",
+    "header": [],
+    "url": {
+      "raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/movies?mpaRating=PG-13&yearMin=2015&yearMax=2023&limit=5",
+      "protocol": "https",
+      "host": [
+        "movie-api-group2-20e70498bde4",
+        "herokuapp",
+        "com"
+      ],
+      "path": ["api","v1","movies"],
+      "query": [
+        {"key": "mpaRating", "value": "PG-13"},
+        {"key": "yearMin", "value": "2015"},
+        {"key": "yearMax", "value": "2023"},
+        {"key": "limit", "value": "5"}
+      ]
+    }
+  },
+  "response": []
+},
+{
+  "name": "GET /api/v1/movies — Filter Action + actor Tom Hanks (limit=5)",
+  "event": [
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "pm.test(\"200 OK\", () => pm.response.code === 200);",
+          "const b = pm.response.json();",
+          "pm.test(\"Array or {data:[...]}\", () => Array.isArray(b) || (b && Array.isArray(b.data)));"
+        ]
+      }
+    }
+  ],
+  "request": {
+    "method": "GET",
+    "header": [],
+    "url": {
+      "raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/movies?genre=Action&actor=Tom%20Hanks&limit=5",
+      "protocol": "https",
+      "host": [
+        "movie-api-group2-20e70498bde4",
+        "herokuapp",
+        "com"
+      ],
+      "path": ["api","v1","movies"],
+      "query": [
+        {"key": "genre", "value": "Action"},
+        {"key": "actor", "value": "Tom Hanks"},
+        {"key": "limit", "value": "5"}
+      ]
+    }
+  },
+  "response": []
+},
+{
+  "name": "GET /api/v1/movies — Offset pagination (limit=10, offset=10)",
+  "event": [
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "pm.test(\"200 OK\", () => pm.response.code === 200);",
+          "const b = pm.response.json();",
+          "pm.test(\"Array or {data:[...]}\", () => Array.isArray(b) || (b && Array.isArray(b.data)));"
+        ]
+      }
+    }
+  ],
+  "request": {
+    "method": "GET",
+    "header": [],
+    "url": {
+      "raw": "https://movie-api-group2-20e70498bde4.herokuapp.com/api/v1/movies?limit=10&offset=10",
+      "protocol": "https",
+      "host": [
+        "movie-api-group2-20e70498bde4",
+        "herokuapp",
+        "com"
+      ],
+      "path": ["api","v1","movies"],
+      "query": [
+        {"key": "limit", "value": "10"},
+        {"key": "offset", "value": "10"}
+      ]
+    }
+  },
+  "response": []
+}
+
 	],
 	"auth": {
 		"type": "apikey",

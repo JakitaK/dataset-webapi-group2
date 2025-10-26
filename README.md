@@ -14,6 +14,7 @@ To load your CSV data into the database, run:
 ```powershell
 # Example: import movies from CSV (run from project root)
 psql -h localhost -U <youruser> -d <yourdb> -c "\copy movie(title, release_year, runtime_minutes, rating, box_office, director_id, country_id) FROM './data/movies_last30years.csv' CSV HEADER;"
+
 ```
 Replace `<youruser>` and `<yourdb>` with your Postgres username and database name. The column list must match your CSV header.
 
@@ -22,54 +23,35 @@ Replace `<youruser>` and `<yourdb>` with your Postgres username and database nam
 - See `/project_files/openapi.yaml` for full design.
 
 ---
-# Published Web API version Beta
 
-## Hosted Web API (URLs)
-- **Hello (sanity):** https://dataset-webapi-group2-1.onrender.com/api/hello  
-- **Movies by Year (DB-backed):** https://dataset-webapi-group2-1.onrender.com/api/v1/moviebyyear?year=2023  
-  > Change `year` to any valid year to see different results.  
-- **API Documentation (Swagger UI):** https://dataset-webapi-group2-1.onrender.com/api-docs
+## URL link to the Heroku-hosted Data web API
+- ** https://movie-api-group2-20e70498bde4.herokuapp.com/api-docs  
+
+> 🔐 **Note:** To test any protected routes in the [Swagger UI](https://movie-api-group2-20e70498bde4.herokuapp.com/api-docs), click the green **“Authorize”** button at the top, enter your provided API key in the `x-api-key` field, and then click **Authorize → Close** before sending requests.
 
 
-## Alpha Sprint Contribution
-- **Primitivo Bambao** — Implemented the **DB-backed route** `/api/v1/moviebyyear`, wrote SQL/queries, and paired on Render environment configuration and query-parameter handling.
-- **Jakita Kaur** — Set up and troubleshot **Render** (service + env vars), verified the live routes, **built and exported the Postman collection** (`/testing/postman/postman.json`), finalized the README, and submitted the sprint.  
-- **Evan Tran** — Wrote and refined the **hosted API docs** (Swagger at `/api-docs`) for currently implemented routes.
-- **George Njane** — **Reviewed the Postman collection and tests**, checked response shapes and edge cases, and provided feedback on request/response consistency.  
+## Published Web API version Beta II Contribution
+- **Primitivo Bambao** — Implemented the other half (`/movies/top-grossing`, `/movies/director/{id}`, `/movies/actor/{id}`), debugged all routes, and fixed the Heroku database connection.  
+- **Jakita Kaur** — Tested all routes in Postman, debugged issues, and implemented API key authorization middleware, finalized the README, and submitted the sprint.  
+- **Evan Tran** — Implemented and documented half of the new movie routes (`/movies`, `/movies/recent`, `/movies/top-rated`).  
+- **George Njane** — Migrated the project from Render to Heroku and configured environment variables for API hosting.  
 
-### 10/15, 10:00PM–10:52PM (Discord call — all members)
-- **Where/How:** 52-minute voice call on Discord.
-- **What we did:** 
-  - Opened the assignment and reviewed the new sprint requirements line by line.
-  - Agreed that our database must live in the cloud (not local) and that we need at least one route that **queries the DB** and returns **variable results**.
-  - Chose **Render** for both hosting the API and hosting **Managed PostgreSQL** so everything is in one place.
-  - Defined the simple DB-backed route: `GET /api/v1/moviebyyear?year={YYYY}`.
-  - Listed needed environment variables (`PORT`, `DATABASE_URL`) and decided to store them in Render.
-- **Action items:**
-  - Primitivo: write the DB query and wire it to the route.
-  - Jakita: set up the Render service and env vars.
-  - George: start a Postman collection.
-  - Evan: update Swagger `/api-docs` for the routes we actually have.
+## Published Web API version Beta II Meetings
 
-### 10/17, 4:00PM–4:47PM (Discord call — all members)
-- **Where/How:** 47-minute voice call on Discord.
-- **What we did:** 
-  - Quick status check on each task (DB setup, route, docs, tests).
-  - Verified the API boots on Render and the **hello** route responds.
-  - Confirmed the database schema and connection string format.
-  - Reviewed early Postman tests and Swagger entries for accuracy.
-- **Action items:** 
-  - Primitivo + Jakita: finish connecting the route to the live DB on Render. Jakita to complete the Postman tests.
-  - Evan: refine `/api-docs` examples to match current responses.
+### 10/21, 7:30PM–8:12PM (Discord call — all members)
+- **Where/How:** 42-minute voice call on Discord  
+- **What we did:** Reviewed Beta II sprint requirements, divided route work, decided to move hosting from Render to Heroku, discussed pagination and API key protection.
 
-### 10/19, 9:00AM–10:35 AM (Discord call — all members)
-- **Where/How:** 95-minute voice call on Discord.
-- **What we did:** 
-  - Troubleshot **Render ↔ PostgreSQL** connection (checked `DATABASE_URL`, SSL settings, and `PORT`).
-  - Confirmed the **DB-backed route** works end-to-end:
-    - Example: `GET /api/v1/moviebyyear?year=2023` returns a **list** of movies for 2023.
-    - Tested multiple years to confirm results change with the input.
-  - Finalized what goes in the README and what gets submitted.
+### 10/24, 10:10PM–10:54PM (Discord call — all members)
+- **Where/How:** 44-minute voice call on Discord  
+- **What we did:** Updated progress, confirmed successful database migration on Heroku, identified routes needing debugging, verified pagination logic.
+
+### 10/26, 9:00AM–10:27AM (Discord call — all members)
+- **Where/How:** 87-minute voice call on Discord  
+- **What we did:** Final review of all routes, verified working deployment on Heroku, completed and tested API key middleware, ran Postman tests, and finalized README for submission.
+
+**Primary Communication:**  
+All group members used **Discord** for meetings and messaging, sharing updates, code snippets, and testing results during the Beta II sprint.
 
 ## Beta Sprint Comments
 - None:)

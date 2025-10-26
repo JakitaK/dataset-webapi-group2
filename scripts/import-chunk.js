@@ -104,8 +104,8 @@ async function importBatch(movies, startIndex, batchSize) {
           INSERT INTO movie (
             title, release_year, runtime_minutes, director_id, country_id,
             overview, genres, director_name, budget, box_office, studios,
-            poster_url, backdrop_url, collection, original_title, actors
-          ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
+            poster_url, backdrop_url, collection, original_title, actors, mpa_rating
+          ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
           RETURNING movie_id
         `, [
           movie.title,
@@ -123,7 +123,8 @@ async function importBatch(movies, startIndex, batchSize) {
           movie.backdrop_url,
           movie.collection,
           movie.original_title,
-          JSON.stringify(movie.actors)
+          JSON.stringify(movie.actors),
+          movie.mpa_rating
         ]);
         
         const movieId = movieResult.rows[0].movie_id;

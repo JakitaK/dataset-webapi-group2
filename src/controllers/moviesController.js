@@ -23,23 +23,70 @@ const getAllMovies = async (req, res) => {
     const limit = parseInt(req.query.limit) || 10;
     const offset = parseInt(req.query.offset) || 0;
 
+    // Filter parameters
+    const { mpaRating, yearMin, yearMax, genre, director, actor } = req.query;
+
+    // Build WHERE clause dynamically
+    let whereConditions = [];
+    let queryParams = [];
+    let paramIndex = 1;
+
+    if (mpaRating) {
+      whereConditions.push(`mpa_rating = $${paramIndex}`);
+      queryParams.push(mpaRating);
+      paramIndex++;
+    }
+
+    if (yearMin) {
+      whereConditions.push(`release_year >= $${paramIndex}`);
+      queryParams.push(parseInt(yearMin));
+      paramIndex++;
+    }
+
+    if (yearMax) {
+      whereConditions.push(`release_year <= $${paramIndex}`);
+      queryParams.push(parseInt(yearMax));
+      paramIndex++;
+    }
+
+    if (genre) {
+      whereConditions.push(`genres ILIKE $${paramIndex}`);
+      queryParams.push(`%${genre}%`);
+      paramIndex++;
+    }
+
+    if (director) {
+      whereConditions.push(`director_name ILIKE $${paramIndex}`);
+      queryParams.push(`%${director}%`);
+      paramIndex++;
+    }
+
+    if (actor) {
+      whereConditions.push(`actors ILIKE $${paramIndex}`);
+      queryParams.push(`%${actor}%`);
+      paramIndex++;
+    }
+
+    const whereClause = whereConditions.length > 0 ? `WHERE ${whereConditions.join(' AND ')}` : '';
+
     // Query for paginated movies with all enhanced fields
     const moviesSql = `
       SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
              overview, genres, director_name, budget, studios, poster_url, backdrop_url, 
-             collection, original_title, actors
+             collection, original_title, actors, mpa_rating
       FROM movie
+      ${whereClause}
       ORDER BY title ASC
-      LIMIT $1 OFFSET $2
+      LIMIT $${paramIndex} OFFSET $${paramIndex + 1}
     `;
 
     // Query for total count
-    const countSql = 'SELECT COUNT(*) FROM movie';
+    const countSql = `SELECT COUNT(*) FROM movie ${whereClause}`;
 
     // Execute both queries in parallel
     const [moviesResult, countResult] = await Promise.all([
-      pool.query(moviesSql, [limit, offset]),
-      pool.query(countSql)
+      pool.query(moviesSql, [...queryParams, limit, offset]),
+      pool.query(countSql, queryParams)
     ]);
 
     const totalCount = parseInt(countResult.rows[0].count);
@@ -52,13 +99,21 @@ const getAllMovies = async (req, res) => {
         totalCount,
         hasNext: offset + limit < totalCount,
         hasPrevious: offset > 0
+      },
+      filters: {
+        mpaRating: mpaRating || null,
+        yearMin: yearMin ? parseInt(yearMin) : null,
+        yearMax: yearMax ? parseInt(yearMax) : null,
+        genre: genre || null,
+        director: director || null,
+        actor: actor || null
       }
     };
 
-    sendSuccess(res, 'Retrieved all movies', responseData);
+    sendSuccess(res, responseData, `Retrieved ${moviesResult.rows.length} movies`);
   } catch (error) {
     console.error('Error getting all movies:', error);
-    sendError(res, 500, 'Failed to retrieve movies');
+    sendError(res, 500, 'Internal Server Error', 'Failed to retrieve movies');
   }
 };
 
@@ -644,6 +699,79 @@ const getStats = async (req, res) => {
   }
 };
 
+/**
+ * Get movies filtered by MPA rating (PG, PG-13, R, etc.)
+ * 
+ * @route GET /api/v1/movies/mpa/{rating}
+ * @param {Object} req - Express request object
+ * @param {string} req.params.rating - MPA rating (G, PG, PG-13, R, NC-17)
+ * @param {Object} req.query.limit - Number of movies per page (default: 10, max: 100)
+ * @param {Object} req.query.offset - Number of records to skip (default: 0)
+ * @param {Object} res - Express response object
+ * @returns {Promise<void>}
+ *
+ * @example
+ * GET /api/v1/movies/mpa/PG-13?limit=5
+ * Response: {
+ *   success: true,
+ *   message: "Retrieved 5 movies with MPA rating PG-13",
+ *   data: { movies: [...], pagination: {...} }
+ * }
+ */
+const getMoviesByMPARating = async (req, res) => {
+  try {
+    const mpaRating = req.params.rating;
+    const limit = parseInt(req.query.limit) || 10;
+    const offset = parseInt(req.query.offset) || 0;
+
+    // Validate MPA rating
+    const validMPARatings = ['G', 'PG', 'PG-13', 'R', 'NC-17', 'NR', 'Unrated'];
+    if (!validMPARatings.includes(mpaRating)) {
+      return sendError(res, 400, 'Bad Request', 
+        `Invalid MPA rating "${mpaRating}". Valid ratings are: ${validMPARatings.join(', ')}`);
+    }
+
+    // Query for movies with specific MPA rating
+    const moviesSql = `
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
+             overview, genres, director_name, budget, studios, poster_url, backdrop_url, 
+             collection, original_title, actors, mpa_rating
+      FROM movie
+      WHERE mpa_rating = $1
+      ORDER BY release_year DESC, title ASC
+      LIMIT $2 OFFSET $3
+    `;
+
+    // Count total movies with this MPA rating
+    const countSql = 'SELECT COUNT(*) FROM movie WHERE mpa_rating = $1';
+
+    const [moviesResult, countResult] = await Promise.all([
+      pool.query(moviesSql, [mpaRating, limit, offset]),
+      pool.query(countSql, [mpaRating])
+    ]);
+
+    const totalCount = parseInt(countResult.rows[0].count);
+
+    const responseData = {
+      data: moviesResult.rows,
+      pagination: {
+        limit,
+        offset,
+        totalCount,
+        hasNext: offset + limit < totalCount,
+        hasPrevious: offset > 0
+      },
+      mpaRating
+    };
+
+    return sendSuccess(res, responseData, `Retrieved ${moviesResult.rows.length} movies with MPA rating ${mpaRating}`);
+
+  } catch (error) {
+    console.error('Error in getMoviesByMPARating:', error);
+    return sendError(res, 500, 'Internal Server Error', 'An error occurred while retrieving movies by MPA rating');
+  }
+};
+
 module.exports = {
   getAllMovies,
   getTopRatedMovies,
@@ -653,6 +781,7 @@ module.exports = {
   getRecentMovies,
   searchMovies,
   getMoviesByRating,
+  getMoviesByMPARating,
   getMovieById,
   getStats
 };

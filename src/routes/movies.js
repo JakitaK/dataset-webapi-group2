@@ -17,6 +17,7 @@ const {
   getRecentMovies,
   searchMovies,
   getMoviesByRating,
+  getMoviesByMPARating,
   getMovieById,
   getStats
 } = require('../controllers/moviesController');
@@ -41,8 +42,8 @@ const { validateApiKey } = require('../middleware/apiKeyAuth');
  * @swagger
  * /api/v1/movies:
  *   get:
- *     summary: Get all movies with pagination
- *     description: Returns paginated list of all movies with comprehensive metadata including overview, genres, cast, etc.
+ *     summary: Get all movies with pagination and filtering
+ *     description: Returns paginated list of movies with comprehensive metadata. Supports filtering by MPA rating, year range, genre, director, and actor.
  *     tags: [Movies]
  *     parameters:
  *       - in: query
@@ -62,6 +63,51 @@ const { validateApiKey } = require('../middleware/apiKeyAuth');
  *           default: 0
  *           minimum: 0
  *         description: Number of movies to skip
+ *       - in: query
+ *         name: mpaRating
+ *         required: false
+ *         schema:
+ *           type: string
+ *           enum: [G, PG, PG-13, R, NC-17, NR, Unrated]
+ *         description: Filter by MPA rating (e.g., PG, PG-13, R)
+ *         example: "PG-13"
+ *       - in: query
+ *         name: yearMin
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           minimum: 1995
+ *         description: Minimum release year (inclusive)
+ *         example: 2019
+ *       - in: query
+ *         name: yearMax
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           maximum: 2025
+ *         description: Maximum release year (inclusive)
+ *         example: 2023
+ *       - in: query
+ *         name: genre
+ *         required: false
+ *         schema:
+ *           type: string
+ *         description: Filter by genre (partial match, case-insensitive)
+ *         example: "Action"
+ *       - in: query
+ *         name: director
+ *         required: false
+ *         schema:
+ *           type: string
+ *         description: Filter by director name (partial match, case-insensitive)
+ *         example: "Christopher Nolan"
+ *       - in: query
+ *         name: actor
+ *         required: false
+ *         schema:
+ *           type: string
+ *         description: Filter by actor name (partial match, case-insensitive)
+ *         example: "Tom Hanks"
  *     responses:
  *       200:
  *         description: Successfully retrieved movies
@@ -297,7 +343,10 @@ router.get('/movies/actor/:id', validateApiKey, validateActorId, validatePaginat
 // Movie search route
 router.get('/movies/search', validateApiKey, validatePagination, searchMovies);
 
-// Movies by MPA rating route  
+// Movies by MPA rating route (G, PG, PG-13, R, NC-17, etc.)
+router.get('/movies/mpa/:rating', validateApiKey, validatePagination, getMoviesByMPARating);
+
+// Movies by numeric score rating route  
 router.get('/movies/rating/:rating', validateApiKey, validatePagination, getMoviesByRating);
 
 // API statistics route

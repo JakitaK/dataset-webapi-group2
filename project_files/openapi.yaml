@@ -30,6 +30,7 @@ paths:
     get:
       tags: [System]
       summary: Sanity / health check
+      security: []
       responses:
         "200":
           description: OK

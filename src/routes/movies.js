@@ -13,7 +13,11 @@ const {
   getTopGrossingMovies,
   getMoviesByDirector,
   getMoviesByActor,
-  getRecentMovies
+  getRecentMovies,
+  searchMovies,
+  getMoviesByRating,
+  getMovieById,
+  getStats
 } = require('../controllers/moviesController');
 
 // Import validation middleware
@@ -220,5 +224,17 @@ router.get('/movies/director/:id', validateApiKey, validateDirectorId, validateP
  *         description: Internal server error
  */
 router.get('/movies/actor/:id', validateApiKey, validateActorId, validatePagination, getMoviesByActor);
+
+// Movie search route
+router.get('/movies/search', validateApiKey, validatePagination, searchMovies);
+
+// Movies by MPA rating route  
+router.get('/movies/rating/:rating', validateApiKey, validatePagination, getMoviesByRating);
+
+// API statistics route
+router.get('/stats', validateApiKey, getStats);
+
+// Individual movie details route (MUST be last due to :id param matching)
+router.get('/movies/:id', validateApiKey, getMovieById);
 
 module.exports = router;

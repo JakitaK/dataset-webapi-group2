@@ -350,10 +350,190 @@ const getRecentMovies = async (req, res) => {
   }
 };
 
+/**
+ * Search movies by title (partial match)
+ * Supports pagination with limit and offset
+ */
+const searchMovies = async (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit) || 10;
+    const offset = parseInt(req.query.offset) || 0;
+    const searchTerm = req.query.q || '';
+
+    if (!searchTerm.trim()) {
+      return sendError(res, 400, 'Bad Request', 'Search query (q) parameter is required');
+    }
+
+    // Search movies with case-insensitive partial matching
+    const moviesSql = `
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id
+      FROM movie
+      WHERE LOWER(title) LIKE LOWER($1)
+      ORDER BY title ASC
+      LIMIT $2 OFFSET $3
+    `;
+
+    // Count total matches
+    const countSql = `
+      SELECT COUNT(*) FROM movie 
+      WHERE LOWER(title) LIKE LOWER($1)
+    `;
+
+    const searchPattern = `%${searchTerm}%`;
+    const [moviesResult, countResult] = await Promise.all([
+      pool.query(moviesSql, [searchPattern, limit, offset]),
+      pool.query(countSql, [searchPattern])
+    ]);
+
+    const totalCount = parseInt(countResult.rows[0].count);
+
+    const responseData = {
+      data: moviesResult.rows,
+      pagination: {
+        limit,
+        offset,
+        totalCount,
+        hasNext: offset + limit < totalCount,
+        hasPrevious: offset > 0
+      },
+      searchTerm
+    };
+
+    return sendSuccess(res, responseData, `Found ${moviesResult.rows.length} movies matching "${searchTerm}"`);
+
+  } catch (error) {
+    console.error('Error in searchMovies:', error);
+    return sendError(res, 500, 'Internal Server Error', 'An error occurred while searching movies');
+  }
+};
+
+/**
+ * Get movies by MPA rating (G, PG, PG-13, R, etc.)
+ */
+const getMoviesByRating = async (req, res) => {
+  try {
+    const rating = req.params.rating?.toUpperCase();
+    const limit = parseInt(req.query.limit) || 10;
+    const offset = parseInt(req.query.offset) || 0;
+
+    if (!rating) {
+      return sendError(res, 400, 'Bad Request', 'Rating parameter is required');
+    }
+
+    const moviesSql = `
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id
+      FROM movie
+      WHERE UPPER(rating) = $1
+      ORDER BY box_office DESC, title ASC
+      LIMIT $2 OFFSET $3
+    `;
+
+    const countSql = `SELECT COUNT(*) FROM movie WHERE UPPER(rating) = $1`;
+
+    const [moviesResult, countResult] = await Promise.all([
+      pool.query(moviesSql, [rating, limit, offset]),
+      pool.query(countSql, [rating])
+    ]);
+
+    const totalCount = parseInt(countResult.rows[0].count);
+
+    const responseData = {
+      data: moviesResult.rows,
+      pagination: {
+        limit,
+        offset,
+        totalCount,
+        hasNext: offset + limit < totalCount,
+        hasPrevious: offset > 0
+      },
+      rating
+    };
+
+    return sendSuccess(res, responseData, `Retrieved ${moviesResult.rows.length} movies with ${rating} rating`);
+
+  } catch (error) {
+    console.error('Error in getMoviesByRating:', error);
+    return sendError(res, 500, 'Internal Server Error', 'An error occurred while retrieving movies by rating');
+  }
+};
+
+/**
+ * Get individual movie by ID
+ */
+const getMovieById = async (req, res) => {
+  try {
+    const movieId = parseInt(req.params.id);
+
+    if (Number.isNaN(movieId)) {
+      return sendError(res, 400, 'Bad Request', 'Movie ID must be a valid number');
+    }
+
+    const sql = `
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id
+      FROM movie
+      WHERE movie_id = $1
+    `;
+
+    const result = await pool.query(sql, [movieId]);
+
+    if (result.rows.length === 0) {
+      return sendError(res, 404, 'Not Found', `Movie with ID ${movieId} not found`);
+    }
+
+    return sendSuccess(res, result.rows[0], 'Movie details retrieved successfully');
+
+  } catch (error) {
+    console.error('Error in getMovieById:', error);
+    return sendError(res, 500, 'Internal Server Error', 'An error occurred while retrieving movie details');
+  }
+};
+
+/**
+ * Get basic API statistics
+ */
+const getStats = async (req, res) => {
+  try {
+    const queries = [
+      'SELECT COUNT(*) as total_movies FROM movie',
+      'SELECT MIN(release_year) as earliest_year, MAX(release_year) as latest_year FROM movie',
+      'SELECT COUNT(DISTINCT rating) as rating_count FROM movie WHERE rating IS NOT NULL',
+      'SELECT SUM(box_office) as total_box_office FROM movie WHERE box_office IS NOT NULL',
+      `SELECT title, box_office FROM movie 
+       WHERE box_office IS NOT NULL 
+       ORDER BY box_office DESC LIMIT 1`
+    ];
+
+    const [totalResult, yearResult, ratingResult, boxOfficeResult, topMovieResult] = await Promise.all(
+      queries.map(query => pool.query(query))
+    );
+
+    const stats = {
+      totalMovies: parseInt(totalResult.rows[0].total_movies),
+      yearRange: {
+        earliest: yearResult.rows[0].earliest_year,
+        latest: yearResult.rows[0].latest_year
+      },
+      uniqueRatings: parseInt(ratingResult.rows[0].rating_count),
+      totalBoxOffice: parseFloat(boxOfficeResult.rows[0].total_box_office || 0),
+      topGrossingMovie: topMovieResult.rows[0] || null
+    };
+
+    return sendSuccess(res, stats, 'API statistics retrieved successfully');
+
+  } catch (error) {
+    console.error('Error in getStats:', error);
+    return sendError(res, 500, 'Internal Server Error', 'An error occurred while retrieving statistics');
+  }
+};
+
 module.exports = {
   getTopRatedMovies,
   getTopGrossingMovies,
   getMoviesByDirector,
   getMoviesByActor,
-  getRecentMovies
+  getRecentMovies,
+  searchMovies,
+  getMoviesByRating,
+  getMovieById,
+  getStats
 };

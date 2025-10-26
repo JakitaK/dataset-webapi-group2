@@ -111,6 +111,107 @@ paths:
                   details:
                     type: string
                     example: "year query parameter must be an integer"
+
+  /api/v1/movies/mpa/{rating}:
+    get:
+      tags: [Movies]
+      summary: Filter movies by MPA rating
+      description: Get movies filtered by Motion Picture Association rating (G, PG, PG-13, R, NC-17, etc.)
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - in: path
+          name: rating
+          required: true
+          schema:
+            type: string
+            enum: [G, PG, PG-13, R, NC-17, NR, Unrated]
+          description: MPA rating to filter by
+          example: "PG-13"
+        - in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            default: 10
+            minimum: 1
+            maximum: 100
+          description: Number of movies to return per page
+        - in: query
+          name: offset
+          required: false
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+          description: Number of movies to skip
+      responses:
+        "200":
+          description: Successfully retrieved movies with specified MPA rating
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: "Retrieved 15 movies with MPA rating PG-13"
+                  data:
+                    type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            movie_id:
+                              type: integer
+                            title:
+                              type: string
+                            mpa_rating:
+                              type: string
+                              example: "PG-13"
+                            release_year:
+                              type: integer
+                            genres:
+                              type: string
+                              example: "Action; Adventure"
+                      pagination:
+                        type: object
+                        properties:
+                          limit:
+                            type: integer
+                          offset:
+                            type: integer  
+                          totalCount:
+                            type: integer
+                          hasNext:
+                            type: boolean
+                          hasPrevious:
+                            type: boolean
+                      mpaRating:
+                        type: string
+                        example: "PG-13"
+        "400":
+          description: Bad Request - invalid MPA rating
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: "Bad Request"
+                  details:
+                    type: string
+                    example: 'Invalid MPA rating "XXX". Valid ratings are: G, PG, PG-13, R, NC-17, NR, Unrated'
+
 externalDocs:
-  description: Live API (Render)
-  url: https://dataset-webapi-group2-1.onrender.com
+  description: Live API (Heroku Production)
+  url: https://movie-api-group2-20e70498bde4.herokuapp.com

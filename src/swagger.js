@@ -14,12 +14,12 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:3000',
-        description: 'Development server'
-      },
-      {
         url: 'https://movie-api-group2-20e70498bde4.herokuapp.com',
         description: 'Production (Heroku)'
+      },
+      {
+        url: 'http://localhost:3000',
+        description: 'Development server'
       }
     ],
     security: [

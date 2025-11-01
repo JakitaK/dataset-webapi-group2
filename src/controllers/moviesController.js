@@ -574,6 +574,66 @@ const getMoviesByRating = async (req, res) => {
 };
 
 /**
+ * Get movies by MPA rating (G, PG, PG-13, R, NC-17, etc.)
+ * 
+ * @route GET /api/v1/movies/mpa/:rating
+ * @param {Object} req - Express request object
+ * @param {string} req.params.rating - MPA rating to filter by
+ * @param {number} req.query.limit - Number of movies per page
+ * @param {number} req.query.offset - Number of records to skip
+ * @param {Object} res - Express response object
+ * @returns {Promise<void>}
+ */
+const getMoviesByMPARating = async (req, res) => {
+  try {
+    const rating = req.params.rating?.toUpperCase();
+    const limit = parseInt(req.query.limit) || 10;
+    const offset = parseInt(req.query.offset) || 0;
+
+    if (!rating) {
+      return sendError(res, 400, 'Bad Request', 'MPA rating parameter is required');
+    }
+
+    const moviesSql = `
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
+             overview, genres, director_name, budget, studios, poster_url, backdrop_url,
+             collection, original_title, actors
+      FROM movie
+      WHERE UPPER(rating) = $1
+      ORDER BY box_office DESC NULLS LAST, title ASC
+      LIMIT $2 OFFSET $3
+    `;
+
+    const countSql = `SELECT COUNT(*) FROM movie WHERE UPPER(rating) = $1`;
+
+    const [moviesResult, countResult] = await Promise.all([
+      pool.query(moviesSql, [rating, limit, offset]),
+      pool.query(countSql, [rating])
+    ]);
+
+    const totalCount = parseInt(countResult.rows[0].count);
+
+    const responseData = {
+      data: moviesResult.rows,
+      pagination: {
+        limit,
+        offset,
+        totalCount,
+        hasNext: offset + limit < totalCount,
+        hasPrevious: offset > 0
+      },
+      mpaRating: rating
+    };
+
+    return sendSuccess(res, responseData, `Retrieved ${moviesResult.rows.length} movies with ${rating} rating`);
+
+  } catch (error) {
+    console.error('Error in getMoviesByMPARating:', error);
+    return sendError(res, 500, 'Internal Server Error', 'An error occurred while retrieving movies by MPA rating');
+  }
+};
+
+/**
  * Get individual movie by ID
  */
 const getMovieById = async (req, res) => {
@@ -788,6 +848,7 @@ module.exports = {
   getRecentMovies,
   searchMovies,
   getMoviesByRating,
+  getMoviesByMPARating,
   getMovieById,
   getStats,
   createMovie,

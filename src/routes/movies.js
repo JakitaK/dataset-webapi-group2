@@ -346,11 +346,62 @@ router.get('/movies/actor/:id', validateApiKey, validateActorId, validatePaginat
 // Movie search route
 router.get('/movies/search', validateApiKey, validatePagination, searchMovies);
 
-// Movies by MPA rating route (G, PG, PG-13, R, NC-17, etc.)
+/**
+ * @swagger
+ * /api/v1/movies/mpa/{rating}:
+ *   get:
+ *     summary: Get movies by MPA rating
+ *     description: Returns all movies with a specific MPA rating (G, PG, PG-13, R, NC-17, etc.)
+ *     tags: [Movies]
+ *     security:
+ *       - ApiKeyAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: rating
+ *         required: true
+ *         schema:
+ *           type: string
+ *           enum: [G, PG, PG-13, R, NC-17, NR, NOT RATED]
+ *         description: MPA rating to filter by (e.g., PG-13, R)
+ *         example: PG-13
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 10
+ *         description: Number of movies per page
+ *       - in: query
+ *         name: offset
+ *         schema:
+ *           type: integer
+ *           minimum: 0
+ *           default: 0
+ *         description: Number of records to skip
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved movies with specified MPA rating
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/PaginatedMoviesResponse'
+ *       400:
+ *         description: Invalid rating parameter
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       401:
+ *         description: Unauthorized - invalid API key
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Internal server error
+ */
 router.get('/movies/mpa/:rating', validateApiKey, validatePagination, getMoviesByMPARating);
-
-// Movies by numeric score rating route  
-router.get('/movies/rating/:rating', validateApiKey, validatePagination, getMoviesByRating);
 
 // API statistics route
 router.get('/stats', validateApiKey, getStats);

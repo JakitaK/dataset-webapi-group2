@@ -644,6 +644,141 @@ const getStats = async (req, res) => {
   }
 };
 
+/**
+ * Create a new movie
+ * 
+ * @route POST /api/v1/movies
+ */
+const createMovie = async (req, res) => {
+  try {
+    const { 
+      title, 
+      release_year, 
+      runtime_minutes, 
+      rating, 
+      box_office, 
+      director_id, 
+      country_id,
+      overview,
+      genres,
+      budget,
+      studios,
+      poster_url,
+      backdrop_url,
+      collection,
+      original_title,
+      mpa_rating
+    } = req.body;
+
+    if (!title || !release_year) {
+      return sendError(res, 400, 'Missing Required Fields', 'Title and release year are required');
+    }
+
+    const movieSql = `
+      INSERT INTO movie (
+        title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
+        overview, genres, budget, studios, poster_url, backdrop_url, collection, 
+        original_title, mpa_rating
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
+      RETURNING *
+    `;
+
+    const result = await pool.query(movieSql, [
+      title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
+      overview, genres, budget, studios, poster_url, backdrop_url, collection, 
+      original_title, mpa_rating
+    ]);
+
+    return sendSuccess(res, result.rows[0], 'Movie created successfully');
+
+  } catch (error) {
+    console.error('Error creating movie:', error);
+    return sendError(res, 500, 'Internal Server Error', 'An error occurred while creating the movie');
+  }
+};
+
+/**
+ * Update an existing movie
+ * 
+ * @route PUT /api/v1/movies/:id
+ */
+const updateMovie = async (req, res) => {
+  try {
+    const movieId = parseInt(req.params.id);
+    const updates = req.body;
+
+    if (!movieId) {
+      return sendError(res, 400, 'Invalid Movie ID', 'Movie ID must be a valid number');
+    }
+
+    const existingMovie = await pool.query('SELECT * FROM movie WHERE movie_id = $1', [movieId]);
+    if (existingMovie.rows.length === 0) {
+      return sendError(res, 404, 'Movie Not Found', 'Movie with the specified ID does not exist');
+    }
+
+    const updateFields = [];
+    const values = [];
+    let paramCounter = 1;
+
+    Object.keys(updates).forEach(field => {
+      if (updates[field] !== undefined) {
+        updateFields.push(`${field} = $${paramCounter}`);
+        values.push(updates[field]);
+        paramCounter++;
+      }
+    });
+
+    if (updateFields.length === 0) {
+      return sendError(res, 400, 'No Updates Provided', 'At least one field must be provided for update');
+    }
+
+    values.push(movieId);
+
+    const updateSql = `
+      UPDATE movie 
+      SET ${updateFields.join(', ')}
+      WHERE movie_id = $${paramCounter}
+      RETURNING *
+    `;
+
+    const result = await pool.query(updateSql, values);
+    return sendSuccess(res, result.rows[0], 'Movie updated successfully');
+
+  } catch (error) {
+    console.error('Error updating movie:', error);
+    return sendError(res, 500, 'Internal Server Error', 'An error occurred while updating the movie');
+  }
+};
+
+/**
+ * Delete a movie
+ * 
+ * @route DELETE /api/v1/movies/:id
+ */
+const deleteMovie = async (req, res) => {
+  try {
+    const movieId = parseInt(req.params.id);
+
+    if (!movieId) {
+      return sendError(res, 400, 'Invalid Movie ID', 'Movie ID must be a valid number');
+    }
+
+    const existingMovie = await pool.query('SELECT title FROM movie WHERE movie_id = $1', [movieId]);
+    if (existingMovie.rows.length === 0) {
+      return sendError(res, 404, 'Movie Not Found', 'Movie with the specified ID does not exist');
+    }
+
+    const movieTitle = existingMovie.rows[0].title;
+    await pool.query('DELETE FROM movie WHERE movie_id = $1', [movieId]);
+
+    return sendSuccess(res, { movie_id: movieId, title: movieTitle }, 'Movie deleted successfully');
+
+  } catch (error) {
+    console.error('Error deleting movie:', error);
+    return sendError(res, 500, 'Internal Server Error', 'An error occurred while deleting the movie');
+  }
+};
+
 module.exports = {
   getAllMovies,
   getTopRatedMovies,
@@ -654,5 +789,8 @@ module.exports = {
   searchMovies,
   getMoviesByRating,
   getMovieById,
-  getStats
+  getStats,
+  createMovie,
+  updateMovie,
+  deleteMovie
 };

@@ -5,6 +5,10 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpecs = require('./swagger');
 const app = express();
 
+// Middleware to parse JSON request bodies (required for POST/PUT)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 /**
  * @swagger
  * /api/hello:

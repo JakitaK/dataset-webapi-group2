@@ -63,73 +63,6 @@ const getAllMovies = async (req, res) => {
 };
 
 /**
- * Get top-rated movies sorted by rating (highest first)
- * Supports pagination with limit and offset
- *
- * @route GET /api/v1/movies/top-rated
- * @param {Object} req - Express request object
- * @param {Object} req.query.limit - Number of movies per page (default: 10, max: 100)
- * @param {Object} req.query.offset - Number of records to skip (default: 0)
- * @param {Object} res - Express response object
- * @returns {Promise<void>}
- *
- * @example
- * GET /api/v1/movies/top-rated?limit=10&offset=0
- * Response: {
- *   success: true,
- *   message: "Retrieved top-rated movies",
- *   data: {
- *     data: [...movies],
- *     pagination: { limit: 10, offset: 0, totalCount: 5432, hasNext: true, hasPrevious: false }
- *   }
- * }
- */
-const getTopRatedMovies = async (req, res) => {
-  try {
-    const limit = parseInt(req.query.limit) || 10;
-    const offset = parseInt(req.query.offset) || 0;
-
-    // Query for paginated movies sorted by rating  
-    const moviesSql = `
-      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
-             overview, genres, director_name, budget, studios, poster_url, backdrop_url, 
-             collection, original_title, actors
-      FROM movie
-      ORDER BY rating DESC, title ASC
-      LIMIT $1 OFFSET $2
-    `;
-
-    // Query for total count
-    const countSql = 'SELECT COUNT(*) FROM movie';
-
-    // Execute both queries in parallel
-    const [moviesResult, countResult] = await Promise.all([
-      pool.query(moviesSql, [limit, offset]),
-      pool.query(countSql)
-    ]);
-
-    const totalCount = parseInt(countResult.rows[0].count);
-
-    const responseData = {
-      data: moviesResult.rows,
-      pagination: {
-        limit,
-        offset,
-        totalCount,
-        hasNext: offset + limit < totalCount,
-        hasPrevious: offset > 0
-      }
-    };
-
-    return sendSuccess(res, responseData, `Retrieved ${moviesResult.rows.length} top-rated movies`);
-
-  } catch (error) {
-    console.error('Error in getTopRatedMovies:', error);
-    return sendError(res, 500, 'Internal Server Error', 'An error occurred while retrieving top-rated movies');
-  }
-};
-
-/**
  * Get top-grossing movies sorted by box office revenue (highest first)
  * Supports pagination with limit and offset
  *
@@ -841,7 +774,6 @@ const deleteMovie = async (req, res) => {
 
 module.exports = {
   getAllMovies,
-  getTopRatedMovies,
   getTopGrossingMovies,
   getMoviesByDirector,
   getMoviesByActor,

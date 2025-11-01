@@ -10,7 +10,6 @@ const router = express.Router();
 // Import controller functions
 const {
   getAllMovies,
-  getTopRatedMovies,
   getTopGrossingMovies,
   getMoviesByDirector,
   getMoviesByActor,
@@ -37,8 +36,8 @@ const { validateApiKey } = require('../middleware/apiKeyAuth');
 
 /**
  * IMPORTANT: Route ordering matters!
- * Specific routes (like /movies/top-rated) must come BEFORE generic path params (like /movies/:id)
- * Otherwise Express will match "top-rated" as a parameter value
+ * Specific routes (like /movies/top-grossing or /movies/mpa/:rating) must come BEFORE generic path params (like /movies/:id)
+ * Otherwise Express will match "top-grossing" or "mpa" as a parameter value
  */
 
 /**
@@ -153,47 +152,6 @@ const { validateApiKey } = require('../middleware/apiKeyAuth');
  *         description: Internal server error
  */
 router.get('/movies', validateApiKey, validatePagination, getAllMovies);
-
-/**
- * @swagger
- * /api/v1/movies/top-rated:
- *   get:
- *     summary: Get highest rated movies
- *     description: Returns movies sorted by rating (highest first) with pagination support
- *     tags: [Movies]
- *     parameters:
- *       - in: query
- *         name: limit
- *         schema:
- *           type: integer
- *           minimum: 1
- *           maximum: 100
- *           default: 10
- *         description: Number of movies per page
- *       - in: query
- *         name: offset
- *         schema:
- *           type: integer
- *           minimum: 0
- *           default: 0
- *         description: Number of records to skip
- *     responses:
- *       200:
- *         description: Successful response with top-rated movies
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/PaginatedMoviesResponse'
- *       400:
- *         description: Invalid pagination parameters
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- *       500:
- *         description: Internal server error
- */
-router.get('/movies/top-rated', validateApiKey, validatePagination, getTopRatedMovies);
 
 /**
  * @swagger

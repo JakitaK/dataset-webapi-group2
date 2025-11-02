@@ -57,6 +57,38 @@ router.get('/auth/verify/email/confirm', VerificationController.confirmEmailVeri
 // ===== TESTING ROUTES =====
 
 /**
+ * Welcome/root endpoint
+ * GET /
+ */
+router.get('/', (req, res) => {
+    res.json({
+        success: true,
+        message: 'Welcome to Credentials API',
+        version: '1.0.0',
+        service: 'credentials-api',
+        endpoints: {
+            public: [
+                'POST /auth/register',
+                'POST /auth/login',
+                'POST /auth/password/reset-request',
+                'POST /auth/password/reset',
+                'GET /auth/verify/email/confirm?token=xxx',
+                'GET /auth/verify/carriers',
+                'GET /health'
+            ],
+            protected: [
+                'GET /auth/me (requires JWT)',
+                'POST /auth/password/change (requires JWT)',
+                'POST /auth/verify/email/send (requires JWT)',
+                'POST /auth/verify/phone/send (requires JWT)',
+                'POST /auth/verify/phone/verify (requires JWT)'
+            ]
+        },
+        documentation: 'See API documentation for request/response schemas'
+    });
+});
+
+/**
  * Simple health check endpoint
  * GET /health
  */

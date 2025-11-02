@@ -667,6 +667,20 @@ const createMovie = async (req, res) => {
       return sendError(res, 400, 'Missing Required Fields', 'Title and release year are required');
     }
 
+    // Validate constraints to provide better error messages
+    const currentYear = new Date().getFullYear();
+    if (release_year < 1900 || release_year > currentYear) {
+      return sendError(res, 400, 'Invalid Release Year', `Release year must be between 1900 and ${currentYear}`);
+    }
+
+    if (runtime_minutes !== undefined && runtime_minutes !== null && runtime_minutes <= 0) {
+      return sendError(res, 400, 'Invalid Runtime', 'Runtime must be greater than 0 minutes');
+    }
+
+    if (rating !== undefined && rating !== null && (rating < 0 || rating > 10)) {
+      return sendError(res, 400, 'Invalid Rating', 'Rating must be between 0 and 10');
+    }
+
     const movieSql = `
       INSERT INTO movie (
         title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
@@ -686,6 +700,15 @@ const createMovie = async (req, res) => {
 
   } catch (error) {
     console.error('Error creating movie:', error);
+    
+    // Provide specific error messages for constraint violations
+    if (error.code === '23514') { // Check constraint violation
+      return sendError(res, 400, 'Validation Error', error.detail || 'Data violates database constraints');
+    }
+    if (error.code === '23503') { // Foreign key violation
+      return sendError(res, 400, 'Invalid Reference', 'Referenced director or country does not exist');
+    }
+    
     return sendError(res, 500, 'Internal Server Error', 'An error occurred while creating the movie');
   }
 };
@@ -707,6 +730,26 @@ const updateMovie = async (req, res) => {
     const existingMovie = await pool.query('SELECT * FROM movie WHERE movie_id = $1', [movieId]);
     if (existingMovie.rows.length === 0) {
       return sendError(res, 404, 'Movie Not Found', 'Movie with the specified ID does not exist');
+    }
+
+    // Validate constraints before updating
+    const currentYear = new Date().getFullYear();
+    if (updates.release_year !== undefined) {
+      if (updates.release_year < 1900 || updates.release_year > currentYear) {
+        return sendError(res, 400, 'Invalid Release Year', `Release year must be between 1900 and ${currentYear}`);
+      }
+    }
+
+    if (updates.runtime_minutes !== undefined && updates.runtime_minutes !== null) {
+      if (updates.runtime_minutes <= 0) {
+        return sendError(res, 400, 'Invalid Runtime', 'Runtime must be greater than 0 minutes');
+      }
+    }
+
+    if (updates.rating !== undefined && updates.rating !== null) {
+      if (updates.rating < 0 || updates.rating > 10) {
+        return sendError(res, 400, 'Invalid Rating', 'Rating must be between 0 and 10');
+      }
     }
 
     const updateFields = [];
@@ -739,6 +782,15 @@ const updateMovie = async (req, res) => {
 
   } catch (error) {
     console.error('Error updating movie:', error);
+    
+    // Provide specific error messages for constraint violations
+    if (error.code === '23514') { // Check constraint violation
+      return sendError(res, 400, 'Validation Error', error.detail || 'Data violates database constraints');
+    }
+    if (error.code === '23503') { // Foreign key violation
+      return sendError(res, 400, 'Invalid Reference', 'Referenced director or country does not exist');
+    }
+    
     return sendError(res, 500, 'Internal Server Error', 'An error occurred while updating the movie');
   }
 };

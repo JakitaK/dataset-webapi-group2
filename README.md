@@ -27,7 +27,7 @@ Replace `<youruser>` and `<yourdb>` with your Postgres username and database nam
 ## URL link to the Heroku-hosted Data web API
 - ** https://movie-api-group2-20e70498bde4.herokuapp.com/api-docs  
 
-> 🔐 **Note:** To test any protected routes in the [Swagger UI](https://movie-api-group2-20e70498bde4.herokuapp.com/api-docs), click the green **“Authorize”** button at the top, enter your provided API key in the `x-api-key` field, and then click **Authorize → Close** before sending requests.
+> 🔐 **Note:** To test any protected routes in the [Swagger UI](https://movie-api-group2-20e70498bde4.herokuapp.com/api-docs), click the green **“Authorize”** button at the top, enter your provided API key in the `x-api-key` field (in Postman Testing), and then click **Authorize → Close** before sending requests.
 
 
 ## Alpha Sprint Contribution
@@ -36,7 +36,7 @@ Replace `<youruser>` and `<yourdb>` with your Postgres username and database nam
 - **Jakita Kaur** — Set up the GitHub repository, organized and added all project files, reviewed the ER diagram and functionality plan, and contributed to testing the hosting setup.  
 - **Evan Tran** — Reviewed the ER diagram and functionality plan, assisted with testing and verifying the hosting setup on Render.
 - **George Njane** — Reviewed all steps.
-- 
+  
 ## Alpha Sprint Contribution
 - **Primitivo Bambao** — Created the ER diagram, designed and wrote the SQL initialization script, and led the planning of the API’s proposed functionality.
 - **Jakita Kaur** — Set up the GitHub repository, organized and added all project files, reviewed the ER diagram and functionality plan, and contributed to testing the hosting setup.  
@@ -46,12 +46,18 @@ Replace `<youruser>` and `<yourdb>` with your Postgres username and database nam
 - **Jakita Kaur** — Co-led Render troubleshooting (env variables, connection string, port), verified the route end-to-end, **updated README**, and prepared the final submission.  
 - **Evan Tran** — Wrote and refined the **hosted API docs** (Swagger at `/api-docs`) for currently implemented routes.
 - **George Njane** — Built the **Postman collection** and tests covering `moviebyyear` (valid/invalid years) and `hello`.
-- 
+  
 ## Published Web API version Beta II Contribution
 - **Primitivo Bambao** — Implemented the other half (`/movies/top-grossing`, `/movies/director/{id}`, `/movies/actor/{id}`), debugged all routes, and fixed the Heroku database connection.  
 - **Jakita Kaur** — Tested all routes in Postman, debugged issues, and implemented API key authorization middleware, finalized the README, and submitted the sprint.  
 - **Evan Tran** — Implemented and documented half of the new movie routes (`/movies`, `/movies/recent`, `/movies/top-rated`).  
-- **George Njane** — Migrated the project from Render to Heroku and configured environment variables for API hosting.  
+- **George Njane** — Migrated the project from Render to Heroku and configured environment variables for API hosting.
+
+## Published Web API Production Version — Sprint Contribution
+- **Primitivo Bambao** — Implemented the **PUT**, **DELETE**, and **POST** routes for movies and directors, added **admin routes** (in progress), and connected the current Web API repository to the **new Credentials API** for authentication integration.  
+- **Jakita Kaur** — Completed all **unit testing** in Postman for both the **Web API** and **Credentials API**, tested every route thoroughly to ensure correct responses and error handling, and verified full endpoint functionality.  
+- **Evan Tran** — Created and refined **documentation** for both the Web API and Credentials API, ensuring accuracy, clarity, and alignment with the final deployed routes.  
+- **George Njane** — Set up the **Credentials repository**, deployed it to **Heroku**, and configured all environment variables and credentials for production hosting.  
 
 ## Meetings
 ### **10/15, 10:00–10:52 PM (Discord call, all members):**  
@@ -73,6 +79,18 @@ Replace `<youruser>` and `<yourdb>` with your Postgres username and database nam
 ### 10/26, 9:00AM–10:27AM (Discord call — all members)
 - **Where/How:** 87-minute voice call on Discord  
 - **What we did:** Final review of all routes, verified working deployment on Heroku, completed and tested API key middleware, ran Postman tests, and finalized README for submission.
+
+### **10/29, 10:14–10:51 PM (Discord call — all members)**  
+- **Where/How:** 37-minute voice call on Discord  
+- **What we did:** Discussed the sprint plan, clarified implementation details for new routes (**PUT**, **DELETE**, **POST**), divided responsibilities across members, and confirmed priorities for the week.  
+
+### **11/1, 9:20–9:53 PM (Discord call — Jakita & Primitivo)**  
+- **Where/How:** 33-minute voice call on Discord  
+- **What we did:** Debugged non-working routes in the Web API and credentials connection; verified fixes for API authentication issues and tested updates in Postman.  
+
+### **11/2, 11:20 AM–12:35 PM (Discord call — all members)**  
+- **Where/How:** 75-minute voice call on Discord  
+- **What we did:** Final check-in before submission; assigned last-minute testing and documentation tasks, validated all routes, confirmed deployment stability, and finalized the README for sprint submission.  
 
 **Primary Communication:**  
 All group members used **Discord** for meetings and messaging, sharing updates, code snippets, and testing results during the Beta II sprint.

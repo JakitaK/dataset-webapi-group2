@@ -12,6 +12,7 @@
     "import-chunk": "node scripts/import-chunk.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "csv-parse": "^6.1.0",
     "csv-stringify": "^6.6.0",
     "dotenv": "^17.2.3",

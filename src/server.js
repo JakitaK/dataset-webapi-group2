@@ -1,9 +1,13 @@
 // src/server.js
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpecs = require('./swagger');
 const app = express();
+
+// CORS middleware - allow requests from any origin
+app.use(cors());
 
 // Middleware to parse JSON request bodies (required for POST/PUT)
 app.use(express.json());

@@ -40,8 +40,8 @@ Replace `<youruser>` and `<yourdb>` with your Postgres username and database nam
 ## Alpha Sprint Contribution
 - **Primitivo Bambao** — Created the ER diagram, designed and wrote the SQL initialization script, and led the planning of the API’s proposed functionality.
 - **Jakita Kaur** — Set up the GitHub repository, organized and added all project files, reviewed the ER diagram and functionality plan, and contributed to testing the hosting setup.  
-- **Evan Tran** — Reviewed the ER diagram and functionality plan, assisted with testing and verifying the hosting setup on ......
-- **George Njane** — Documentationn? 
+- **Evan Tran** — Reviewed the ER diagram and functionality plan, assisted with testing and verifying the hosting setup on Render
+- **George Njane** — Reviewed all steps.
 - **Primitivo Bambao** — Implemented the **DB-backed route** `/api/v1/moviebyyear`, wrote SQL/queries, and paired on Render environment configuration and query-parameter handling.
 - **Jakita Kaur** — Co-led Render troubleshooting (env variables, connection string, port), verified the route end-to-end, **updated README**, and prepared the final submission.  
 - **Evan Tran** — Wrote and refined the **hosted API docs** (Swagger at `/api-docs`) for currently implemented routes.

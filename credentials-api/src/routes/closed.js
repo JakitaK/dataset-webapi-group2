@@ -18,34 +18,177 @@ router.use(checkToken);
 // ===== AUTHENTICATED USER ROUTES =====
 
 /**
- * Get current user information
- * GET /auth/me
+ * @swagger
+ * /auth/me:
+ *   get:
+ *     summary: Get current user
+ *     description: Returns authenticated user's information
+ *     tags: [User]
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: User information retrieved
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 user:
+ *                   $ref: '#/components/schemas/User'
+ *       401:
+ *         description: Unauthorized - Invalid or missing token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.get('/auth/me', AuthController.getCurrentUser);
 
 /**
- * Change password (requires authentication and old password)
- * POST /auth/user/password/change
+ * @swagger
+ * /auth/user/password/change:
+ *   post:
+ *     summary: Change password
+ *     description: Change user password (requires current password and JWT)
+ *     tags: [User]
+ *     security:
+ *       - BearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/PasswordChange'
+ *     responses:
+ *       200:
+ *         description: Password changed successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/SuccessResponse'
+ *       400:
+ *         description: Invalid current password or validation failed
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       401:
+ *         description: Unauthorized - Invalid or missing token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.post('/auth/user/password/change', validatePasswordChange, AuthController.changePassword);
 
 // ===== VERIFICATION ROUTES =====
 
 /**
- * Send SMS verification code
- * POST /auth/verify/phone/send
+ * @swagger
+ * /auth/verify/phone/send:
+ *   post:
+ *     summary: Send SMS verification code
+ *     description: Send 6-digit verification code via SMS to phone number
+ *     tags: [Verification]
+ *     security:
+ *       - BearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/PhoneVerifySend'
+ *     responses:
+ *       200:
+ *         description: SMS sent successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/SuccessResponse'
+ *       400:
+ *         description: Invalid phone or carrier
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       401:
+ *         description: Unauthorized - Invalid or missing token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.post('/auth/verify/phone/send', validatePhoneSend, VerificationController.sendSMSVerification);
 
 /**
- * Verify SMS code
- * POST /auth/verify/phone/verify
+ * @swagger
+ * /auth/verify/phone/verify:
+ *   post:
+ *     summary: Verify SMS code
+ *     description: Verify phone number using 6-digit code from SMS
+ *     tags: [Verification]
+ *     security:
+ *       - BearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/PhoneVerifyCode'
+ *     responses:
+ *       200:
+ *         description: Phone verified successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/SuccessResponse'
+ *       400:
+ *         description: Invalid or expired code
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       401:
+ *         description: Unauthorized - Invalid or missing token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.post('/auth/verify/phone/verify', validatePhoneVerify, VerificationController.verifySMSCode);
 
 /**
- * Send email verification
- * POST /auth/verify/email/send
+ * @swagger
+ * /auth/verify/email/send:
+ *   post:
+ *     summary: Send email verification
+ *     description: Send verification email to user's registered email address
+ *     tags: [Verification]
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Verification email sent
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/SuccessResponse'
+ *       400:
+ *         description: Email already verified
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       401:
+ *         description: Unauthorized - Invalid or missing token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.post('/auth/verify/email/send', VerificationController.sendEmailVerification);
 

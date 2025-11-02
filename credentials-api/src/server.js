@@ -4,6 +4,8 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpecs = require('./swagger');
 const openRoutes = require('./routes/open');
 const closedRoutes = require('./routes/closed');
 
@@ -25,6 +27,12 @@ if (process.env.NODE_ENV !== 'production') {
         next();
     });
 }
+
+// API Documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs, {
+    customCss: '.swagger-ui .topbar { display: none }',
+    customSiteTitle: 'Credentials API - Group 2'
+}));
 
 // Routes
 app.use('/', openRoutes);      // Public routes (no auth required)

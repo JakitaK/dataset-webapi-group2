@@ -142,14 +142,48 @@ const { validateApiKey } = require('../middleware/apiKeyAuth');
  *                           type: boolean
  *                         hasPrevious:
  *                           type: boolean
+ *             example:
+ *               success: true
+ *               message: "Retrieved 10 movies"
+ *               data:
+ *                 data:
+ *                   - movie_id: 2462
+ *                     title: "Barbie"
+ *                     release_year: 2023
+ *                     runtime_minutes: 114
+ *                     rating: "7.5"
+ *                     box_office: "1445638421.00"
+ *                     director_id: 1
+ *                     country_id: 1
+ *                   - movie_id: 2441
+ *                     title: "Oppenheimer"
+ *                     release_year: 2023
+ *                     runtime_minutes: 181
+ *                     rating: "7.5"
+ *                     box_office: "952000000.00"
+ *                     director_id: 1
+ *                     country_id: 1
+ *                 pagination:
+ *                   limit: 10
+ *                   offset: 0
+ *                   totalCount: 7404
+ *                   hasNext: true
+ *                   hasPrevious: false
  *       400:
  *         description: Invalid pagination parameters
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Invalid pagination parameters"
+ *               details: "limit must be between 1 and 100"
  *       500:
  *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.get('/movies', validateApiKey, validatePagination, getAllMovies);
 
@@ -183,10 +217,48 @@ router.get('/movies', validateApiKey, validatePagination, getAllMovies);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/PaginatedMoviesResponse'
+ *             example:
+ *               success: true
+ *               message: "Retrieved 10 top-grossing movies"
+ *               data:
+ *                 data:
+ *                   - movie_id: 2462
+ *                     title: "Barbie"
+ *                     release_year: 2023
+ *                     runtime_minutes: 114
+ *                     rating: "7.5"
+ *                     box_office: "1445638421.00"
+ *                     director_id: 1
+ *                     country_id: 1
+ *                   - movie_id: 2441
+ *                     title: "Oppenheimer"
+ *                     release_year: 2023
+ *                     runtime_minutes: 181
+ *                     rating: "7.5"
+ *                     box_office: "952000000.00"
+ *                     director_id: 1
+ *                     country_id: 1
+ *                 pagination:
+ *                   limit: 10
+ *                   offset: 0
+ *                   totalCount: 7404
+ *                   hasNext: true
+ *                   hasPrevious: false
  *       400:
  *         description: Invalid pagination parameters
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Invalid pagination parameters"
+ *               details: "limit must be between 1 and 100"
  *       500:
  *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.get('/movies/top-grossing', validateApiKey, validatePagination, getTopGrossingMovies);
 
@@ -204,8 +276,27 @@ router.get('/movies/top-grossing', validateApiKey, validatePagination, getTopGro
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/RecentMoviesResponse'
+ *             example:
+ *               success: true
+ *               message: "Retrieved 15 movies from 2025"
+ *               data:
+ *                 data:
+ *                   - movie_id: 1963
+ *                     title: "Weapons"
+ *                     release_year: 2025
+ *                     runtime_minutes: 129
+ *                     rating: "7.5"
+ *                     box_office: "210852983.00"
+ *                     director_id: 1
+ *                     country_id: 1
+ *                 total: 15
+ *                 year: 2025
  *       500:
  *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.get('/movies/recent', validateApiKey, getRecentMovies);
 
@@ -246,12 +337,58 @@ router.get('/movies/recent', validateApiKey, getRecentMovies);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/PaginatedMoviesWithIdResponse'
+ *             example:
+ *               success: true
+ *               message: "Retrieved 8 movies for director ID 1"
+ *               data:
+ *                 data:
+ *                   - movie_id: 2462
+ *                     title: "Barbie"
+ *                     release_year: 2023
+ *                     runtime_minutes: 114
+ *                     rating: "7.5"
+ *                     box_office: "1445638421.00"
+ *                     director_id: 1
+ *                     country_id: 1
+ *                   - movie_id: 2441
+ *                     title: "Oppenheimer"
+ *                     release_year: 2023
+ *                     runtime_minutes: 181
+ *                     rating: "7.5"
+ *                     box_office: "952000000.00"
+ *                     director_id: 1
+ *                     country_id: 1
+ *                 pagination:
+ *                   limit: 10
+ *                   offset: 0
+ *                   totalCount: 8
+ *                   hasNext: false
+ *                   hasPrevious: false
+ *                 directorId: 1
  *       400:
  *         description: Invalid director ID or pagination parameters
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Invalid director ID"
+ *               details: "Director ID must be a positive integer"
  *       404:
  *         description: No movies found for this director
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "No movies found"
+ *               details: "No movies found for director ID 99"
  *       500:
  *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.get('/movies/director/:id', validateApiKey, validateDirectorId, validatePagination, getMoviesByDirector);
 
@@ -292,16 +429,126 @@ router.get('/movies/director/:id', validateApiKey, validateDirectorId, validateP
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/PaginatedMoviesWithIdResponse'
+ *             example:
+ *               success: true
+ *               message: "Retrieved 5 movies for actor ID 2"
+ *               data:
+ *                 data:
+ *                   - movie_id: 2462
+ *                     title: "Barbie"
+ *                     release_year: 2023
+ *                     runtime_minutes: 114
+ *                     rating: "7.5"
+ *                     box_office: "1445638421.00"
+ *                     director_id: 1
+ *                     country_id: 1
+ *                 pagination:
+ *                   limit: 10
+ *                   offset: 0
+ *                   totalCount: 5
+ *                   hasNext: false
+ *                   hasPrevious: false
+ *                 actorId: 2
  *       400:
  *         description: Invalid actor ID or pagination parameters
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Invalid actor ID"
+ *               details: "Actor ID must be a positive integer"
  *       404:
  *         description: No movies found for this actor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "No movies found"
+ *               details: "No movies found for actor ID 99"
  *       500:
  *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.get('/movies/actor/:id', validateApiKey, validateActorId, validatePagination, getMoviesByActor);
 
-// Movie search route
+/**
+ * @swagger
+ * /api/v1/movies/search:
+ *   get:
+ *     summary: Search movies by title
+ *     description: Returns movies matching the search query (partial, case-insensitive match)
+ *     tags: [Movies]
+ *     parameters:
+ *       - in: query
+ *         name: q
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Search query for movie title
+ *         example: "Barbie"
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 10
+ *         description: Number of movies per page
+ *       - in: query
+ *         name: offset
+ *         schema:
+ *           type: integer
+ *           minimum: 0
+ *           default: 0
+ *         description: Number of records to skip
+ *     responses:
+ *       200:
+ *         description: Successful response with matching movies
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/PaginatedMoviesResponse'
+ *             example:
+ *               success: true
+ *               message: "Found 2 movies matching \"Barbie\""
+ *               data:
+ *                 data:
+ *                   - movie_id: 2462
+ *                     title: "Barbie"
+ *                     release_year: 2023
+ *                     runtime_minutes: 114
+ *                     rating: "7.5"
+ *                     box_office: "1445638421.00"
+ *                     director_id: 1
+ *                     country_id: 1
+ *                 pagination:
+ *                   limit: 10
+ *                   offset: 0
+ *                   totalCount: 2
+ *                   hasNext: false
+ *                   hasPrevious: false
+ *                 searchTerm: "Barbie"
+ *       400:
+ *         description: Bad request - missing search query
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Bad Request"
+ *               details: "Search query (q) parameter is required"
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 router.get('/movies/search', validateApiKey, validatePagination, searchMovies);
 
 /**
@@ -361,10 +608,132 @@ router.get('/movies/search', validateApiKey, validatePagination, searchMovies);
  */
 router.get('/movies/mpa/:rating', validateApiKey, validatePagination, getMoviesByMPARating);
 
-// API statistics route
+/**
+ * @swagger
+ * /api/v1/stats:
+ *   get:
+ *     summary: Get API statistics
+ *     description: Returns overall statistics about the movies database
+ *     tags: [Statistics]
+ *     responses:
+ *       200:
+ *         description: Successful response with API statistics
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     totalMovies:
+ *                       type: integer
+ *                     yearRange:
+ *                       type: object
+ *                       properties:
+ *                         earliest:
+ *                           type: integer
+ *                         latest:
+ *                           type: integer
+ *                     uniqueRatings:
+ *                       type: integer
+ *                     totalBoxOffice:
+ *                       type: number
+ *                     topGrossingMovie:
+ *                       type: object
+ *             example:
+ *               success: true
+ *               message: "API statistics retrieved successfully"
+ *               data:
+ *                 totalMovies: 7404
+ *                 yearRange:
+ *                   earliest: 1995
+ *                   latest: 2025
+ *                 uniqueRatings: 1
+ *                 totalBoxOffice: 29384562384.00
+ *                 topGrossingMovie:
+ *                   title: "Barbie"
+ *                   box_office: "1445638421.00"
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 router.get('/stats', validateApiKey, getStats);
 
-// Individual movie details route (MUST be last due to :id param matching)
+/**
+ * @swagger
+ * /api/v1/movies/{id}:
+ *   get:
+ *     summary: Get movie by ID
+ *     description: Returns detailed information about a specific movie
+ *     tags: [Movies]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Movie ID
+ *         example: 2462
+ *     responses:
+ *       200:
+ *         description: Successful response with movie details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   $ref: '#/components/schemas/Movie'
+ *             example:
+ *               success: true
+ *               message: "Movie details retrieved successfully"
+ *               data:
+ *                 movie_id: 2462
+ *                 title: "Barbie"
+ *                 release_year: 2023
+ *                 runtime_minutes: 114
+ *                 rating: "7.5"
+ *                 box_office: "1445638421.00"
+ *                 director_id: 1
+ *                 country_id: 1
+ *       400:
+ *         description: Invalid movie ID
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Bad Request"
+ *               details: "Movie ID must be a valid number"
+ *       404:
+ *         description: Movie not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Not Found"
+ *               details: "Movie with ID 99999 not found"
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 router.get('/movies/:id', validateApiKey, getMovieById);
 
 /**
@@ -435,6 +804,14 @@ router.get('/movies/:id', validateApiKey, getMovieById);
  *               mpa_rating:
  *                 type: string
  *                 description: MPA rating (G, PG, PG-13, R, etc.)
+ *           example:
+ *             title: "Inception"
+ *             release_year: 2010
+ *             runtime_minutes: 148
+ *             rating: 8.8
+ *             box_office: 836800000
+ *             director_id: 1
+ *             country_id: 1
  *     responses:
  *       200:
  *         description: Movie created successfully
@@ -442,18 +819,36 @@ router.get('/movies/:id', validateApiKey, getMovieById);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/SuccessResponse'
+ *             example:
+ *               success: true
+ *               message: "Movie created successfully"
+ *               data:
+ *                 movie_id: 7405
+ *                 title: "Inception"
+ *                 release_year: 2010
+ *                 runtime_minutes: 148
+ *                 rating: "8.8"
+ *                 box_office: "836800000.00"
+ *                 director_id: 1
+ *                 country_id: 1
  *       400:
  *         description: Bad request - missing required fields
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               error: "Bad Request"
+ *               details: "Missing required field: title"
  *       401:
  *         description: Unauthorized - invalid API key
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               error: "API key required"
+ *               details: "Please provide an API key in the x-api-key header"
  */
 router.post('/movies', validateApiKey, createMovie);
 
@@ -529,6 +924,10 @@ router.post('/movies', validateApiKey, createMovie);
  *               mpa_rating:
  *                 type: string
  *                 description: MPA rating (G, PG, PG-13, R, etc.)
+ *           example:
+ *             title: "Inception - Updated"
+ *             runtime_minutes: 150
+ *             rating: 9.0
  *     responses:
  *       200:
  *         description: Movie updated successfully
@@ -536,24 +935,45 @@ router.post('/movies', validateApiKey, createMovie);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/SuccessResponse'
+ *             example:
+ *               success: true
+ *               message: "Movie updated successfully"
+ *               data:
+ *                 movie_id: 2462
+ *                 title: "Inception - Updated"
+ *                 release_year: 2010
+ *                 runtime_minutes: 150
+ *                 rating: "9.0"
+ *                 box_office: "836800000.00"
+ *                 director_id: 1
+ *                 country_id: 1
  *       400:
  *         description: Bad request - invalid input
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               error: "Bad Request"
+ *               details: "Invalid input data"
  *       404:
  *         description: Movie not found
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               error: "Not Found"
+ *               details: "Movie with ID 99999 not found"
  *       401:
  *         description: Unauthorized - invalid API key
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               error: "API key required"
+ *               details: "Please provide an API key in the x-api-key header"
  *   delete:
  *     summary: Delete a movie
  *     description: Removes a movie from the database
@@ -567,6 +987,7 @@ router.post('/movies', validateApiKey, createMovie);
  *         schema:
  *           type: integer
  *         description: Movie ID to delete
+ *         example: 2462
  *     responses:
  *       200:
  *         description: Movie deleted successfully
@@ -574,18 +995,29 @@ router.post('/movies', validateApiKey, createMovie);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/SuccessResponse'
+ *             example:
+ *               success: true
+ *               message: "Movie deleted successfully"
+ *               data:
+ *                 movie_id: 2462
  *       404:
  *         description: Movie not found
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               error: "Not Found"
+ *               details: "Movie with ID 99999 not found"
  *       401:
  *         description: Unauthorized - invalid API key
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               error: "API key required"
+ *               details: "Please provide an API key in the x-api-key header"
  */
 router.put('/movies/:id', validateApiKey, updateMovie);
 router.delete('/movies/:id', validateApiKey, deleteMovie);

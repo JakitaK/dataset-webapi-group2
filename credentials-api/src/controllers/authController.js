@@ -397,7 +397,7 @@ class AuthController {
      * DELETE /auth/me
      */
     static async deleteAccount(req, res) {
-        const accountId = req.account.account_id;
+        const accountId = req.claims.id; // Get from JWT claims
         
         const client = await pool.connect();
         try {

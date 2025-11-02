@@ -1,0 +1,72 @@
+// credentials-api/src/routes/open.js
+// Public routes - no authentication required
+
+const express = require('express');
+const { AuthController, VerificationController } = require('../controllers');
+const {
+    validateLogin,
+    validateRegister,
+    validatePasswordResetRequest,
+    validatePasswordReset
+} = require('../middleware');
+
+const router = express.Router();
+
+// ===== AUTHENTICATION ROUTES =====
+
+/**
+ * Authenticate user and return JWT token
+ * POST /auth/login
+ */
+router.post('/auth/login', validateLogin, AuthController.login);
+
+/**
+ * Register a new user (always creates basic user with role 1)
+ * POST /auth/register
+ */
+router.post('/auth/register', validateRegister, AuthController.register);
+
+// ===== PASSWORD RESET ROUTES =====
+
+/**
+ * Request password reset (requires verified email)
+ * POST /auth/password/reset-request
+ */
+router.post('/auth/password/reset-request', validatePasswordResetRequest, AuthController.requestPasswordReset);
+
+/**
+ * Reset password with token
+ * POST /auth/password/reset
+ */
+router.post('/auth/password/reset', validatePasswordReset, AuthController.resetPassword);
+
+// ===== VERIFICATION ROUTES =====
+
+/**
+ * Get list of supported carriers
+ * GET /auth/verify/carriers
+ */
+router.get('/auth/verify/carriers', VerificationController.getCarriers);
+
+/**
+ * Verify email token (can be accessed via link without authentication)
+ * GET /auth/verify/email/confirm?token=xxx
+ */
+router.get('/auth/verify/email/confirm', VerificationController.confirmEmailVerification);
+
+// ===== TESTING ROUTES =====
+
+/**
+ * Simple health check endpoint
+ * GET /health
+ */
+router.get('/health', (req, res) => {
+    res.json({
+        success: true,
+        message: 'Credentials API is running',
+        timestamp: new Date().toISOString(),
+        service: 'credentials-api'
+    });
+});
+
+module.exports = router;

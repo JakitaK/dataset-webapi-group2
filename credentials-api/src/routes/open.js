@@ -12,6 +12,39 @@ const {
 
 const router = express.Router();
 
+// ===== ROOT / WELCOME =====
+
+/**
+ * Root endpoint - API information
+ * GET /
+ */
+router.get('/', (req, res) => {
+    res.json({
+        success: true,
+        message: 'Credentials API',
+        version: '1.0.0',
+        endpoints: {
+            public: [
+                'POST /auth/register',
+                'POST /auth/login',
+                'POST /auth/password/reset/request',
+                'POST /auth/password/reset',
+                'GET /auth/verify/email/:token',
+                'GET /auth/carriers',
+                'GET /health'
+            ],
+            protected: [
+                'GET /auth/me (requires JWT)',
+                'POST /auth/password/change (requires JWT)',
+                'POST /auth/verify/email/send (requires JWT)',
+                'POST /auth/verify/phone/send (requires JWT)',
+                'POST /auth/verify/phone/verify (requires JWT)'
+            ]
+        },
+        documentation: 'https://github.com/JakitaK/dataset-webapi-group2'
+    });
+});
+
 // ===== AUTHENTICATION ROUTES =====
 
 /**

@@ -1,27 +1,21 @@
 {
-  "name": "dataset-webapi-group2",
+  "name": "dataset-webapi-monorepo",
   "version": "1.0.0",
-  "description": "HelloWorld API for TCSS 460 Alpha Sprint (Group 2)",
-  "main": "src/server.js",
+  "description": "Monorepo for Movies API and Credentials API - TCSS 460 (Group 2)",
+  "private": true,
   "type": "commonjs",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "import-data": "node scripts/import-csv.js",
-    "sample-data": "node scripts/insert-sample.js",
-    "import-chunk": "node scripts/import-chunk.js"
+    "install:movies": "cd movies-api && npm install",
+    "install:credentials": "cd credentials-api && npm install",
+    "install:all": "npm run install:movies && npm run install:credentials",
+    "dev:movies": "cd movies-api && npm run dev",
+    "dev:credentials": "cd credentials-api && npm run dev",
+    "start:movies": "cd movies-api && npm start",
+    "start:credentials": "cd credentials-api && npm start"
   },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "csv-parse": "^6.1.0",
-    "csv-stringify": "^6.6.0",
-    "dotenv": "^17.2.3",
-    "express": "^4.19.2",
-    "express-validator": "^7.3.0",
-    "pg": "^8.16.3",
-    "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
-  },
+  "keywords": ["api", "monorepo", "movies", "credentials"],
+  "author": "Group 2",
+  "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.1.0"
   }

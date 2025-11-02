@@ -1,0 +1,4381 @@
+director_id,name
+1,Zach Cregger
+2,Iain Morris
+3,Akiva Schaffer
+4,Rich Lee
+5,Tim Story
+6,Kyle Newacheck
+7,Pierre Perifel
+8,Michael Shanks
+9,Matt Shakman
+10,Philip Koch
+11,James Gunn
+12,Gareth Edwards
+13,Victoria Mahoney
+14,Gerard Johnstone
+15,Joseph Kosinski
+16,Ilya Naishuller
+17,Chris Appelhans; Maggie Kang
+18,Danny Boyle
+19,Domee Shi; Madeline Sharafian; Adrian Molina
+20,Michael Pearce
+21,Tom Kingsley
+22,Celine Song
+23,Dean DeBlois
+24,Tyler Perry
+25,Dan Trachtenberg
+26,Mike Flanagan
+27,Len Wiseman
+28,Michael Philippou; Danny Philippou
+29,Wes Anderson
+30,Matt Palmer
+31,Guy Ritchie
+32,Christopher McQuarrie
+33,Dean Fleischer Camp
+34,Adam B. Stein; Zach Lipovsky
+35,Jonathan Entwistle
+36,Eli Craig
+37,Stephen Chbosky
+38,Jake Schreier
+39,Christian Zübert
+40,Gareth Evans
+41,David F. Sandberg
+42,Gavin O'Connor
+43,Bobby Boermans
+44,Ryan Coogler
+45,Christopher Landon
+46,Patricia Riggen
+47,Ray Mendoza; Alex Garland
+48,James Hawes
+49,Jared Hess
+50,Adam Brooks
+51,Jaume Collet-Serra
+52,Alex Scharfman
+53,David Ayer
+54,Fleur Fortuné
+55,David Yarovesky
+56,Flying Lotus
+57,Barry Levinson
+58,Steven Soderbergh
+59,Dan Berk; Robert Olsen
+60,Marc Webb
+61,Mimi Cave
+62,Emilie Blichfeldt
+63,Paul Feig
+64,Joe Russo; Anthony Russo
+65,Bong Joon Ho
+66,Chava Cartas
+67,Alex Parkinson
+68,Paul W. S. Anderson
+69,Seiji Tanaka
+70,Paolo Genovese
+71,Martin Campbell
+72,Osgood Perkins
+73,Scott Derrickson
+74,Dani Girdwood; Charlotte Fassler
+75,Michael Morris
+76,Julius Onah
+77,Josh Ruben
+78,Jonathan Eusebio
+79,Tyler Spindel
+80,Nicholas Stoller
+81,Yang Yu
+82,Peter Hastings
+83,Mel Gibson
+84,Drew Hancock
+85,Michael Polish
+86,Olatunde Osunsanmi
+87,Seth Gordon
+88,Leigh Whannell
+89,Rodolphe Lauga
+90,Christian Gudegast
+91,Domingo González
+92,Halina Reijn
+93,Robert Eggers
+94,Brady Corbet
+95,Ferzan Özpetek
+96,Jeff Fowler
+97,Nick Park; Merlin Crossingham
+98,Barry Jenkins
+99,James Mangold
+100,RaMell Ross
+101,J.C. Chandor
+102,Michael Gracey
+103,Marielle Heller
+104,Justin Kurzel
+105,Kenji Kamiyama
+106,Steven C. Miller
+107,Uberto Pasolini
+108,Logan George; Celine Held
+109,Stephen Herek
+110,Luca Guadagnino
+111,Pablo Larraín
+112,Emmanuel Courcol
+113,Simon Otto
+114,Bobby Farrelly
+115,Vicky Jenson
+116,David G. Derrick Jr.; Jason Hand; Dana Ledoux Miller
+117,Jon M. Chu
+118,Thomas Astruc
+119,Ridley Scott
+120,Jerry Ciccoritti
+121,Dougal Wilson
+122,Tim Fehlbaum
+123,George Nolfi
+124,Josephine Bornebusch
+125,Tim Mielants
+126,Jesse Eisenberg
+127,Scott Beck; Bryan Woods
+128,Hans Petter Moland
+129,Jake Kasdan
+130,John Andreas Andersen
+131,Clint Eastwood
+132,Robert Zemeckis
+133,Hannah Macpherson
+134,Edward Berger
+135,Paolo Sorrentino
+136,Brian Netto; Adam Schindler
+137,Grand Corps Malade; Mehdi Idir
+138,François Uzan
+139,Kelly Marcel
+140,Cristina Comencini
+141,Adam Elliot
+142,Parker Finn
+143,Gilles Lellouche
+144,Sean Baker
+145,John Crowley
+146,Pierre Morel
+147,Max Barbakow
+148,Ali Abbasi
+149,Boris Lojkine
+150,Damien Leone
+151,Pedro Almodóvar
+152,Carles Torrens
+153,Anna Kendrick
+154,Gary Dauberman
+155,Todd Phillips
+156,Galder Gaztelu-Urrutia
+157,Jason Reitman
+158,E.L. Katz
+159,Nora Fingscheidt
+160,Philippe Lacôte
+161,Francis Ford Coppola
+162,Colm McCarthy
+163,Jon Watts
+164,Natalie Erika James
+165,Walter Salles
+166,Mohammad Rasoulof
+167,Alexandre Aja
+168,Megan Park
+169,Chris Sanders
+170,Jason Kim
+171,Ellen Kuras
+172,McG
+173,J.J. Perry
+174,James Watkins
+175,Josh Cooley
+176,Timo Tjahjanto
+177,Coralie Fargeat
+178,Magnus von Horn
+179,Tim Burton
+180,Brian Taylor
+181,Gints Zilbalodis
+182,Chris Weitz
+183,Jeremy Saulnier
+184,Aaron Schimberg
+185,Alex Kendrick
+186,Dave Chernin; John Chernin
+187,John Woo
+188,Jacques Audiard
+189,Rupert Sanders
+190,Zoë Kravitz
+191,Lee Daniels
+192,SK Dale
+193,Julian Farino
+194,Fede Álvarez
+195,Justin Baldoni
+196,Eli Roth
+197,Doug Liman
+198,M. Night Shyamalan
+199,Olivier Masset-Depasse
+200,Carlos Saldanha
+201,Shawn Levy
+202,Damian Mc Carthy
+203,Peter Segal
+204,Jeff Wamester
+205,Shinsuke Sato
+206,Greg Kwedar
+207,Jennifer Phang
+208,Kim Tae-gon
+209,Greg Berlanti
+210,Lee Isaac Chung
+211,Ti West
+212,Liz W. Garcia
+213,Nikhil Nagesh Bhat
+214,Kiyotaka Oshiyama
+215,Alexandre de La Patellière; Matthieu Delaporte
+216,Richard LaGravenese
+217,Kevin Costner
+218,Michael Sarnoski
+219,Josh Margolin
+220,Mouly Surya
+221,Chris Renaud
+222,Mark Molloy
+223,Frédéric Jardin
+224,Jeff Nichols
+225,Shannon Tindle
+226,Kelsey Mann
+227,Tig Notaro; Stephanie Allynne
+228,Ishana Night Shyamalan
+229,Toshiki Hirano
+230,Adil El Arbi; Bilall Fallah
+231,Xavier Gens
+232,Chris Nash
+233,Joachim Rønning
+234,Yorgos Lanthimos
+235,Joshua John Miller
+236,Brad Peyton
+237,George Miller
+238,Richard Linklater
+239,Renny Harlin
+240,Quentin Dupieux
+241,Mark Waters
+242,Wes Ball
+243,John Krasinski
+244,Jane Schoenbrun
+245,Michael Showalter
+246,Cheang Pou-Soi
+247,Spenser Cohen; Anna Halberg
+248,Jerry Seinfeld
+249,Mark Dindal
+250,Moritz Mohr
+251,David Leitch
+252,Zack Snyder
+253,Artus
+254,Tyler Gillett; Matt Bettinelli-Olpin
+255,Terry McDonough
+256,Kiah Roache-Turner
+257,Benjamin Brewer
+258,Sam Taylor-Johnson
+259,Florent Bernard
+260,Alex Garland
+261,Pat Boonnitipat
+262,Alessandro Genovesi
+263,Dev Patel
+264,Arkasha Stevenson
+265,Julien Leclercq
+266,Teddy Lussi-Modeste
+267,Adam Wingard
+268,Rhys Frake-Waterfield
+269,Hayley Easton Street
+270,Adam Cooper
+271,Michael Mohan
+272,Gil Kenan
+273,Cameron Cairnes; Colin Cairnes
+274,Mukunda Michael Dewil
+275,Michael Keaton
+276,Simon Cellan Jones
+277,Janeen Damian
+278,Trevor Kirschner
+279,Peter Farrelly
+280,Rose Glass
+281,Juan Carlos Fresnadillo
+282,Jeff Wadlow
+283,Mike Mitchell
+284,Eric Fogel
+285,Jeff Chan
+286,Denis Villeneuve
+287,Marçal Forés
+288,Thea Sharrock
+289,Johan Renck
+290,Jon Gunn
+291,Ethan Coen
+292,Jang Jae-hyun
+293,Tilman Singer
+294,Reinaldo Marcus Green
+295,S.J. Clarkson
+296,Trish Sie
+297,William Eubank
+298,Carlson Young
+299,Zelda Williams
+300,Julien Hervé
+301,Sean Charmatz
+302,Matthew Vaughn
+303,Heo Myeong-haeng
+304,Roger Kumble
+305,Oliver Kienle
+306,Greg Jardin
+307,Gabriela Cowperthwaite
+308,Claudio Fäh
+309,Jade Halley Bartlett
+310,Benoît Delhomme
+311,F. Gary Gray
+312,Arturo Perez Jr.; Samantha Jayne
+313,Choi Dong-hoon
+314,James Nunn
+315,Jake Johnson
+316,Bryce McGuire
+317,Alberto Corredor
+318,Sébastien Vaniček
+319,George Clooney
+320,Blitz Bazawule
+321,Takashi Katagiri
+322,Andrew Haigh
+323,Will Gluck
+324,Sean Durkin
+325,James Wan
+326,J.A. Bayona
+327,Jonathan Glazer
+328,Stefano Sollima
+329,Thomas Vincent
+330,Michael Mann
+331,Martin Bourboulon
+332,Sam Fell
+333,Benjamin Renner
+334,Pablo Berger
+335,Paul King
+336,William Oldroyd
+337,Reginald Hudlin
+338,Sam Esmail
+339,Jérémie Périn
+340,Bradley Cooper
+341,David Wachtenheim; Robert Marianetti; Robert Smigel
+342,Emerald Fennell
+343,Todd Haynes
+344,Taika Waititi
+345,Francis Lawrence
+346,Chris Buck; Fawn Veerasunthorn
+347,Cord Jefferson
+348,Wim Wenders
+349,Kristoffer Borgli
+350,Trần Anh Hùng
+351,Nia DaCosta
+352,Takashi Yamazaki
+353,Molly Manning Walker
+354,Nour Wazzi
+355,Mélanie Laurent
+356,Sofia Coppola
+357,Alexander Payne
+358,Paola Cortellesi
+359,David Fincher
+360,Emma Tammi
+361,Bill Burr
+362,David Yates
+363,Christopher Zalla
+364,Sara Zandieh
+365,Éric Toledano; Olivier Nakache
+366,Elizabeth Chai Vasarhelyi; Jimmy Chin
+367,Martin Scorsese
+368,Patrik Eklund
+369,Sam Wrench
+370,Ariane Louis-Seize
+371,Walt Dohrn
+372,Alice Rohrwacher
+373,David Slade
+374,Robert Lorenz
+375,Lee Chung-hyun
+376,Margaret Betts
+377,Garth Davis
+378,Nikolaj Arcel
+379,Paco Plaza
+380,Demián Rugna
+381,Thomas Cailley
+382,David Gordon Green
+383,Albert Pintó
+384,Ken Loach
+385,John Stalberg Jr.
+386,Rusty Cundieff
+387,Grant Singer
+388,Nahnatchka Khan
+389,Chloe Domont
+390,Neil Burger
+391,Kevin Greutert
+392,Luc Besson
+393,Katja Fedulova
+394,Michał Gazda
+395,Trent Correy; Dan Abraham
+396,Lindsey Anderson Beer
+397,Ihtzi Hurtado
+398,Cal Brunker
+399,Brian Duffield
+400,Just Philippot
+401,Richard Holm
+402,Woody Allen
+403,Craig Gillespie
+404,Vanessa Caswill
+405,Scott Waugh
+406,Aki Kaurismäki
+407,Nicol Paone
+408,Kenneth Branagh
+409,Thomas Lilti
+410,Castille Landon
+411,Jessica Yu
+412,Alejandra Márquez Abella
+413,Brian Helgeland
+414,Matteo Garrone
+415,Atlee
+416,Bishal Dutta
+417,Michael Chaves
+418,Antoine Fuqua
+419,Hugo Benamozig; David Caviglioli
+420,Carlos Alonso-Ojea
+421,Emma Seligman
+422,Clay Tarver
+423,Tim Brown
+424,Justine Triet
+425,Nimród Antal
+426,Nicholas Fabiano; Richard Alan Reid
+427,Sammi Cohen
+428,Jeff Celentano
+429,Josh Greenbaum
+430,Ángel Manuel Soto
+431,JT Mollner
+432,Pascal Plante
+433,Anthony Stacchi
+434,Marc Turtletaub
+435,Neill Blomkamp
+436,Um Tae-hwa
+437,Tom Harper
+438,André Øvredal
+439,Yusuke Ishida
+440,Daniel Markowicz
+441,Ben Wheatley
+442,Jeff Rowe
+443,Matthew López
+444,Justin Simien
+445,Vicky Wight
+446,Neil LaBute
+447,Yuval Adler
+448,Christopher Nolan
+449,Samuel Bodin
+450,Wuershan
+451,Brandon Slagle
+452,Àlex Pastor; David Pastor
+453,Hayao Miyazaki
+454,Jérémie Rozan
+455,Patrick Wilson
+456,Jeremy Zag
+457,Alejandro Monteverde
+458,Johnny Strong; William Kaufman
+459,Kirk DeMicco
+460,Boris Kunz
+461,Troy Quane; Nick Bruno
+462,Eiichiro Hasumi
+463,Adele Lim
+464,Greta Gerwig
+465,Ayataka Tanemura
+466,Bob Peterson
+467,Gene Stupnitsky
+468,Peter Sohn
+469,Juel Taylor
+470,Andy Muschietti
+471,Sam Hargrave
+472,Michel Gondry
+473,Steven Caple Jr.
+474,Hirokazu Kore-eda
+475,Tina Satter
+476,Mehdi Avaz
+477,Lee Sang-yong
+478,Justin K. Thompson; Kemp Powers; Joaquim Dos Santos
+479,Rob Savage
+480,Suzanne Coote; Matt Angel
+481,Laura Terruso
+482,Marco Bellocchio
+483,Ric Roman Waugh
+484,Valérie Donzelli
+485,Paul Schrader
+486,Kurtis David Harder
+487,Rob Marshall
+488,Louis Leterrier
+489,Maïwenn
+490,Kyle Patrick Alvarez
+491,Calmatic
+492,Robert Rodriguez
+493,İlker Çatak
+494,Jim Strouse
+495,Niki Caro
+496,Morgan S. Dalibert
+497,George Tillman Jr.
+498,Tomek Bagiński
+499,Adrian Grünberg
+500,Peter Thorwarth
+501,Nanni Moretti
+502,David Lowery
+503,Charlie Haskell
+504,Jean-Baptiste Durand
+505,Dexter Fletcher
+506,Edward Bazalgette
+507,Cary Solomon; Chuck Konzelman
+508,Ari Aster
+509,Fenar Ahmad
+510,Catherine Hardwicke
+511,Lee Cronin
+512,Larry Yang
+513,Jonás Cuarón
+514,Chris McKay
+515,Damián Szifron
+516,Ben Affleck
+517,Julius Avery
+518,Aaron Horvath; Michael Jelenic
+519,Sitisiri Mongkolsiri
+520,Xu Ang
+521,Jeanne Herry
+522,Kelly Fremon Craig
+523,Jeremy Garelick
+524,Marc Gottlieb
+525,Rubin Stein
+526,Zach Braff
+527,Jonathan Goldstein; John Francis Daley
+528,Chad Stahelski
+529,Herbert James Winterstern
+530,Hideaki Anno
+531,Alessandro Aronadio
+532,Matt Ruskin
+533,Suzanne Hillinger
+534,Jon S. Baird
+535,Eva Longoria
+536,Andrea Di Stefano
+537,Vasilis Katsoupis
+538,George Gallo
+539,Matt Bettinelli-Olpin; Tyler Gillett
+540,Sydney Sibilia
+541,Bryan Woods; Scott Beck
+542,Oleg Malamuzh; Oleksandra Ruban
+543,Michael B. Jordan
+544,François Ozon
+545,Jamie Payne
+546,Eric Appel
+547,Elizabeth Banks
+548,Pete Tolton
+549,Nathaniel Martello-White
+550,Byun Sung-hyun
+551,Kim Tae-joon
+552,Neil Jordan
+553,Peyton Reed
+554,Matt Johnson
+555,Michelle Garza Cervera
+556,Benjamin Caron
+557,Aline Brosh McKenna
+558,Guillaume Canet
+559,Brandon Cronenberg
+560,Frant Gwo
+561,Kenya Barris
+562,Nicholas D. Johnson; Will Merrick
+563,Russell Mulcahy
+564,Kyle Edward Ball
+565,Nathan Frankowski
+566,Yeon Sang-ho
+567,Jean-François Richet
+568,Philippe Lacheau
+569,Matt Nable
+570,Juan Jesús García Galocha
+571,Mary Nighy
+572,Marc Forster
+573,Jason Moore
+574,Peter Baynton; Charlie Mackesy
+575,Sarah Polley
+576,Patrick Hughes
+577,Massimo Venier
+578,Dmitry Kiselev
+579,Scott Cooper
+580,Damien Chazelle
+581,Felix van Groeningen; Charlotte Vandermeersch
+582,Bob Shirohata
+583,Kasi Lemmons
+584,Mauro Borrelli
+585,Rodolfo Riva Palacio Alatriste; Gabriel Riva Palacio Alatriste
+586,James Cameron
+587,Sam Mendes
+588,Darren Aronofsky
+589,Daryl Wein
+590,Matt Danner
+591,Joel Crawford
+592,Matt Engstrom; Christo Stamboliev
+593,Takehiko Inoue
+594,Jaume Balagueró
+595,Randall Emmett
+596,Tommy Wirkola
+597,Cosimo Gomez
+598,Harry Bradbeer
+599,Roar Uthaug
+600,Yasuhito Kikuchi
+601,Noah Baumbach
+602,Matthew Warchus
+603,Sally El Hosaini
+604,Charles Shyer
+605,Don Hall
+606,Rian Johnson
+607,J.D. Dillard
+608,Laure de Clermont-Tonnerre
+609,Stephen Donnelly
+610,Davy Chou
+611,Stig Svendsen
+612,Adam Shankman
+613,Maria Schrader
+614,Antonio Manetti; Marco Manetti
+615,Mark Mylod
+616,Bobby Moresco
+617,Russell Crowe
+618,Paul Leyden
+619,Makoto Shinkai
+620,Steven Spielberg
+621,Guillaume Pierret
+622,Florian Zeller
+623,Sean Anders
+624,Mark Gustafson; Guillermo del Toro
+625,Alek Keshishian
+626,Oliver Hermanus
+627,Sebastián Lelio
+628,Lukas Dhont
+629,Nicolas Bedos
+630,Romuald Boulanger
+631,Neil Marshall
+632,James Gray
+633,Lila Neugebauer
+634,Diego Freitas
+635,Roberto Andò
+636,Bartosz M. Kowalski
+637,Renato De Maria
+638,Tarik Saleh
+639,Daniel Stamm
+640,Charlotte Wells
+641,Henry Selick
+642,Vanessa Winter; Joseph Winter
+643,David Frankel
+644,Michael Grandage
+645,Martin McDonagh
+646,Tobias Lindholm
+647,Matt Peters
+648,Chinonye Chukwu
+649,Louis Garrel
+650,Olivier Dahan
+651,Karen Maine
+652,John Ross
+653,Andy Fetscher
+654,Carlota Pereda
+655,Will Speck; Josh Gordon
+656,Robert Olsen; Dan Berk
+657,Oriol Paulo
+658,Bang Woo-ri
+659,Thomas M. Wright
+660,Todd Holland
+661,Cédric Jimenez
+662,John Lee Hancock
+663,Walter Hill
+664,Mike Barker
+665,Jerzy Skolimowski
+666,Paolo Virzì
+667,Santiago Mitre
+668,Fletcher Moules
+669,David Bruckner
+670,Rob Zombie
+671,David O. Russell
+672,Anne Fletcher
+673,Michael Giacchino
+674,Oliver Park
+675,Andrew Hunt
+676,Allan Ungar
+677,Todd Field
+678,Anna Foerster
+679,Richard Hughes
+680,Alexandre Lehmann
+681,Kim Hong-sun
+682,Olivia Wilde
+683,Ruben Östlund
+684,Matt Sobel
+685,Greg Mottola
+686,Gina Prince-Bythewood
+687,Andrew Dominik
+688,Flying Lotus; Joseph Winter; Maggie Levin; Vanessa Winter; Tyler MacIntyre; Johannes Roberts
+689,Timo Vuorensola
+690,Raúl Martínez
+691,Jennifer Kaytin Robinson
+692,John Hyams
+693,Ignacio Tatay
+694,David M. Rosenthal
+695,Hiroyasu Ishida
+696,Romain Gavras
+697,Jalmari Helander
+698,Millicent Shelton
+699,Tom George
+700,Marius Weisberg
+701,Ol Parker
+702,Petr Jákl
+703,David Gelb
+704,Alice Winocour
+705,Jérôme Salle
+706,Kevin Smith
+707,Mark Steven Johnson
+708,Barbara Topsøe-Rothenborg
+709,John Hamburg
+710,Jessica M. Thompson
+711,Enrique Gato
+712,Babak Anvari
+713,Andy Mitchell
+714,Tomasz Mandes; Barbara Białowąs
+715,Kristina Buožytė; Bruno Samper
+716,Wanuri Kahiu
+717,James Bird
+718,John Patton Ford
+719,Henry Joost; Ariel Schulman
+720,Scott Mann
+721,Baltasar Kormákur
+722,Kirsten Lepore
+723,Goro Taniguchi
+724,Jung Byung-gil
+725,Peggy Holmes
+726,Ng Yuen-Fai
+727,Han Jae-rim
+728,Quinn Shephard
+729,Elizabeth Allen Rosenbaum
+730,B.J. Novak
+731,William Brent Bell
+732,Jared Stern
+733,Oran Zegman
+734,Rodrigo Sorogoyen
+735,Jordan Peele
+736,Ron Howard
+737,Santiago Segura
+738,Morgan Matthews
+739,Anthony Fabian
+740,Olivia Newman
+741,Rob Minkoff; Chris Bailey; Mark Koetsier
+742,Choi Jae-hoon
+743,Dominik Moll
+744,Paul Hoen
+745,Rachel Suissa
+746,Skye Borgman
+747,Michael Lewen
+748,Carrie Cracknell
+749,Jérôme Commandeur
+750,Park Chan-wook
+751,Kyle Balda
+752,Chris Williams
+753,Akin Omotoso
+754,Baz Luhrmann
+755,Spencer Squire
+756,Cooper Raiff
+757,Le Van Kiet
+758,Sophie Hyde
+759,Angus MacLane
+760,Park Hoon-jung
+761,Tetsuro Kodama
+762,Viljar Bøe
+763,Chloe Okuno
+764,Jeremiah Zagar
+765,Andrew Ahn
+766,Trey Parker
+767,Colin Trevorrow
+768,Matthew Reilly
+769,Bernard Derriman; Loren Bouchard
+770,David Cronenberg
+771,John L. Spencer
+772,Jeff Tremaine
+773,Masato Jimbo
+774,Stuart McDonald
+775,Michel Hazanavicius
+776,Jared Cohn
+777,Chris Sivertson
+778,Brian Goodman
+779,Colm Bairéad
+780,Keith Thomas
+781,Richard Wong
+782,Alex Hardcastle
+783,Sofia Alvarez
+784,Sophia Banks
+785,Claude Zidi Jr.
+786,Sam Raimi
+787,Marian Bushan
+788,Simon Curtis
+789,Barbara Białowąs; Tomasz Mandes
+790,Gustavo Hernández
+791,Tom Gormican
+792,Toby Meakins
+793,Rosalind Ross
+794,Peter Sollett
+795,Janus Metz
+796,Ariel Winograd
+797,Goran Stolevski
+798,John Madden
+799,Cédric Klapisch
+800,Daniel Espinosa
+801,Małgorzata Szumowska
+802,Judd Apatow
+803,Brendan Muldowney
+804,Aaron Nee; Adam Nee
+805,D.J. Caruso
+806,S. S. Rajamouli
+807,Daniel Scheinert; Daniel Kwan
+808,Kevin Ko
+809,Adam Berg
+810,Iris K. Shim
+811,Riley Stearns
+812,Gail Lerner
+813,Katt Shea
+814,Christian Tafdrup
+815,Riccardo Milani
+816,Adrian Lyne
+817,Eric Gravel
+818,Jean-Jacques Annaud
+819,Michael Bay
+820,Charlie McDowell
+821,Alejandro Hidalgo
+822,Domee Shi
+823,Frédéric Tellier
+824,Kogonada
+825,Hanna Bergholm
+826,Kim Farrant
+827,Emmanuel Marre; Julie Lecoustre
+828,Matt Reeves
+829,Régis Blondeau
+830,Graham Moore
+831,BJ McDonnell
+832,Damien Power
+833,Lawrence Fowler
+834,Patrice Leconte
+835,Howard J. Ford
+836,David Blue Garcia
+837,Roel Reiné
+838,Channing Tatum; Reid Carolin
+839,Giuseppe Tornatore
+840,Benjamin Mousquet; Ben Stassen
+841,Thomas Gilou
+842,Tetsuro Araki
+843,Emre Kabakuşak
+844,Arie Posin
+845,Emily Ting
+846,Park Hyun-jin
+847,Jean-Pierre Jeunet
+848,Peter Flinth
+849,Mark Williams
+850,Jason Orley
+851,Ruben Fleischer
+852,Felix Fuchssteiner; Katharina Schöde
+853,Jonathan Barré
+854,Kat Coiro
+855,Felicity Morris
+856,Roland Emmerich
+857,Derek Drymon; Jennifer Kluska
+858,Charles Kinnane; Daniel Kinnane
+859,John C. Donkin
+860,Paul Solet
+861,Tim Kirkby
+862,Darrell Van Citters
+863,Andaç Haznedaroğlu
+864,Sean McNamara
+865,Rick Jacobson
+866,Theodore Anthony Lee Ty; Laurent Zeitoun
+867,Paloma Baeza; Marc James Roels; Emma De Swaef; Niki Lindroth von Bahr
+868,Talia Osteen
+869,Monika Mitchell
+870,Anthony Hayes
+871,Fred Cavayé
+872,Serik Beyseu
+873,Alessio Maria Federici
+874,Simon Kinberg
+875,Joe Pearlman; Casey Patterson; Giorgio Testi; Eran Creevy
+876,Christian Schwochow
+877,Jack Clough; Josh Ruben
+878,Andrew Erwin; Jon Erwin
+879,Sunghoo Park
+880,Philippe de Chauveron
+881,James Cullen Bressack
+882,Benjamin Cleary
+883,Mattson Tomlin
+884,Joe Wright
+885,Basil Joseph
+886,Lana Wachowski
+887,Marco Manetti; Antonio Manetti
+888,Denis Imbert
+889,Asghar Farhadi
+890,Maggie Gyllenhaal
+891,María Torres
+892,Aaron Sorkin
+893,Peter Hutchings
+894,Adam McKay
+895,Olivier Baroux
+896,Joel Coen
+897,Harry Cripps; Claire Knight
+898,Camille Griffin
+899,Michael Mayer
+900,Swinton O. Scott III
+901,Guillermo del Toro
+902,Patrick Ridremont
+903,Garth Jennings
+904,Mario N. Bonassin
+905,Mary Lambert
+906,Paul Thomas Anderson
+907,Natalie Nourigat
+908,Michael Dowse
+909,Johannes Roberts
+910,Casey Tebo
+911,Mike Mills
+912,Mike Rohl
+913,Taylor Swift
+914,Torquil Jones
+915,David Silverman
+916,Edward Drake
+917,Gaurav Seth
+918,McKenna Jean Harris
+919,Dan Mazer
+920,Lin-Manuel Miranda
+921,Walt Becker
+922,David Hackl
+923,Hernán Jiménez
+924,Audrey Diwan
+925,Miguel Sapochnik
+926,Rawson Marshall Thurber
+927,Chloé Zhao
+928,Ayako Kono
+929,Matthias Schweighöfer
+930,Juho Kuosmanen
+931,Ole Bornedal
+932,Gabriele Mainetti
+933,Matt Angel; Suzanne Coote
+934,Rebecca Hall
+935,Jane Campion
+936,Alexandre Moratto
+937,Jeymes Samuel
+938,Will Sharpe
+939,Edgar Wright
+940,Dany Boon
+941,Adam Randall
+942,Xavier Giannoli
+943,Marco Tullio Giordana
+944,Fernando León de Aranoa
+945,Simone Godano
+946,Leonardo Di Costanzo
+947,Sarah Smith; Jean-Philippe Vine
+948,Régis Roinsard
+949,Gilles de Maistre
+950,Joachim Trier
+951,Byron Howard; Jared Bush
+952,Wregas Bhanuteja
+953,Axelle Carolyn
+954,Ninja Thyberg
+955,Fran Kranz
+956,Ben Sombogaart
+957,Stefano Mordini
+958,Ken Cunningham
+959,Potsy Ponciroli
+960,Elle Callahan
+961,Conrad Vernon; Greg Tiernan
+962,Andy Serkis
+963,Charles Van Tieghem
+964,Santiago Menghini
+965,Cary Joji Fukunaga
+966,Jennifer Reeder; Ryan Prows; Steven Kostanski; Simon Barrett; Chloe Okuno; Timo Tjahjanto
+967,Patrick Brice
+968,Christian Carion
+969,Adam Salky
+970,Patrick Imbert
+971,Mark Fattibene; José Luis Ucha; Robert Cullen
+972,Alan Taylor
+973,Phil Tippett
+974,Theodore Melfi
+975,Nicolas Cuche
+976,Michael Wech; Vanessa Nöcker; Hanns-Bruno Kammertöns
+977,Cecilia Aranovich
+978,Phillip Noyce
+979,Thomas Sieben
+980,Fabrice Eboué
+981,Justin Chon
+982,Cedric Nicolas-Troyan
+983,Elisa Amoruso
+984,Joe Carnahan
+985,Éric Besnard
+986,Yann Gozlan
+987,Gastón Duprat; Mariano Cohn
+988,Andrew Baird
+989,Eskil Vogt
+990,Kay Cannon
+991,Destin Daniel Cretton
+992,Sion Sono
+993,Ethan Spaulding
+994,Leroy Kincaide
+995,Aron Gaudet; Gita Pullapilly
+996,Han Kwang Il
+997,Amber Sealey
+998,Ryūsuke Hamaguchi
+999,Brian Andrew Mendoza
+1000,Lisa Joy
+1001,Siân Heder
+1002,Valdimar Jóhannsson
+1003,Liesl Tommy
+1004,Gabriel Riva Palacio Alatriste; Rodolfo Riva Palacio Alatriste
+1005,Rodo Sayagues
+1006,Vince Marcello
+1007,Magnus Martens
+1008,Kenji Nagasaki
+1009,Peter Winther
+1010,Ferdinando Cito Filomarino
+1011,Paco Caballero
+1012,David Charhon
+1013,Steven K. Tsuchida
+1014,Tom McCarthy
+1015,Sean Ellis
+1016,Chris Palmer
+1017,Kim Seong-hun
+1018,Mar Targarona
+1019,Amp Wong
+1020,Roger Michell
+1021,Augustine Frizzell
+1022,Bo Burnham
+1023,Kyohei Ishiguro
+1024,Robert Schwentke
+1025,Johane Matte; Andrew L. Schmidt; Francisco Ruiz Velasco
+1026,Sara Colangelo
+1027,Alexandre Astier
+1028,Mamoru Hosoda
+1029,Mike Burns
+1030,Tanya Wexler
+1031,Edson Oda
+1032,Banjong Pisanthanakun
+1033,Julia Ducournau
+1034,Leigh Janiak
+1035,Navot Papushado
+1036,Paul Verhoeven
+1037,Malcolm D. Lee
+1038,Cate Shortland
+1039,Leos Carax
+1040,Philip Barantini
+1041,Takayuki Hamana
+1042,Roberto De Feo; Paolo Strippoli
+1043,Adam Robitel
+1044,Mathieu Turi
+1045,Tom McGrath
+1046,Alexandre Bustillo; Julien Maury
+1047,Kwon Oh-seung
+1048,Everardo Gout
+1049,Jonathan Hensleigh
+1050,Joe Penna
+1051,Kimmy Gatewood
+1052,Paul Weitz
+1053,Jonas Poher Rasmussen
+1054,Ernesto Contreras
+1055,Kyle Rankin
+1056,Enrico Casarosa
+1057,Prano Bailey-Bond
+1058,Mark Raso
+1059,Daniel Benmayor
+1060,Keishi Otomo
+1061,Céline Sciamma
+1062,Ben Winston
+1063,Julio Quintana
+1064,Letizia Lamartire
+1065,Elaine Bogan
+1066,Justin Lin
+1067,Donovan Marsh
+1068,Cecilia Verheyden
+1069,Darren Lynn Bousman
+1070,Gia Coppola
+1071,Martin Wilson
+1072,Taylor Sheridan
+1073,Kevin Nolting
+1074,Taylor Chien
+1075,Nick Stagliano
+1076,Rodrigo García
+1077,Shari Springer Berman; Robert Pulcini
+1078,Carlo Verdone
+1079,Mike Rianda
+1080,Danila Kozlovsky
+1081,Ben Falcone
+1082,Simon McQuoid
+1083,Christopher Alender
+1084,Jennifer Kluska; Derek Drymon
+1085,Wang Yunfei
+1086,Vaughn Stein
+1087,Oleg Trofim
+1088,Evan Spiliotopoulos
+1089,Fansu Njie
+1090,Roman White
+1091,Justin P. Lange
+1092,Kitao Sakurai
+1093,Ali Tabrizi
+1094,Anna Elizabeth James
+1095,Alexey Tsitsilin
+1096,Ivan Kavanagh
+1097,Can Ulkay
+1098,Miguel Arteta
+1099,Kazuya Tsurumaki; Mahiro Maeda; Katsuichi Nakayama; Hideaki Anno
+1100,Craig Brewer
+1101,Zach Parrish
+1102,Amy Poehler
+1103,Don Hall; Carlos López Estrada
+1104,Elisabeth Röhm
+1105,Dani de la Orden
+1106,Jasmila Žbanić
+1107,R. J. Cutler
+1108,Nicholas Jarecki
+1109,Lena Khan
+1110,J Blakeson
+1111,Oleg Pogodin
+1112,Ricardo Arnaiz
+1113,Ian Samuels
+1114,Kevin Macdonald
+1115,Kevin Lewis
+1116,Michael Fimognari
+1117,Lu Yang
+1118,Robin Wright
+1119,Hamish Grieve
+1120,Shaka King
+1121,Mona Fastvold
+1122,Filip Zylber
+1123,Alain Darborg
+1124,José Zelada; Richard Claus
+1125,Zhao Ji
+1126,Mike Cahill
+1127,Jo Sung-hee
+1128,Goro Miyazaki
+1129,Sam Levinson
+1130,Jude Weng
+1131,Lluís Quílez
+1132,Fisher Stevens
+1133,Mike P. Nelson
+1134,Rob Jabbaz
+1135,Shawn Welling
+1136,Glendyn Ivin
+1137,Mikael Håfström
+1138,Chris Appelhans
+1139,Simon Stone
+1140,Ramin Bahrani
+1141,Sam Liu
+1142,Hicham Hajji
+1143,Robert Connolly
+1144,Roseanne Liang
+1145,Kornél Mundruczó
+1146,Jan Belcl
+1147,Al Campbell; Alice Mathias
+1148,Regina King
+1149,Kotaro Tamura
+1150,Paul Greengrass
+1151,Pete Docter
+1152,Paul Dugdale
+1153,Shawn Linden
+1154,Deon Taylor
+1155,John Suits
+1156,Patty Jenkins
+1157,Shaun Paul Piccinino
+1158,Matthijs van Heijningen Jr.
+1159,Adam Mason
+1160,Michael Lockshin
+1161,Sharon Maguire
+1162,April Mullen
+1163,Lawrence Michael Levine
+1164,Roberto Santucci
+1165,Ryan Murphy
+1166,Ludovico Di Martino
+1167,Ashley Avis
+1168,Mitja Okorn
+1169,Clea DuVall
+1170,Alan Ball
+1171,George C. Wolfe
+1172,Travon Free; Martin Desmond Roe
+1173,Harry Macqueen
+1174,Dimitri Logothetis
+1175,Aneesh Chaganty
+1176,Darius Marder
+1177,Tosca Musk
+1178,Mark Toia
+1179,Anders Thomas Jensen
+1180,Douglas Attal
+1181,Valérie Lemercier
+1182,Giacomo Cimini
+1183,Chris Columbus
+1184,Francis Lee
+1185,Brenda Chapman
+1186,David E. Talbert
+1187,Martin Wood
+1188,Thomas Bezucha
+1189,Arseny Syukhin
+1190,Edoardo Ponti
+1191,Luke Sparke
+1192,Olivier Marchal
+1193,Mark Tonderai
+1194,Steven Kostanski
+1195,Mikael Marcimain
+1196,Zoe Lister-Jones
+1197,Jacob Chase
+1198,John Whitesell
+1199,Tomm Moore; Ross Stewart
+1200,Liam O'Donnell
+1201,Katie Found
+1202,Jason Woliner
+1203,Jim Cummings
+1204,Marc Meyers
+1205,Aaron Moorhead; Justin Benson
+1206,Jarand Herdal
+1207,Alice Filippi
+1208,Michel Franco
+1209,David Prior
+1210,Albert Dupontel
+1211,Rob Diamond
+1212,Eshom Nelms; Ian Nelms
+1213,Evan Morgan
+1214,Lance Hool
+1215,David Victori
+1216,Haruo Sotozaki
+1217,Michael Matthews
+1218,Glen Keane
+1219,Caroline Suh
+1220,Rachel Talalay
+1221,Tarek Boudali
+1222,Zu Quirke
+1223,Brandon Vietti
+1224,Javier Ruiz Caldera; Alberto de Toro
+1225,Christopher MacBride
+1226,Brannon Braga
+1227,Steven Brill
+1228,"Emmanuel Osei-Kuffour, Jr."
+1229,Mike Elliott
+1230,Salvador Espinosa
+1231,Pablo Agüero
+1232,Oz Rodríguez
+1233,Ryuhei Kitamura
+1234,Seth Larney
+1235,Liu Kuang-Hui
+1236,Joe Mantello
+1237,Jenny Popplewell
+1238,Cooper Karl
+1239,Andrew Lawrence
+1240,Keith Scholey; Alastair Fothergill; Jonathan Hughes
+1241,Anna Mastro
+1242,Miranda July
+1243,Ryan Spindell
+1244,Thomas Vinterberg
+1245,Anthony Scott Burns
+1246,Taichi Ishidate
+1247,Carles Torras
+1248,Caroline Vignal
+1249,Halle Berry
+1250,Natalie Krinsky
+1251,Antonio Campos
+1252,Rachel Lee Goldenberg
+1253,Dallas Jackson
+1254,Jean-Paul Salomé
+1255,BJ Verot
+1256,Matt Eskandari
+1257,Philippa Ehrlich; James Reed
+1258,Felix Binder
+1259,Gerard Bush; Christopher Renz
+1260,Laurent Tirard
+1261,Brendan Walsh
+1262,Charlie Kaufman
+1263,David Galán Galindo
+1264,Julius Berg
+1265,Dan Povenmire; Bob Bowen
+1266,Dean Parisot
+1267,Tim Hill
+1268,John Pogue
+1269,Hikaru Yamaguchi
+1270,Peter Facinelli
+1271,Richard Tanne
+1272,Thor Freudenthal
+1273,MJ Bassett
+1274,Maïmouna Doucouré
+1275,Eugene Kotlyarenko
+1276,Michael Almereyda
+1277,Guan Hu
+1278,Gavin Rothery
+1279,Brandon Trost
+1280,Sung Jin Ahn
+1281,Joe Nussbaum
+1282,Ángel Gómez Hernández
+1283,Fernando González Molina
+1284,Egor Abramenko
+1285,Cary Murnion; Jonathan Milott
+1286,Dave Franco
+1287,Chris Riedell; Nick Riedell
+1288,Robin Pront
+1289,Peter Sullivan
+1290,Derrick Borte
+1291,James D'Arcy
+1292,Andrew Traucki
+1293,Aaron Schneider
+1294,Jean-Pascal Zadi; John Wax
+1295,Marc Munden
+1296,Tony Cervone
+1297,Eric Bress
+1298,Will Wernick
+1299,Rolando Ravello
+1300,Tate Taylor
+1301,LP
+1302,Antonio Usbergo; Niccolò Celaia
+1303,Christian Petzold
+1304,Michael Duggan
+1305,Jon Stewart
+1306,Daniel Chong
+1307,David Dobkin
+1308,Alexs Stadermann
+1309,Josh Trank
+1310,Cho Il
+1311,Drake Doremus
+1312,Rod Lurie
+1313,Bonni Cohen; Jon Shenk
+1314,Elissa Down
+1315,Kellen Moore
+1316,Tomotaka Shibayama; Junichi Sato
+1317,David Koepp
+1318,Louisa Warren
+1319,Fabio D'Innocenzo; Damiano D'Innocenzo
+1320,Shannon Murphy
+1321,Spike Lee
+1322,Jonathan Delgado Herrera
+1323,Nisha Ganatra
+1324,Olivier Megaton
+1325,Malik Vitthal
+1326,Eric Demeusy
+1327,Matt Peters; Christina Sotta
+1328,Clark Duke
+1329,Alice Wu
+1330,Michael M. Scott
+1331,Bruno Garotti
+1332,Kris Pearn
+1333,Cüneyt Kaya
+1334,Vadim Perelman
+1335,Bryan Bertino
+1336,Andy Tennant
+1337,Katia Lewkowicz
+1338,Dean Craig
+1339,Justin G. Dyck
+1340,Luis Alfaro; Pablo Lejarreta
+1341,Josh Boone
+1342,Jonathan Jakubowicz
+1343,David Pastor; Àlex Pastor
+1344,Yoshiyuki Okada; Takeru Nakajima
+1345,Eliza Hittman
+1346,Andrew Levitas
+1347,Danis Tanović
+1348,Philippa Lowthorpe
+1349,Craig Zobel
+1350,Marjane Satrapi
+1351,Julia Hart
+1352,Francesco Lettieri
+1353,Michael Govier; Will McCormack
+1354,Jan Komasa
+1355,Peter Berg
+1356,Kelly Reichardt
+1357,Neasa Hardiman
+1358,Francis Annan
+1359,Dave Wilson
+1360,Gabriel Le Bomin
+1361,Dan Scanlon
+1362,Brett Haley
+1363,Patrice Laliberté
+1364,Svyatoslav Podgaevsky
+1365,Fyodor Bondarchuk
+1366,Jason Lei Howden
+1367,Yoon Sung-hyun
+1368,Konstantin Buslov
+1369,Ludovic Bernard
+1370,Kim Yong-hoon
+1371,Michael Cristofer
+1372,Joachim Hedén
+1373,Noé Santillán-López
+1374,Diego Kaplan
+1375,Dee Rees
+1376,Gabriele Muccino
+1377,Autumn de Wilde
+1378,Jim Rash; Nat Faxon
+1379,Cathy Yan
+1380,Takaharu Ozaki
+1381,Lana Wilson
+1382,Kitty Green
+1383,Valerie LaPointe
+1384,Salvador Calvo
+1385,Reed Morano
+1386,Olivier Assayas
+1387,Mark Berezov
+1388,Greg Barker
+1389,Liz Garbus
+1390,Jeff Baena
+1391,Remi Weekes
+1392,Jeff Orlowski
+1393,Laura Mañá
+1394,Richard Stanley
+1395,Dominic Cooke
+1396,César Rodrigues
+1397,Giuseppe Bonito
+1398,Floria Sigismondi
+1399,Todd Robinson
+1400,Stanley Tong Gwai-Lai
+1401,Gianluca Leuzzi
+1402,Masayuki Kojima
+1403,Owen Trevor
+1404,Severin Fiala; Veronika Franz
+1405,Carlo Mirabella-Davis
+1406,Bilall Fallah; Adil El Arbi
+1407,Gianni Amelio
+1408,Francesco Amato
+1409,Stephen Gaghan
+1410,Checco Zalone
+1411,Nikita Argunov
+1412,Nicolas Pesce
+1413,Nick Powell
+1414,Susana Garcia
+1415,Patrick Vollrath
+1416,Pål Øie
+1417,Pepe Bojórquez
+1418,Ericson Core
+1419,Kim Byung-seo; Lee Hae-jun
+1420,Tom Hooper
+1421,Wilson Yip
+1422,J.J. Abrams
+1423,Drew T. Pierce; Brett Pierce
+1424,Lars Damoiseaux
+1425,Jay Roach
+1426,Benedict Andrews
+1427,Salvatore Ficarra; Valentino Picone
+1428,Simon West
+1429,Tristan Séguéla
+1430,Sophia Takal
+1431,Mauro Carvalho; Thiago Cazado
+1432,Matías Moltrasio
+1433,Diao Yinan
+1434,Stephen S. Campanelli
+1435,Marco D'Amore
+1436,John Schultz
+1437,Matthieu Delaporte; Alexandre de La Patellière
+1438,Nick Bruno; Troy Quane
+1439,Tim Johnson
+1440,Fernando Meirelles
+1441,Melina Matsoukas
+1442,Zackary Adler
+1443,Giulio Manfredonia
+1444,Egor Baranov
+1445,Jennifer Lee; Chris Buck
+1446,Trey Edward Shults
+1447,Ladj Ly
+1448,Ramez Silyan; Sebastian Jones
+1449,Bobby Rubio
+1450,Charlie Bean
+1451,Marc Lawrence
+1452,Łukasz Kośmicki
+1453,Andy Fickman
+1454,Bill Condon
+1455,Sergio Pablos
+1456,Luke Snellin
+1457,Armando Iannucci
+1458,Jérémy Clapin
+1459,Ernie Barbarash
+1460,Jorge Ulloa
+1461,Wash Westmoreland
+1462,Jessica Hausner
+1463,Bora Dağtekin
+1464,Nigina Sayfullaeva
+1465,Edward Norton
+1466,Donato Carrisi
+1467,Travis Stevens
+1468,Derek Tsang Kwok-Cheung
+1469,Zak Hilditch
+1470,Daniel Calparsoro
+1471,Justin Dec
+1472,Brian Kirk
+1473,Tim Miller
+1474,Marco Bonfanti
+1475,Luis Fernando Frías de la Parra
+1476,Ciarán Foy
+1477,Dan Krauss
+1478,Michelle Johnston
+1479,Jeffrey Grellman
+1480,Alix Mathurin; Leïla Sy
+1481,Vince Gilligan
+1482,David Michôd
+1483,Mehmet Ada Öztekin
+1484,Scott Moore; Jon Lucas
+1485,Tim Trachte
+1486,Christophe Honoré
+1487,Mounia Meddour
+1488,Xavier Dolan
+1489,Rebecca Sugar
+1490,Justin Copeland; Sam Liu
+1491,Agnieszka Holland
+1492,Siddharth Anand
+1493,Mati Diop
+1494,Ang Lee
+1495,Don Michael Paul
+1496,Tony Giglio
+1497,Roman Polanski
+1498,Alma Har'el
+1499,Alejandro Amenábar
+1500,Jim Mickle
+1501,Rupert Goold
+1502,Will Becher; Richard Phelan
+1503,Édouard Bergeon
+1504,Brad Anderson
+1505,Joe Begos
+1506,Tomohiko Ito
+1507,Scott Aukerman
+1508,Henry Jacobson
+1509,Vincenzo Natali
+1510,Brandon Christensen
+1511,Jill Culton
+1512,Louie Psihoyos
+1513,Nzingha Stewart
+1514,Mike Ahern; Enda Loughman
+1515,Elise Durán
+1516,Nicolas Vanier
+1517,Christian Volckman
+1518,Lorene Scafaria
+1519,Zach Lipovsky; Adam B. Stein
+1520,Michael Engler
+1521,Scott Z. Burns
+1522,Cory Finley
+1523,Lorcan Finnegan
+1524,María Ripoll
+1525,Haruka Fujita
+1526,Ciro Guerra
+1527,Melanie Martinez
+1528,Stefano Cipani
+1529,Matthew Michael Carnahan
+1530,Danishka Esterhazy
+1531,Varante Soudjian
+1532,Pietro Marcello
+1533,Anthony Marciano
+1534,Cecilia Aranovich; Ethan Spaulding
+1535,Karim Aïnouz
+1536,Jacob Aaron Estes
+1537,Takaomi Kanasaki
+1538,Fred Durst
+1539,Benny Safdie; Josh Safdie
+1540,Gavin Hood
+1541,Igort
+1542,Jason Cabell
+1543,Joko Anwar
+1544,Abe Forsythe
+1545,Alice Waddington
+1546,Juliano Dornelles; Kleber Mendonça Filho
+1547,Mehdi Idir; Grand Corps Malade
+1548,Rebecca Zlotowski
+1549,Jung Ji-woo
+1550,MTJJ
+1551,Terrence Malick
+1552,Stan Lathan
+1553,Yoshiyuki Momose
+1554,Paul Downs Colaizzo
+1555,Mike Gan
+1556,Pupi Avati
+1557,Arnaud Desplechin
+1558,Julia Reichert; Steven Bognar
+1559,Michael Tiddes
+1560,Oleg Stepchenko
+1561,Roberto De Feo
+1562,Sebastián Borensztein
+1563,Alejandro Landes Echavarría
+1564,Everett Downing Jr.; Matthew A. Cherry; Bruce W. Smith
+1565,Cindy Chupack
+1566,Tom Shadyac
+1567,Gurinder Chadha
+1568,Tyler Nilson; Michael Schwartz
+1569,Casey Affleck
+1570,Kriv Stenders
+1571,James Bobin
+1572,Andrea Berloff
+1573,David Raymond
+1574,Park Jun-soo
+1575,Kenny Ortega
+1576,Thurop Van Orman
+1577,Shawn Ku
+1578,Lee Sang-geun
+1579,Gideon Raff
+1580,Waad al-Kateab; Edward Watts
+1581,Ljubomir Stefanov; Tamara Kotevska
+1582,Guy Nattiv
+1583,Jayro Bustamante
+1584,Hong Sung-ho
+1585,Quentin Tarantino
+1586,Jeff Mednikow
+1587,Justin Copeland
+1588,David Marmor
+1589,Motonori Sakakibara; Kunihiko Yuyama
+1590,Lulu Wang
+1591,Joe Lynch
+1592,Matt Aselton
+1593,Jon Favreau
+1594,Arnaud Lemort
+1595,Keola Racela
+1596,Claire McCarthy
+1597,Daniel Rezende
+1598,Denis Rovira van Boekholt
+1599,Masaaki Yuasa
+1600,Kantemir Balagov
+1601,John Herzfeld
+1602,Chris Robinson
+1603,Lars Klevberg
+1604,Soichi Masui
+1605,Asif Kapadia
+1606,Jeff Chan; Andrew Rhymer
+1607,Ricky Hess; Brandon Thaxton
+1608,Lino DiSalvo
+1609,Ayumu Watanabe
+1610,Joe Talbot
+1611,Grant Sputore
+1612,Andrew Patterson
+1613,Takashi Miike
+1614,Daniel Minahan
+1615,Brian De Palma
+1616,Ivan Calbérac
+1617,Michael Dougherty
+1618,Jeanie Finlay
+1619,Hiroyuki Imaishi
+1620,Isabel Coixet
+1621,Jesse V. Johnson
+1622,John Murlowski
+1623,George Gallo; Francesco Cinquemani
+1624,Nicolas Pariser
+1625,Joanna Hogg
+1626,Stacie Passon
+1627,John R. Leonetti
+1628,Ry Russo-Young
+1629,Frédéric Petitjean
+1630,Lee Won-tae
+1631,Jim Jarmusch
+1632,Josh Janowicz
+1633,Lior Geller
+1634,Chris Addison
+1635,Maxime Govare; Cédric Le Gallo
+1636,Stefon Bristol
+1637,Gail Mancuso
+1638,William Bindley
+1639,Dome Karukoski
+1640,Rob Letterman
+1641,Jonathan Levine
+1642,Joe Berlinger
+1643,Kelly Asbury
+1644,Danielle Krudy; Bridget Savage Cole
+1645,Ant Timpson
+1646,Hans Stjernswärd
+1647,Leonardo D'Agostini
+1648,Marco Kreuzpaintner
+1649,Beyoncé
+1650,Hiro Murai
+1651,Chris Nelson
+1652,Max Minghella
+1653,Robert Budreau
+1654,Jenny Gage
+1655,Roxann Dawson
+1656,Jordan Downey
+1657,Robin Bissell
+1658,Tina Gordon
+1659,Chris Butler
+1660,Dennis Widmyer; Kevin Kölsch
+1661,Eric Lavaine
+1662,Michel Leclerc
+1663,Jake Castorena
+1664,Sarah Daggar-Nickson
+1665,Giancarlo Fontana; Giuseppe G. Stasi
+1666,Ladislas Chollat
+1667,May el-Toukhy
+1668,Jota Linares
+1669,Andrey Volgin
+1670,Harmony Korine
+1671,Saeed Roustaee
+1672,Gabriela Tagliavini
+1673,Nacho G. Velilla
+1674,Kim Nguyen
+1675,Rupert Wyatt
+1676,Daniele Luchetti
+1677,Anthony Maras
+1678,Lisa Azuelos
+1679,Dylan Brown
+1680,Vincent D'Onofrio
+1681,Farhad Safinia
+1682,Rémi Bezançon
+1683,Ryan Fleck; Anna Boden
+1684,Todd Douglas Miller
+1685,James Kent
+1686,Mohamed Hamidi
+1687,Safy Nebbou
+1688,Vicky Jewson
+1689,Fatih Akin
+1690,S. Craig Zahler
+1691,Antonin Baudry
+1692,Katsushi Sakurabi
+1693,Cristina Jacob
+1694,Claudio Giovannesi
+1695,Chiwetel Ejiofor
+1696,Stephen Merchant
+1697,Fabien Onteniente
+1698,Ben Stassen; Vincent Kesteloot
+1699,Todd Strauss-Schulson
+1700,Robert D. Krzykowski
+1701,Fred Wolf
+1702,Nicholas McCarthy
+1703,Antoine Raimbault
+1704,Bertie; Bert
+1705,Hugo Lilja; Pella Kågerman
+1706,Dan Gilroy
+1707,Matteo Rovere
+1708,Fred Grivois
+1709,Son Sung-deuk
+1710,Karim Amer; Jehane Noujaim
+1711,Jonas Åkerlund
+1712,Alex Gibney
+1713,Petra Costa
+1714,Steven Knight
+1715,Lee Byeong-heon
+1716,Philippe Godeau
+1717,Toby Haynes
+1718,Rosana Sullivan
+1719,Hugo Gélin
+1720,Chris Smith
+1721,Kristen Lester
+1722,Jonathan Helpert
+1723,Allan Mauduit
+1724,Joe Cornish
+1725,Tomonori Sudo
+1726,Amp Wong; Zhao Ji
+1727,Aditya Dhar
+1728,Emilio Portes
+1729,Massimiliano Bruno
+1730,Charles Martin Smith
+1731,Louis-Julien Petit
+1732,Jen McGowan
+1733,Kristoffer Nyholm
+1734,Keith Behrman
+1735,Bi Gan
+1736,Giovanni Veronesi
+1737,Alexey Sidorov
+1738,Karyn Kusama
+1739,Etan Cohen
+1740,Mimi Leder
+1741,Yuen Woo-Ping
+1742,Christian De Sica
+1743,Tatsuya Nagamine
+1744,Olaf de Fleur Johannesson
+1745,Susanne Bier
+1746,Antoine Blossier
+1747,Josie Rourke
+1748,Florian David Fitz
+1749,Peter Strickland
+1750,Bob Persichetti; Peter Ramsey; Rodney Rothman
+1751,Peter Hedges
+1752,Dale Fabrigar
+1753,John McPhail
+1754,Patryk Vega
+1755,Diederik Van Rooijen
+1756,Christian Rivers
+1757,Christophe Charrier
+1758,Javier Ruiz Caldera
+1759,Clay Kaytis
+1760,Travis Knight
+1761,Kheiron
+1762,Mikhaël Hers
+1763,Alfonso Cuarón
+1764,Phil Johnston; Rich Moore
+1765,Duncan Skiles
+1766,George Ratliff
+1767,Matthew Heineman
+1768,Julian Schnabel
+1769,Andréa Bescond; Eric Métayer
+1770,Alexis Michalik
+1771,Peter Jackson
+1772,Joel Coen; Ethan Coen
+1773,Hiroyuki Seshita; Kobun Shizuno
+1774,Miguel Ángel Vivas
+1775,Andrew Bowler
+1776,Yarrow Cheney; Scott Mosier
+1777,Hervé Mimran
+1778,Ann Deborah Fishman
+1779,Steve McQueen
+1780,Otto Bathurst
+1781,Bradley Walsh
+1782,Guido Chiesa
+1783,Crispian Mills
+1784,Matthew Holness
+1785,Lasse Hallström; Joe Johnston
+1786,Feng Xiao
+1787,Dennis Iliadis
+1788,Jeffrey Nachmanoff
+1789,Bryan Singer
+1790,Ted Mathot
+1791,Jonah Hill
+1792,Sönke Wortmann
+1793,Rachid Bouchareb
+1794,David Amito; Michael Laicini
+1795,Rahi Anil Barve
+1796,Assaf Bernstein
+1797,Felix van Groeningen
+1798,Ari Sandel
+1799,Christian Alvart
+1800,Tatsuya Koyanagi; Masaharu Watanabe
+1801,Pierre Salvadori
+1802,Sriram Raghavan
+1803,Tamara Jenkins
+1804,Doug Murphy
+1805,Christoffer Boe
+1806,Drew Goddard
+1807,Lionel Steketee
+1808,Florian Henckel von Donnersmarck
+1809,Zeek Earl; Christopher Caldwell
+1810,Daniel Goldhaber
+1811,Jim Donovan
+1812,Zhang Yimou
+1813,Jimmy Chin; Elizabeth Chai Vasarhelyi
+1814,Katarina Launing
+1815,Ping Lumpraploeng
+1816,Michael Herbig
+1817,Scott Speer
+1818,Gregory Plotkin
+1819,Claire Denis
+1820,Joel Edgerton
+1821,Paul Dano
+1822,Jennifer Kent
+1823,Haifaa al-Mansour
+1824,Dan Fogelman
+1825,Jia Zhangke
+1826,Richard Shepard
+1827,Nadine Labaki
+1828,Álvaro Brechner
+1829,Karey Kirkpatrick
+1830,Mathew Cullen
+1831,Gaspar Noé
+1832,Patrick Cassir
+1833,Craig William Macneill
+1834,Yann Demange
+1835,Amma Asante
+1836,Stefan Ruzowitzky
+1837,Veena Sud
+1838,Emanuele Scaringi
+1839,Trevor Nunn
+1840,David Kerr
+1841,Panos Cosmatos
+1842,Alessio Cremonini
+1843,Emmanuel Mouret
+1844,Tom Edmunds
+1845,Michael Moore
+1846,Rob Lowe
+1847,Annabel Jankel
+1848,Gonzalo Bendala
+1849,Kevin R. Adams; Joe Ksander
+1850,Chee Keong Cheung
+1851,David Mackenzie
+1852,Brad Furman
+1853,Jean-Bernard Marlin
+1854,Corin Hardy
+1855,Lance Daly
+1856,Shane Black
+1857,James Marsh
+1858,Ryan Eslinger
+1859,Shinichiro Ushijima
+1860,Brian A. Miller
+1861,Sébastien Marnier
+1862,Lenny Abrahamson
+1863,Josh Baker; Jonathan Baker
+1864,Johnny Kevorkian
+1865,Donald Petrie
+1866,Colin Minihan
+1867,Oliver Daly
+1868,Clive Tonge
+1869,Brian Henson
+1870,Perry Lang
+1871,Anthony C. Ferrante
+1872,Noriyuki Abe; Yasuto Nishikata
+1873,Owen Egerton
+1874,Susan Johnson
+1875,Albert Hughes
+1876,Jesse Peretz
+1877,James Thomas
+1878,Jake Szymanski
+1879,Ken Marino
+1880,François Simard; Anouk Whissell; Yoann-Karl Whissell
+1881,Sebastian Gutierrez
+1882,Luis Ortega
+1883,Jon Turteltaub
+1884,Gabriel Julien-Laferrière
+1885,David Robert Mitchell
+1886,Xiaoxing Yi; Li Haoling; Yoshitaka Takeuchi
+1887,Lauren Miller Rogen
+1888,Pelayo Lira
+1889,Victor Levin
+1890,Susanna Fogel
+1891,Ciro Guerra; Cristina Gallego
+1892,Chris Bouchard; Blake Harris
+1893,Björn Runge
+1894,Kim Yong-hwa
+1895,Richard Eyre
+1896,Rodrigo Cortés
+1897,Aaron Horvath; Peter Rida Michail
+1898,Elijah Bynum
+1899,Kim Jee-woon
+1900,Jennifer Yuh Nelson
+1901,Jake Castorena; Sam Liu
+1902,Carlos López Estrada
+1903,Stephen Susco
+1904,James Cox
+1905,Erick Zonca
+1906,Desiree Akhavan
+1907,Ben Young
+1908,Matthew Ross
+1909,Boots Riley
+1910,Lars von Trier
+1911,Martino Zaidelis
+1912,Alexandre Castagnetti
+1913,Gerard McMurray
+1914,Morgan Neville
+1915,Tim Wardle
+1916,Mandie Fletcher
+1917,Debra Granik
+1918,Federico D'Alessandro
+1919,Genndy Tartakovsky
+1920,Charles Stone III
+1921,Ben Lewin
+1922,Mark Dennis; Ben Foster
+1923,Andrew Fleming
+1924,Philippe Mechelen; Julien Hervé
+1925,Madeleine Parry; Jon Olb
+1926,Jumpei Mizusaki
+1927,Claire Scanlon
+1928,Kevin Connolly
+1929,Brad Bird
+1930,Director X.
+1931,Hasraf Dulull
+1932,Paweł Pawlikowski
+1933,Kirill Serebrennikov
+1934,Damiano D'Innocenzo; Fabio D'Innocenzo
+1935,Drew Pearce
+1936,Gary Ross
+1937,Bart Layton
+1938,Nuri Bilge Ceylan
+1939,Bruno Ascenzo; Joanna Lombardi
+1940,York Alec Shackleton
+1941,Jeff Tomsic
+1942,Alex Richanbach
+1943,Mark Young
+1944,Anthony Byrne
+1945,Bruce Thierry Cheung; James Franco
+1946,Jean-Stéphane Sauvaire
+1947,Shojiro Nishimi; Guillaume Renard
+1948,Benedikt Erlingsson
+1949,Terry Gilliam
+1950,Bill Holderman
+1951,Kobun Shizuno; Hiroyuki Seshita
+1952,Pasha Patriki
+1953,Raja Gosnell
+1954,Lee Chang-dong
+1955,Wayne Roberts
+1956,Sylvain White
+1957,Ariel Vromen
+1958,Alexandre Astier; Louis Clichy
+1959,Javier Ríos
+1960,Ken Scott
+1961,James McTeigue
+1962,Antonio Morabito
+1963,Betsy West; Julie Cohen
+1964,Konstantin Khabenskiy
+1965,Andrew Niccol
+1966,Axelle Laffont
+1967,Ivan Silvestrini
+1968,Daniel J. Clark
+1969,Ben Shelton
+1970,Robert Smigel
+1971,Anthony Russo; Joe Russo
+1972,Olivia Milch
+1973,Alejandro Montiel
+1974,Dean Devlin
+1975,Abby Kohn; Marc Silverstein
+1976,Mike Newell
+1977,Jay Chandrasekhar
+1978,Eloïse Lang
+1979,Frank Bellocq
+1980,Darin Scott
+1981,Craig Johnson
+1982,Eléonore Pourriat
+1983,Rob Greenberg
+1984,Fritz Böhm
+1985,Franck Gastambide
+1986,Ryan Koo
+1987,Simon Kaijser
+1988,Javier Fesser
+1989,John Curran
+1990,Daniel Roby
+1991,Gus Van Sant
+1992,Lennart Ruff
+1993,Jung Bum-shik
+1994,Ross Venokur
+1995,Andrew Hyatt
+1996,Emmanuel Gillibert
+1997,Abdellatif Kechiche
+1998,Steven S. DeKnight
+1999,Suzi Ewing
+2000,Brandon Camp
+2001,José Padilha
+2002,John Stevenson
+2003,Pascal Laugier
+2004,Franck Dubosc
+2005,Erik Poppe
+2006,Martin Zandvliet
+2007,Joram Lürsen
+2008,Ava DuVernay
+2009,Nash Edgerton
+2010,Dominique Rocher
+2011,Paul Urkijo Alijo
+2012,Shawn Christensen
+2013,Rob Cohen
+2014,Lazar Bodroža
+2015,Mari Okada
+2016,Duncan Jones
+2017,Gustav Möller
+2018,Michael Sucsy
+2019,Michael David Pate; Martin Goeres
+2020,Dante Lam Chiu-Yin
+2021,Stephanie Laing
+2022,Tim Hunter
+2023,John Francis Daley; Jonathan Goldstein
+2024,Jon Erwin; Andrew Erwin
+2025,Gary J. Tunnicliffe
+2026,Xavier Legrand
+2027,Michael Spierig; Peter Spierig
+2028,Luca Miniero
+2029,Lin Oeding
+2030,Alfonso Gomez-Rejon
+2031,Dito Montiel
+2032,Bethany Ashton Wolf
+2033,Nick Park
+2034,Sanjay Leela Bhansali
+2035,David Wain
+2036,Luca Facchini
+2037,Jeremy Dyson; Andy Nyman
+2038,Jennifer Fox
+2039,Gennaro Nunziante
+2040,Nicolai Fuglsig
+2041,Victor Saint Macary
+2042,James Foley
+2043,Brett Donowho
+2044,Babak Najafi
+2045,Gabriele Salvatores
+2046,Hèctor Hernández Vicens
+2047,Sébastien Thiery; Vincent Lobelle
+2048,Harald Zwart
+2049,Johnny Martin
+2050,Marc Rothemund
+2051,Lawrence Sher
+2052,Alexandra Leclère
+2053,Eric Barbier
+2054,Leo Zhang
+2055,Fausto Brizzi
+2056,Saul Dibb
+2057,Adam MacDonald
+2058,Alain Chabat
+2059,Benny Fine
+2060,Jonathan Hopkins
+2061,Álex de la Iglesia
+2062,Fumihiko Sori
+2063,Jang Hang-jun
+2064,David Freyne
+2065,Yvan Attal
+2066,Alex Zamm
+2067,Manuel Martín Cuenca
+2068,Jake Goldberger
+2069,Nora Twomey
+2070,Jamie M. Dagg
+2071,Anders Walter
+2072,Timothy Reckart
+2073,Francesco Capaldo
+2074,David Lynch
+2075,Lynne Ramsay
+2076,Sacha Gervasi
+2077,Shinichiro Ueda
+2078,Issa López
+2079,Peter Mortimer; Josh Lowell
+2080,Stevie Wermers-Skelton; Kevin Deters
+2081,Junji Shimizu
+2082,Isaac Florentine
+2083,Sergio G. Sánchez
+2084,Lee Unkrich
+2085,Levan Tsikurishvili
+2086,Brian Smrz
+2087,Jason Hall
+2088,Jeremy Rush
+2089,Tyler MacIntyre
+2090,Michael Carney
+2091,Lorraine Lévy
+2092,Ash Avildsen
+2093,Angela Robinson
+2094,Richard Schenkman
+2095,Bharat Nalluri
+2096,Don Mancini
+2097,Benjamin Arfmann
+2098,Yolanda Ramke; Ben Howling
+2099,Chris Peckover
+2100,John Cameron Mitchell
+2101,Susan Lacy
+2102,Brian O'Malley
+2103,Jayson Thiessen
+2104,Hany Abu-Assad
+2105,Kang Yun-sung
+2106,Rhiannon Bannenberg
+2107,Alex Israel
+2108,Mikkel Brænne Sandemose
+2109,Ritesh Batra
+2110,Javier Calvo; Javier Ambrossi
+2111,John Carroll Lynch
+2112,Kevin Phillips
+2113,Niels Arden Oplev
+2114,Peter Landesman
+2115,Shinichiro Watanabe
+2116,Victor Salva
+2117,Robin Aubert
+2118,Klim Shipenko
+2119,Taran Killam
+2120,Jesse Haaja
+2121,Jonathan Dayton; Valerie Faris
+2122,Chris Moukarbel
+2123,Charlie Bean; Bob Logan; Paul Fisher
+2124,Danny Strong
+2125,Luke Scott
+2126,Ziad Doueiri
+2127,Mike White
+2128,Julien Maury; Alexandre Bustillo
+2129,Stephen Frears
+2130,Adam Green
+2131,Brie Larson
+2132,Mark Palansky
+2133,Michael Noer
+2134,Won Shin-yeon
+2135,Hallie Meyers-Shyer
+2136,Gilles Paquet-Brenner
+2137,Vicente Villanueva
+2138,Dan Bush
+2139,William H. Macy
+2140,Jonathan Milott; Cary Murnion
+2141,Holger Tappe
+2142,Tomas Alfredson
+2143,Robin Campillo
+2144,Shinji Aramaki; Masaru Matsumoto
+2145,Steven Quale
+2146,Bill Watterson
+2147,Nobuyuki Takeuchi
+2148,Amanda Sthers
+2149,Daniele Misischia
+2150,Josh Safdie; Benny Safdie
+2151,Gerald Rascionato
+2152,Matt Spicer
+2153,Luis Prieto
+2154,Jang Hoon
+2155,Kathryn Bigelow
+2156,Wu Jing
+2157,Sally Potter
+2158,Dave McCary
+2159,Ryoo Seung-wan
+2160,Jérémie Degruson; Ben Stassen
+2161,Tony Leondis
+2162,Fernando Lebrija
+2163,Steeve Léonard; Caroline Labrèche
+2164,Kentaro Hagiwara
+2165,Atsuko Ishizuka
+2166,Kunihiko Yuyama
+2167,Michael Cuesta
+2168,Justin Chadwick
+2169,Rob W. King
+2170,Toa Fraser
+2171,Hiromasa Yonebayashi
+2172,Joe Miale
+2173,Jonathan Baker
+2174,Franck Khalfoun
+2175,Andrew J. Cohen
+2176,Paul Currie
+2177,Agnès Varda; JR
+2178,Abel Vang; Burlee Vang
+2179,Greg McLean
+2180,Ana Lily Amirpour
+2181,Hugh Welchman; DK Welchman
+2182,Léa Mysius
+2183,Benjamin Renner; Patrick Imbert
+2184,Tony T. Datis
+2185,Michael Haneke
+2186,Brent Bonacorso
+2187,Dave Mullins
+2188,Ben C. Lucas
+2189,Antonio Negret
+2190,Lucia Aniello
+2191,Pierre Coffin; Kyle Balda
+2192,Brian Fee
+2193,Benny Boom
+2194,Oren Uziel
+2195,Eduardo Casanova
+2196,Mark Cullen; Robb Cullen
+2197,Jonathan Mostow
+2198,Alex Kurtzman
+2199,Bryan Fogel
+2200,David Leveaux
+2201,Beth David; Esteban Bravo
+2202,Andrey Zvyagintsev
+2203,Tim Smit
+2204,David Soren
+2205,Sarah Adina Smith
+2206,Takanori Tsujimoto
+2207,Jason Bourque
+2208,Jonathan Teplitzky
+2209,Wayne Blair
+2210,Joachim Rønning; Espen Sandberg
+2211,Hiroyuki Seshita
+2212,David Bowers
+2213,Robin Swicord
+2214,Stella Meghie
+2215,Francesco Bruni
+2216,Eric Judor
+2217,Fabrice Du Welz
+2218,Tatsuma Minamikawa
+2219,Oren Moverman
+2220,Sean Carter
+2221,Nattawut Poonpiriya
+2222,Eric D. Howell
+2223,James Ponsoldt
+2224,Akiva Goldsman
+2225,Michael Apted
+2226,Reem Kherici
+2227,Clay Staub
+2228,Justin Barber
+2229,Esteban Crespo
+2230,Fernando Coimbra
+2231,Dominique Farrugia
+2232,Hatem Khraiche
+2233,Nacho Vigalondo
+2234,Louis C.K.
+2235,Jameson Brooks
+2236,Noémie Saglio
+2237,Romain Lévy
+2238,Joseph Ruben
+2239,Enrique Gato; David Alonso
+2240,Richard Curtis; Mat Whitecross
+2241,Andrew Sullivan; Geoffrey Orthwein
+2242,Dax Shepard
+2243,Dean Israelite
+2244,Jim Sheridan
+2245,Jay Baruchel
+2246,Max Winkler
+2247,Keegan Kuhn; Kip Andersen
+2248,James Franco
+2249,Joe Swanberg
+2250,Tom Caulfield; Stephen Sandoval
+2251,Edoardo Falcone
+2252,Jordan Vogt-Roberts
+2253,Denise Di Novi
+2254,Alain Desrochers
+2255,Mark Pellington
+2256,Jeffrey Blitz
+2257,Stuart Hazeldine
+2258,Maccio Capatonda
+2259,Ildikó Enyedi
+2260,Raoul Peck
+2261,Elliott Lester
+2262,Audrey Dana
+2263,Gerard Barrett
+2264,Lone Scherfig
+2265,Angelina Jolie
+2266,Paco Arango
+2267,St. Vincent; Roxanne Benjamin; Karyn Kusama; Jovanka Vuckovic
+2268,Richie Keen
+2269,John Butler
+2270,Gore Verbinski
+2271,Sarik Andreasyan
+2272,Sean Cisterna
+2273,Bae Jong
+2274,David Moreau
+2275,Pierre Coré
+2276,F. Javier Gutiérrez
+2277,Henry Yu
+2278,Peter Chelsom
+2279,Jay Oliva
+2280,Maya Forbes
+2281,Marti Noxon
+2282,Macon Blair
+2283,Lasse Hallström
+2284,Christian Duguay
+2285,Lucien Jean-Baptiste
+2286,Alistair Legrand
+2287,Caradog W. James
+2288,Baran bo Odar
+2289,Stacy Title
+2290,Ceyda Torun
+2291,Emily Hagins
+2292,Phil Volken
+2293,Alessandro Siani
+2294,Nitesh Tiwari
+2295,Morten Tyldum
+2296,Chris Wedge
+2297,Denzel Washington
+2298,Aldo Baglio; Giacomo Poretti; Morgan Bertacca; Giovanni Storti
+2299,Sean Byrne
+2300,Eric Summer; Éric Warin
+2301,Nic Mathieu
+2302,Park Jung-woo
+2303,Travis Milloy
+2304,Gregg Bishop
+2305,Terry George
+2306,Josh Gordon; Will Speck
+2307,Jean-Patrick Benes
+2308,Leo Matsuda
+2309,Warren Beatty
+2310,Matthias Hoene
+2311,Kenneth Lonergan
+2312,Jalil Lespert
+2313,Sunao Katabuchi
+2314,Nicolas Benamou
+2315,Anna Biller
+2316,Zack Whedon
+2317,Farren Blackburn
+2318,Jakob M. Erwa
+2319,Scott Hicks
+2320,Edoardo Leo
+2321,Jérôme Commandeur; Alan Corno
+2322,Christie Will Wolf
+2323,Roger Spottiswoode
+2324,Marcel Barrena
+2325,Steven Shainberg
+2326,Tom Ford
+2327,Ed Gass-Donnelly
+2328,Larry Charles
+2329,Ben Younger
+2330,Pif
+2331,Gaby Dellal
+2332,Alexis Wajsbrot; Damien Macé
+2333,Brian Baugh
+2334,Justin Kelly
+2335,Simon Aboud
+2336,Ewan McGregor
+2337,Nicole Garcia
+2338,James Huth
+2339,Edward Zwick
+2340,Juan Carlos Medina
+2341,Phil Claydon
+2342,Yasushi Kawamura; Keiichi Sato
+2343,Tim Story; Leslie Small
+2344,Stewart Hendler
+2345,Adam Smith
+2346,John Musker; Ron Clements
+2347,Michael J. Gallagher
+2348,Alexandros Avranas
+2349,Sean Foley
+2350,Rick Morales
+2351,Kevin Pollak
+2352,Steve Carr
+2353,John Michael McDonagh
+2354,Fabio Guaglione; Fabio Resinaro
+2355,Jean-Pierre Dardenne; Luc Dardenne
+2356,Travis Zariwny
+2357,Mick Jackson
+2358,Andrea Arnold
+2359,Jay Martin
+2360,Kimo Stamboel; Timo Tjahjanto
+2361,Andrew Neel
+2362,Mira Nair
+2363,Claude Barras
+2364,Steven Kostanski; Jeremy Gillespie
+2365,Mario Van Peebles
+2366,Doug Sweetland; Nicholas Stoller
+2367,Richie Smyth
+2368,Naoko Yamada
+2369,Tony Elliott
+2370,Bruce Beresford
+2371,Kasra Farahani
+2372,Akan Satayev
+2373,Oliver Stone
+2374,Rod Blackhurst; Brian McGinn
+2375,Raúl Arévalo
+2376,John Moore
+2377,Nate Parker
+2378,Jon Cassar
+2379,Mariano Cohn; Gastón Duprat
+2380,Elizabeth Wood
+2381,Derek Cianfrance
+2382,Kleber Mendonça Filho
+2383,Houda Benyamina
+2384,Billy O'Brien
+2385,Christopher Louie
+2386,Dennis Gansel
+2387,Daniel Ragussis
+2388,Taneli Mustonen
+2389,Ricky Gervais
+2390,Timur Bekmambetov
+2391,Barry Sonnenfeld
+2392,Todor Chapkanov
+2393,Chris McCoy
+2394,James Schamus
+2395,Shinji Higuchi; Hideaki Anno
+2396,Hiroaki Miyamoto
+2397,Mike Birbiglia
+2398,Miguel Chávez
+2399,Stephen Dunn
+2400,Max Adams
+2401,Maren Ade
+2402,John Stockwell
+2403,Takeshi Nozue
+2404,Liam Gavin
+2405,Matt Ross
+2406,Ash Brannon
+2407,Liang Xuan; Zhang Chun
+2408,Tod Williams
+2409,Jeffrey G. Hunt
+2410,James DeMonaco
+2411,Ariel Schulman; Henry Joost
+2412,Daniel Kwan; Daniel Scheinert
+2413,Kieran Darcy-Smith
+2414,Mike Thurmeier
+2415,Alan Barillaro
+2416,Aisling Walsh
+2417,Rob Burnett
+2418,Andrew Stanton
+2419,Joshua Caldwell
+2420,Eran Creevy
+2421,Julien Rambaldi
+2422,Michael Jai White
+2423,Bo Burnham; Christopher Storer
+2424,Matt Kugelman
+2425,Akiva Schaffer; Jorma Taccone
+2426,Patricia Rozema
+2427,Mark Elijah Rosenberg
+2428,Dave Green
+2429,Nicolas Winding Refn
+2430,David Farrier; Dylan Reeve
+2431,Whit Stillman
+2432,Cristian Mungiu
+2433,Brian DeCubellis
+2434,Steven Gomez
+2435,Bruno Dumont
+2436,Gustavo Loza
+2437,Jodie Foster
+2438,Na Hong-jin
+2439,Clay Kaytis; Fergal Reilly
+2440,Jeff Zimbalist; Michael Zimbalist
+2441,John Dower
+2442,Susanna White
+2443,Juan Pablo Buscarini
+2444,Peter Atencio
+2445,Alex Brewer; Benjamin Brewer
+2446,Peter Billingsley
+2447,Garry Marshall
+2448,Rebecca Miller
+2449,Satoshi Kuwabara
+2450,Kevin Smith; Nicholas McCarthy; Dennis Widmyer; Gary Shore; Scott Stewart; Sarah Adina Smith; Kevin Kölsch; Anthony Scott Burns; Adam Egypt Mortimer
+2451,Tom Tykwer
+2452,Rodrigo Grande
+2453,Nikolay Lebedev
+2454,Phil Joanou
+2455,François Desagnat
+2456,Jason Bateman
+2457,Maneesh Sharma
+2458,Chuck Russell
+2459,Jericca Cleland; Kevin Munroe
+2460,Michael Damian
+2461,Matt Brown
+2462,Mia Hansen-Løve
+2463,Jean-Marc Vallée
+2464,Paco León
+2465,Harold Cronk
+2466,Ivan Cotroneo
+2467,Igor Gotesman
+2468,Michael Dudok de Wit
+2469,Courtney Hunt
+2470,Kirk Jones
+2471,Jean-Marie Poiré
+2472,Liza Johnson
+2473,Ricardo Curtis
+2474,Dylan Kidd
+2475,Vincent Garenq
+2476,Martin Koolhoven
+2477,Irene Taylor
+2478,John Carney
+2479,David Farr
+2480,Werner Herzog
+2481,Michael Thelin
+2482,Glenn Ficarra; John Requa
+2483,Paco Cabezas
+2484,André Téchiné
+2485,Adam Alleca
+2486,Fabio De Luigi
+2487,Alex Proyas
+2488,Shoko Nakamura
+2489,Stephen Hopkins
+2490,John Hillcoat
+2491,Kevin Reynolds
+2492,Edouard Pluvieux
+2493,Shane Abbess
+2494,Vincent Perez
+2495,Byron Howard; Rich Moore
+2496,Marilou Berry
+2497,Anne Fontaine
+2498,Stephen Chow
+2499,Miguel Ángel Lamata
+2500,Christian Ditter
+2501,Ben Stiller
+2502,Shintaro Shimosawa
+2503,Didier Bivel
+2504,Vincent Kesteloot
+2505,Ross Katz
+2506,Burr Steers
+2507,Roschdy Zem
+2508,Lev L. Spiro
+2509,Alex Rudzinski; Thomas Kail
+2510,Alexandre Avancini
+2511,Howy Parkins
+2512,Jennifer Yuh Nelson; Alessandro Carloni
+2513,Yoav Paz; Doron Paz
+2514,Gee Malik Linton
+2515,Bryan Buckley
+2516,Conrad Helten
+2517,Ella Lemhagen
+2518,Trevor Wall
+2519,Tatsuya Oishi
+2520,Simon Verhoeven
+2521,Jason Zada
+2522,Douglas Mackinnon
+2523,Can Evrenol
+2524,Duke Johnson; Charlie Kaufman
+2525,Agnieszka Smoczyńska
+2526,Hannes Holm
+2527,Alejandro González Iñárritu
+2528,David Feiss
+2529,Rohit Shetty
+2530,Jason Krawczyk
+2531,Neri Parenti
+2532,Frank Coraci
+2533,Alain Gsponer
+2534,Christophe Offenstein; Orelsan
+2535,Leonardo Pieraccioni
+2536,Indar Dzhendubaev
+2537,Nicolas Benamou; Philippe Lacheau
+2538,Jon Hyatt
+2539,David Jackson
+2540,Emilio Martínez Lázaro
+2541,Jackie Earle Haley
+2542,Francesco Miccichè; Fabio Bonifacci
+2543,Sanjay Patel
+2544,Mélanie Laurent; Cyril Dion
+2545,Rhys Thomas
+2546,Jessie Nelson
+2547,Paul McGuigan
+2548,Anthony Wonke
+2549,Owen Harris
+2550,Will Slocombe
+2551,Claudio Cupellini
+2552,Steve Martino
+2553,Franck Ekinci; Christian Desmares
+2554,Nicholas Hytner
+2555,Robbie Pickering
+2556,Matt Osterman
+2557,Jocelyn Moorhouse
+2558,Atom Egoyan
+2559,Marco Ponti
+2560,Breck Eisner
+2561,Jason Aron
+2562,Stephen Cognetti
+2563,Axelle Carolyn; Lucky McKee; Mike Mendez; Dave Parker; John Skipp; Neil Marshall; Darren Lynn Bousman; Paul Solet; Andrew Kasch; Adam Gierasch; Ryan Schifrin
+2564,James Vanderbilt
+2565,Sarah Gavron
+2566,Arthur Benzaquen
+2567,Billy Ray
+2568,Kevin Goetz; Michael Goetz
+2569,Max Croci
+2570,David Wnendt
+2571,Andrew Tan
+2572,Daniel Alfredson
+2573,John Wells
+2574,Paul Hyett
+2575,Matt D'Avella
+2576,Cesc Gay
+2577,Nancy Meyers
+2578,Dani de la Torre
+2579,Tatsuyuki Nagai
+2580,Kristin Hanggi
+2581,Roxanne Benjamin; David Bruckner; Patrick Horvath; Chad Villella; Matt Bettinelli-Olpin; Tyler Gillett; Justin Martinez
+2582,Jerry Jameson
+2583,Uli Edel
+2584,Ross Duffer; Matt Duffer
+2585,Yann Arthus-Bertrand
+2586,Anton Corbijn
+2587,Claudio Caligari
+2588,Evgeny Afineevsky
+2589,Julie Delpy
+2590,Afonso Poyart
+2591,Jaco Van Dormael
+2592,Camille Delamarre
+2593,Ken Kwapis
+2594,J.G. Quintel
+2595,Shinji Higuchi
+2596,Iain Softley
+2597,Neil Armfield
+2598,Hou Hsiao-hsien
+2599,Eva Husson
+2600,Max Joseph
+2601,John Erick Dowdle
+2602,Tom Daley
+2603,Baik
+2604,Aleksander Bach
+2605,Benjamin Rocher
+2606,Jean-Pierre Améris
+2607,Catherine Corsini
+2608,Nima Nourizadeh
+2609,Christian Cantamessa
+2610,Pablo Trapero
+2611,Karen J. Lloyd
+2612,Hiroyuki Yamashita
+2613,Mary Agnes Donoghue
+2614,Nishikant Kamat
+2615,Mark Osborne
+2616,Michael Petroni
+2617,Mark Neveldine
+2618,Jacob Gentry
+2619,Steven Hoban; Grant Harvey; Brett Sullivan
+2620,Kabir Khan
+2621,Raman Hui Shing-Ngai
+2622,Tom Vaughan
+2623,Demet Sever
+2624,Tian Xiaopeng
+2625,Jonathan Demme
+2626,Tarsem Singh
+2627,Spike Brandt; Tony Cervone
+2628,Travis Cluff; Chris Lofing
+2629,Ryan Heron
+2630,Anna Boden; Ryan Fleck
+2631,Pierre-François Martin-Laval
+2632,Gregory Jacobs
+2633,Jeffrey Hornaday
+2634,José Manuel Cravioto
+2635,Leslye Headland
+2636,Boaz Yakin
+2637,Seth MacFarlane
+2638,Florian Gallenberger
+2639,Rick Famuyiwa
+2640,Carlo Vanzina
+2641,Deniz Gamze Ergüven
+2642,Kyle Balda; Pierre Coffin
+2643,Steve Barker
+2644,Adam Schindler
+2645,Crystal Moselle
+2646,László Nemes
+2647,Sebastian Schipper
+2648,Rodney Ascher
+2649,Ted Geoghegan
+2650,Anna Muylaert
+2651,Sophie Barthes
+2652,Doug Ellin
+2653,Fouad Mikati
+2654,Naomi Kawase
+2655,Ben Palmer
+2656,Bill Pohlad
+2657,Cameron Crowe
+2658,Grímur Hákonarson
+2659,Aaron Hann; Mario Miscione
+2660,Andrew Nackman
+2661,David Sandberg
+2662,Tom Six
+2663,Joey Kuhn
+2664,John Maclean
+2665,Oren Peli
+2666,Julian Jarrold
+2667,Emmanuelle Bercot
+2668,Daniel Duran
+2669,Henry Hobson
+2670,Clovis Cornillac
+2671,Alex Kalymnios
+2672,Noémie Saglio; Eloïse Lang
+2673,Courteney Cox
+2674,Kyle Newman
+2675,Peter Bogdanovich
+2676,Joss Whedon
+2677,Tony McNamara
+2678,Tadayoshi Yamamuro
+2679,Lee Toland Krieger
+2680,Stephen Fingleton
+2681,Jafar Panahi
+2682,Tyler Shields
+2683,Oliver Hirschbiegel
+2684,Jamel Debbouze
+2685,Ryan Gosling
+2686,Kazuaki Kiriya
+2687,Sergey Mokritsky
+2688,Zach Lipovsky
+2689,François Girard
+2690,Toby Genkel
+2691,Alan Rickman
+2692,Brett Morgen
+2693,Stéphane Brizé
+2694,Alex Winter
+2695,Hannah Fidell
+2696,Antoine Bardou-Jacquet
+2697,Anthony Burns
+2698,Jason Friedberg; Aaron Seltzer
+2699,Christopher Leone
+2700,Sean Garrity
+2701,Colin Teague
+2702,Steve Pink
+2703,Daniel Lee
+2704,Érik Canuel
+2705,Terry Jones
+2706,Will Canon
+2707,Benoît Philippon; Alexandre Heboyan
+2708,Mark Burton; Richard Starzak
+2709,Lilly Wachowski; Lana Wachowski
+2710,Noémie Saglio; Maxime Govare
+2711,Paul Tibbitt; Mike Mitchell
+2712,Branden Kramer
+2713,Ronna Gradus; Jill Bauer
+2714,Gary Rydstrom
+2715,Francesca Archibugi
+2716,Don Hertzfeldt
+2717,Chris Sparling
+2718,Haqi Ali
+2719,Til Schweiger
+2720,Carlos Sedes
+2721,Evan Goldberg; Seth Rogen
+2722,Rajkumar Hirani
+2723,Eric Lartigau
+2724,Alex Goyette
+2725,Steve Loter
+2726,Chris Rock
+2727,Sergei Bodrov
+2728,Aldo Baglio; Morgan Bertacca; Giovanni Storti; Giacomo Poretti
+2729,Abderrahmane Sissako
+2730,Tsuneo Kobayashi
+2731,Wash Westmoreland; Richard Glatzer
+2732,Grégory Levasseur
+2733,Marie-Castille Mention-Schaar
+2734,Steve Purcell
+2735,Luca Vendruscolo; Mattia Torre; Giacomo Ciarrapico
+2736,Simon J. Smith; Eric Darnell
+2737,Justin Benson; Marcel Sarmiento; Nacho Vigalondo; Gregg Bishop; Aaron Moorhead; Todd Lincoln
+2738,Adrián García Bogliano
+2739,Bennett Miller
+2740,Joshua Oppenheimer
+2741,David Zellner
+2742,Paul Katis
+2743,Cédric Anger
+2744,Bobby Farrelly; Peter Farrelly
+2745,Ekachai Uekrongtham
+2746,Giulio Ricciarelli
+2747,John Sanford; Elaine Bogan
+2748,Teddy Chan Tak-Sum
+2749,Mike Leigh
+2750,Anthony DiBlasi
+2751,Patrick Osborne
+2752,Farah Khan
+2753,Stiles White
+2754,Gren Wells
+2755,Don Hall; Chris Williams
+2756,Roy Andersson
+2757,Levan Gabriadze
+2758,Jen Soska; Sylvia Soska
+2759,Jordan Rubin
+2760,Jon Wright
+2761,Jack Heller
+2762,Peter Sattler
+2763,Trevor Matthews; Jon Knautz
+2764,Mario Martone
+2765,Michael Hoffman
+2766,Gregg Araki
+2767,Erik Van Looy
+2768,Bobby Roe
+2769,Laura Poitras
+2770,James Ford Murphy
+2771,Bille Woodruff
+2772,Gabe Ibáñez
+2773,Stephen Daldry
+2774,Tom Green
+2775,Justin Benson; Aaron Moorhead
+2776,Peter Askin
+2777,Vic Armstrong
+2778,Mikkel Nørgaard
+2779,Rodney Ascher; Bill Plympton; Erik Matti; Lancelot Oduwa Imasuen; Kristina Buožytė; Bruno Samper; Vincenzo Natali; Larry Fessenden; Julien Maury; Alexandre Bustillo; E.L. Katz; Jen Soska; Aharon Keshales; Navot Papushado; Julian Gilbey; Dennison Ramalho; Jerome Sable; Robert Morgan; Sylvia Soska; Hajime Ohata; Sôichi Umezawa; Chris Nash; Todd Rohal; Julian Barratt; Alejandro Brugués; Jim Hosking; Robert Boocheck; Marvin Kren; Juan Martínez Moreno; Steven Kostanski; Wolfgang Matzl
+2780,Tonie Marshall
+2781,Jorge R. Gutierrez
+2782,Gary Shore
+2783,Max Nichols
+2784,Justin Reardon
+2785,Guy Jenkin; Andy Hamilton
+2786,Lynn Shelton
+2787,Alberto Rodríguez
+2788,Bertrand Bonello
+2789,Esteban Roel; Juanfer Andrés
+2790,Scott Frank
+2791,Karen Leigh Hopkins
+2792,Michaël R. Roskam
+2793,Myroslav Slaboshpytskyi
+2794,Philip Martin
+2795,Philippe Falardeau
+2796,Graham Annable; Anthony Stacchi
+2797,Sam Miller
+2798,Israel Horovitz
+2799,Daniel Barnz
+2800,Jean-Baptiste Léonetti
+2801,J.C. Calciano
+2802,Mike Binder
+2803,Shira Piven
+2804,Peter Glanz
+2805,Chris Evans
+2806,Joe Dante
+2807,Rowan Joffé
+2808,Juliano Ribeiro Salgado; Wim Wenders
+2809,Daniel Monzón
+2810,David Hayter
+2811,Roger Donaldson
+2812,Casey La Scala
+2813,Valeri Milev
+2814,Ira Sachs
+2815,Thomas Carter
+2816,Frank Miller; Robert Rodriguez
+2817,David Jung
+2818,Luke Greenfield
+2819,Henrik Ruben Genz
+2820,Ethan Spaulding; Jay Oliva
+2821,Yury Bykov
+2822,Takashi Yamazaki; Ryuichi Yagi
+2823,Olly Blackburn
+2824,Jonathan Liebesman
+2825,Damon Beesley; Iain Morris
+2826,Steve Sacks; Daniel DeSerranno; Behzad Mansoori-Dara; Johnny Darrell; Logan McPherson
+2827,Kim Han-min
+2828,Brett Ratner
+2829,Bobs Gannaway
+2830,Rob Reiner
+2831,Steve James
+2832,Dan Beers
+2833,Jake Paltrow
+2834,Peter DeLuise
+2835,Brian Knappenberger
+2836,Tomm Moore
+2837,Keiichi Sato
+2838,Joaquín Llamas
+2839,Víctor García
+2840,Paul Haggis
+2841,Noel Clarke
+2842,Dania Pasquini; Max Giwa
+2843,Jemaine Clement; Taika Waititi
+2844,Brett Simmons
+2845,Josh Lawson
+2846,Ralph Ziman
+2847,Gillian Robespierre
+2848,Phil Lord; Christopher Miller
+2849,Lee Jeong-beom
+2850,Don McKellar
+2851,Shinji Aramaki
+2852,Robert Stromberg
+2853,Bradley King
+2854,Phil Alden Robinson
+2855,Kristian Levring
+2856,Tommy Lee Jones
+2857,Hossein Amini
+2858,Takashi Shimizu
+2859,Ned Benson
+2860,Richard Loncraine
+2861,Dan St. Pierre; Will Finn
+2862,Amy J. Berg
+2863,Brin Hill
+2864,Allison Burnett
+2865,Kenichi Shimizu
+2866,Randall Wallace
+2867,Nick Cassavetes
+2868,Wally Pfister
+2869,Tim Garrick
+2870,Ivan Reitman
+2871,Daniel Ribeiro
+2872,Matty Beckerman
+2873,Clif Prowse; Derek Lee
+2874,Richard Ayoade
+2875,Roselyne Bosch
+2876,Kim Chapiron
+2877,Elliot Goldner
+2878,Charlie Siskel; John Maloof
+2879,Pascal Chaumeil
+2880,Eduardo Sánchez
+2881,Geoff Moore; David Posamentier
+2882,Rob Thomas
+2883,Pascal Bourdiaux
+2884,Vikas Bahl
+2885,Noam Murro
+2886,David Grovic
+2887,Christopher Spencer
+2888,Fabrice Eboué; Lionel Steketee
+2889,Ezekiel Norton
+2890,James Griffiths
+2891,Scott Coffey
+2892,Andreas Prochaska
+2893,Pascal Légitimus; Didier Bourdon; Bernard Campan
+2894,Shana Feste
+2895,Christophe Gans
+2896,Rob Minkoff
+2897,Stéphane Berla; Mathias Malzieu
+2898,Kaare Andrews
+2899,Josh Stolberg
+2900,Stuart Beattie
+2901,Giancarlo Volpe
+2902,Deborah Chow
+2903,Peter Howitt
+2904,Peter Lepeniotis
+2905,Darren Stein
+2906,Joel Hopkins
+2907,Emilis Vėlyvis
+2908,Mischa Kamp
+2909,Mélissa Drigeard
+2910,Philipp Stölzl
+2911,Felix Herngren
+2912,Ding Sheng
+2913,Ben Stassen; Jérémie Degruson
+2914,Vijay Krishna Acharya
+2915,Spike Jonze
+2916,Neil Nightingale; Barry Cook
+2917,Zachary Donohue
+2918,Carl Rinsch
+2919,Eric Heisserer
+2920,Karen Moncrieff
+2921,Lauren MacMullan
+2922,Nick Hurran
+2923,Isao Takahata
+2924,Paolo Ruffini
+2925,Guillaume Gallienne
+2926,Chris Buck; Jennifer Lee
+2927,Hélène Giraud; Thomas Szabo
+2928,Gary Fleder
+2929,Yasuhiro Yoshiura
+2930,Brian Percival
+2931,Bertrand Tavernier
+2932,Blair Erickson
+2933,Lucky McKee; Chris Sivertson
+2934,Jimmy Hayward
+2935,Prachya Pinkaew
+2936,Ethan Coen; Joel Coen
+2937,Zaza Urushadze
+2938,Reinhard Klooss
+2939,Mike Mendez
+2940,John Krokidas
+2941,Kimberly Peirce
+2942,Jorge Dorado
+2943,Eugenio Mira
+2944,Louis D'Esposito
+2945,Stuart Zicherman
+2946,Lee Joon-ik
+2947,Alexandre Coffre
+2948,Paul Crowder
+2949,Douglas Aarniokoski
+2950,Tsui Hark
+2951,Cody Cameron; Kris Pearn
+2952,Benson Lee
+2953,Tze Chun
+2954,Jonathan Sobol
+2955,James Ward Byrkit
+2956,Stuart Blumberg
+2957,Nicole Holofcener
+2958,Daniel Schechter
+2959,Antonio Zavala Kugler
+2960,Joseph Gordon-Levitt
+2961,Carlo Carlei
+2962,John Turturro
+2963,Matthew Weiner
+2964,Richard Curtis
+2965,David Twohy
+2966,Eduardo Rodríguez
+2967,Frank Pavich
+2968,Alex van Warmerdam
+2969,Courtney Solomon
+2970,Jacob Vaughan
+2971,Morgan Spurlock
+2972,Steven R. Monroe
+2973,William Lau
+2974,Sandra Nettelbeck
+2975,Jerusha Hess
+2976,Joshua Michael Stern
+2977,Kim Sung-soo
+2978,Robert Luketic
+2979,Gonzalo López-Gallego
+2980,Ruairi Robinson
+2981,Lake Bell
+2982,Klay Hall
+2983,Manuel Sicilia
+2984,Rob Epstein; Jeffrey Friedman
+2985,Darren Paul Fisher
+2986,Declan Lowney
+2987,Maggie Carey
+2988,Eugenio Derbez
+2989,Anthony Silverston
+2990,Juan José Campanella
+2991,Rakeysh Omprakash Mehra
+2992,Scott Walker
+2993,Dennis Dugan
+2994,Eric England
+2995,John Huddles
+2996,Keanu Reeves
+2997,Kim Byung-seo; Cho Ui-seok
+2998,Ari Folman
+2999,Uwe Boll
+3000,Sebastián Cordero
+3001,Pierre Coffin; Chris Renaud
+3002,André Pellenz
+3003,Agnès Obadia
+3004,Alain Guiraudie
+3005,Paul Middleditch
+3006,Adam Wingard; Gregg Hale; Eduardo Sánchez; Simon Barrett; Timo Tjahjanto; Jason Eisener; Gareth Evans
+3007,Victor Gonzalez
+3008,Ayan Mukerji
+3009,Zal Batmanglij
+3010,Stephan Lacant
+3011,Jon Burton
+3012,Craig Zisk
+3013,Bobcat Goldthwait
+3014,David Siegel; Scott McGehee
+3015,Rob Meltzer
+3016,Francesca Gregorini
+3017,Justin Zackham
+3018,James Tucker
+3019,Jeff Bleckner
+3020,Navot Papushado; Aharon Keshales
+3021,Takuya Satou; Hiroshi Hamasaki; Kanji Wakabayashi
+3022,Ruben Alves
+3023,Kasper Barfoed
+3024,Jeff Renfroe
+3025,Henry Alex Rubin
+3026,Shane Carruth
+3027,Giacomo Campiotti
+3028,Masahiro Hosoda
+3029,Gary Alazraki
+3030,Herman Yau
+3031,Danny Mooney
+3032,Katja von Garnier
+3033,Brendan Maher
+3034,Kirk DeMicco; Chris Sanders
+3035,Felix Fuchssteiner
+3036,Don Scardino
+3037,Malik Bader
+3038,Xavier Gens; Andrew Traucki; Nacho Vigalondo; Ernesto Díaz Espinoza; Bruno Forzani; Jason Eisener; Adrián García Bogliano; Marcel Sarmiento; Lee Hardcastle; Yoshihiro Nishimura; Ben Wheatley; Jon Schnepp; Jorge Michel Grau; Timo Tjahjanto; Noboru Iguchi; Srđan Spasojević; Adam Wingard; Angela Bettis; Banjong Pisanthanakun; Simon Rumley; Jake West; Thomas Cappelen Malling; Yudai Yamaguchi; Hélène Cattet; Ti West; Anders Morgenthaler; Kaare Andrews
+3039,Giorgia Farina
+3040,Bille August
+3041,Jon Lucas; Scott Moore
+3042,Alexandre Charlot; Franck Magnier
+3043,Anton Megerdichev
+3044,Sherry Hormann
+3045,Scott Stewart
+3046,Michaël Youn
+3047,Owen Hurley
+3048,Saschka Unseld
+3049,Fredrik Bond
+3050,David Guy Levy
+3051,Simon Klose
+3052,Tom Elkins
+3053,Toshiyuki Kubooka
+3054,Stephen Sommers
+3055,Don Coscarelli
+3056,Richard Raaphorst
+3057,Steven Brill; Elizabeth Banks; Steve Carr; James Duffy; Griffin Dunne; Peter Farrelly; Patrik Forsberg; James Gunn; Brett Ratner; Will Graham; Jonathan van Tulleken; Rusty Cundieff
+3058,Lee Hwan-kyung
+3059,Taylor Hackford
+3060,Naomi Foner
+3061,Allen Hughes
+3062,Wong Kar-Wai
+3063,John Luessenhop
+3064,Dustin Hoffman
+3065,Kim Ji-hoon
+3066,Jackie Chan
+3067,Robert Redford
+3068,Stéphane Aubier; Vincent Patar; Benjamin Renner
+3069,Michael Taverna
+3070,Peter Hewitt
+3071,Marcus Dunstan
+3072,Peter Ramsey
+3073,Hideaki Anno; Kazuya Tsurumaki; Masayuki; Mahiro Maeda
+3074,Johnnie To
+3075,Yash Chopra
+3076,John Stockwell; Paulette Victor Lifton
+3077,John Kahrs
+3078,RZA
+3079,Jan Ole Gerster
+3080,Rich Moore
+3081,Mark Caballero; Seamus Walsh
+3082,Andrew Goth
+3083,Lilly Wachowski; Lana Wachowski; Tom Tykwer
+3084,Michael Apted; Curtis Hanson
+3085,Josh Schwartz
+3086,Morgan O'Neill
+3087,Jon Kasdan
+3088,Declan O'Brien
+3089,Jeremy Gardner
+3090,Stuart Gillard
+3091,John Poliquin
+3092,Louis Morneau
+3093,Conor McMahon
+3094,Jim Field Smith
+3095,Jérôme Enrico
+3096,Jennifer Lynch
+3097,Umesh Shukla
+3098,Juan Diego Solanas
+3099,Makoto Kamiya
+3100,Gauri Shinde
+3101,Christian Vincent
+3102,Abbas Kiarostami
+3103,Mark A. Walsh
+3104,Peter Webber
+3105,Josh Radnor
+3106,Jamie Linden
+3107,Anurag Basu
+3108,Sergio Castellitto
+3109,Nicolás López
+3110,Richard Bates Jr.
+3111,Margarethe von Trotta
+3112,Nick Love
+3113,Ramaa Mosley
+3114,Brian Klugman; Lee Sternthal
+3115,Robert Pulcini; Shari Springer Berman
+3116,Pete Travis; Alex Garland
+3117,Kim Ki-duk
+3118,Kimble Rendall
+3119,Takeshi Kitano
+3120,David Barrett
+3121,Jamie Travis
+3122,Barry Battles
+3123,Amy Heckerling
+3124,Todd Lincoln
+3125,Rufus Norris
+3126,David Palmer; Dax Shepard
+3127,Christopher Kenneally
+3128,Sid Bennett
+3129,Tony Gilroy
+3130,Robert Heath
+3131,Sam Fell; Chris Butler
+3132,Bill Sebastian
+3133,Hayato Date
+3134,David Bruckner; Matt Bettinelli-Olpin; Justin Martinez; Adam Wingard; Chad Villella; Tyler Gillett; Joe Swanberg; Glenn McQuaid; Ti West
+3135,Valerie Faris; Jonathan Dayton
+3136,Dylan C. Brown
+3137,Malik Bendjelloul
+3138,Benh Zeitlin
+3139,Dan Cutforth; Jane Lipsitz
+3140,Steve Martino; Mike Thurmeier
+3141,Christopher Ray
+3142,Anurag Kashyap
+3143,Mark Andrews; Brenda Chapman
+3144,Jake Newsome; Mikael Salomon
+3145,Michael Chang
+3146,William Friedkin
+3147,Eric Darnell; Tom McGrath; Conrad Vernon
+3148,Wayne Thornley
+3149,Bradley Parker
+3150,Bryce Wagoner
+3151,Lisanne Pajot; James Swirsky
+3152,Derick Martini
+3153,John Gulager
+3154,Pascal Arnold; Jean-Marc Barr
+3155,Hiroyuki Okiura
+3156,Daniele Vicari
+3157,Craig Moss
+3158,Stephen St. Leger; James Mather
+3159,Joseph Kahn
+3160,Mabrouk El Mechri
+3161,Jon Hurwitz; Hayden Schlossberg
+3162,Max Giwa; Dania Pasquini
+3163,Benoît Jacquot
+3164,Mark Duplass; Jay Duplass
+3165,Matt Piedmont
+3166,Dan Bradley
+3167,Florent-Emilio Siri
+3168,Peter Lord
+3169,Nick Ormerod; Declan Donnellan
+3170,Jennifer Westfeldt
+3171,Petter Næss
+3172,Hadi Hajaig
+3173,Sujoy Ghosh
+3174,Daniel Cohen
+3175,Brian Robbins
+3176,Jean Dujardin; Alexandre Courtes; Eric Lartigau; Fred Cavayé; Michel Hazanavicius; Emmanuelle Bercot; Gilles Lellouche
+3177,Lauren Montgomery
+3178,Mike McCoy; Scott Waugh
+3179,Heitor Dhalia
+3180,David Brooks
+3181,Dennis Bots
+3182,Stephen Elliott
+3183,Julie Anne Robinson
+3184,Anthony Hemingway
+3185,Björn Stein; Måns Mårlind
+3186,Daisy von Scherler Mayer
+3187,Nathan Greno; Byron Howard
+3188,Asger Leth
+3189,Phyllida Lloyd
+3190,Bradley Raymond
+3191,Scott Spiegel
+3192,Chris Gorak
+3193,Kang Je-kyu
+3194,David Foenkinos; Stéphane Foenkinos
+3195,Yoshihiro Ueda
+3196,James Hayman
+3197,Frédéric Beigbeder
+3198,Brian Taylor; Mark Neveldine
+3199,Aaron Harvey
+3200,Frédéric Berthe; Pascal Serieis
+3201,Arlene Sanford
+3202,Troy Quane
+3203,Terence Davies
+3204,Karen Disher
+3205,Valentino Picone; Salvatore Ficarra
+3206,Jon Hewitt
+3207,Tom Owens
+3208,Charles Binamé
+3209,Sarah Smith
+3210,Enrico Lando
+3211,Mark Baldo
+3212,Olivier Nakache; Éric Toledano
+3213,Stéphane Rybojad
+3214,Chris Miller
+3215,Michael Brandt
+3216,Leythum
+3217,Julien Magnat
+3218,Anubhav Sinha
+3219,Song Il-gon
+3220,Mike Gunther
+3221,Stephan Elliott
+3222,Alejandro Brugués
+3223,Carl Tibbetts
+3224,Ami Canaan Mann
+3225,Lucky McKee
+3226,Joel Schumacher
+3227,Bruce Robinson
+3228,Bibo Bergeron
+3229,Jonah Loop
+3230,Paddy Considine
+3231,Laurent Bouhnik
+3232,Kike Maíllo
+3233,Daniel Nettheim
+3234,Philip Einstein Lipski; Kresten Vestbjerg Andersen; Thorbjørn Christoffersen
+3235,Tony Ching Siu-Tung
+3236,Sam Liu; Lauren Montgomery
+3237,Adam Kassen; Mark Kassen
+3238,Hwang Dong-hyuk
+3239,John Singleton
+3240,Gary McKendry
+3241,Christophe Barratier
+3242,Takahiro Omori
+3243,Ron Fricke
+3244,Andrés Baiz
+3245,Douglas McGrath
+3246,Geoffrey Fletcher
+3247,Oliver Parker
+3248,Yann Samuell
+3249,Stuart Ortiz; Colin Minihan
+3250,Damon Santostefano
+3251,Cláudio Torres
+3252,Peter Huyck; Alex Gregory
+3253,David R. Ellis
+3254,Levan Bakhia; Beqa Jguburia
+3255,Madonna
+3256,David Hare
+3257,Matthew Parkhill
+3258,Nick Murphy
+3259,Marcus Nispel
+3260,Kevin Tancharoen
+3261,Gil Junger
+3262,Robert Hughes; Dan Povenmire
+3263,Masahiko Murata
+3264,Alexandra-Therese Keining
+3265,Joe Johnston
+3266,Zoya Akhtar
+3267,Lionel Steketee; Thomas Ngijol; Fabrice Eboué
+3268,Peter Chan
+3269,Kazuya Murata
+3270,Mateo Gil
+3271,Tom Hanks
+3272,Travis Fort; Trey Stokes
+3273,Gavin Wiesen
+3274,Muriel Coulin; Delphine Coulin
+3275,John Lasseter
+3276,Julia Leigh
+3277,Gustavo Taretto
+3278,Carlo Ledesma
+3279,Luc Dardenne; Jean-Pierre Dardenne
+3280,Dan Rush
+3281,Matthew Chapman
+3282,Jason Eisener
+3283,Michael Goi
+3284,Mike Disa
+3285,Tony Kaye
+3286,Michael Winterbottom
+3287,Michael Lembeck
+3288,Wes Craven
+3289,Julian Gilbey
+3290,Lauren Montgomery; Jay Oliva; Christopher Berkeley
+3291,Jason Winer
+3292,Don Hall; Stephen J. Anderson
+3293,William Kaufman
+3294,Giacomo Ciarrapico; Mattia Torre; Luca Vendruscolo
+3295,Béla Tarr
+3296,Kevin Munroe
+3297,Simon Wells
+3298,Guillermo Ríos
+3299,Jonathan English
+3300,Terry Klassen; William Lau
+3301,Marcus Baldini
+3302,Patrick Lussier
+3303,Philippe Le Guay
+3304,Ralph Fiennes
+3305,Lee Tamahori
+3306,Antti J. Jokinen
+3307,Laurent Bouzereau
+3308,Christian E. Christiansen
+3309,Alister Grierson
+3310,Nicole Kassell
+3311,Phil Traill
+3312,Angel Gracia
+3313,Melanie Mayron
+3314,Laura Lau; Chris Kentis
+3315,Benny Chan Muk-Sing
+3316,Dominic Sena
+3317,Icíar Bollaín
+3318,Peter Shin
+3319,Jiang Wen
+3320,James L. Brooks
+3321,Eric Brevig
+3322,Marius Holst
+3323,Jean-Loup Felicioli; Alain Gagnol
+3324,Samuel Tourneux; Kyle Balda
+3325,Steffen Haars; Flip van der Kuil
+3326,Ian Kirby
+3327,Andrew Jarecki
+3328,Lee Seung-moo
+3329,Byron Howard; Nathan Greno
+3330,Steve Antin
+3331,Peter Weir
+3332,Toshikazu Nagae
+3333,Joaquim Dos Santos
+3334,Greg Strause; Colin Strause
+3335,William Monahan
+3336,Troy Nixey
+3337,Massy Tadjedin
+3338,Tony Scott
+3339,John Landis
+3340,Jake Scott
+3341,Don Roos
+3342,Gary Trousdale
+3343,Richard J. Lewis
+3344,Eric Bross
+3345,Cody Cameron
+3346,Brian Levant
+3347,Tony Goldwyn
+3348,John Puglisi
+3349,Bruce McDonald
+3350,Charles Ferguson
+3351,Reinhard Klooss; Holger Tappe
+3352,Ben Ketai
+3353,Nigel Cole
+3354,George Hickenlooper
+3355,Larysa Kondracki
+3356,John Carpenter
+3357,Emilio Estevez
+3358,Saverio Costanzo
+3359,David Schwimmer
+3360,Xavier Beauvois
+3361,Michele Placido
+3362,Luis Estrada
+3363,Andrew Lau
+3364,Su Chaobin
+3365,Guy Moshe
+3366,Robert Rodriguez; Ethan Maniquis
+3367,Nanette Burstein
+3368,Bertrand Blier
+3369,Keiichi Hara
+3370,Jang Cheol-soo
+3371,Aaron Seltzer; Jason Friedberg
+3372,Carlos Brooks
+3373,Guillem Morales
+3374,Hideo Nakata
+3375,Shane van Dyke
+3376,Sylvester Stallone
+3377,Ben Stassen
+3378,Eric Laneuville
+3379,Benedek Fliegauf
+3380,Paul T. Scheuring
+3381,Lisa Cholodenko
+3382,Anthony Bell; Ben Gluck
+3383,Nicholas Tomnay
+3384,Tim Hetherington; Sebastian Junger
+3385,Apichatpong Weerasethakul
+3386,Jonathan Lynn
+3387,Teddy Newton
+3388,Sylvain Chomet
+3389,Gregor Jordan
+3390,Christopher Smith
+3391,Tetsuya Nakashima
+3392,Tom Dey
+3393,Michael Patrick King
+3394,Jorma Taccone
+3395,Michael Rowe
+3396,Sanaa Hamri
+3397,Im Sang-soo
+3398,Gary Winick
+3399,Julio Medem
+3400,Chris Morris
+3401,George A. Romero
+3402,Tony Jaa; Panna Rittikrai
+3403,Samuel Bayer
+3404,Alan Poul
+3405,Ricky Gervais; Stephen Merchant
+3406,Rocco Papaleo
+3407,Michael Greenspan
+3408,Måns Mårlind; Björn Stein
+3409,Géraldine Nakache; Hervé Mimran
+3410,Richard Berry
+3411,Dwight H. Little
+3412,Mark Romanek
+3413,Chris Sanders; Dean DeBlois
+3414,Gela Babluani
+3415,Allen Coulter
+3416,Chris Shadley
+3417,Banksy
+3418,James Nguyen
+3419,Marcos Efron
+3420,Michael Grossman
+3421,Federico Moccia
+3422,James Keach
+3423,Yannick Dahan; Benjamin Rocher
+3424,Karan Johar
+3425,Lee Seung-Gyu; Victor Cook; Jong-Sik Nam; Mike Disa; Yasuomi Umetsu; Shuko Murase; Sangjin Kim
+3426,Yasuhiro Takemoto; Tatsuya Ishihara
+3427,Joey Stewart
+3428,Adam Wood
+3429,Spencer Susser
+3430,Jacques Perrin
+3431,Joann Sfar
+3432,P.J. Pesce
+3433,Malcolm Venville
+3434,Allen Hughes; Albert Hughes
+3435,Anand Tucker
+3436,Srđan Spasojević
+3437,Jakob Schuh; Max Lang
+3438,Betty Thomas
+3439,Luiso Berdejo
+3440,Munehisa Sakai
+3441,Frédéric Berthe
+3442,Ron Clements; John Musker
+3443,John Putch
+3444,Jordan Scott
+3445,Jingle Ma Choh-Sing
+3446,Troy Duffy
+3447,Jorge Blanco
+3448,Daniel Barber
+3449,Ronnie del Carmen
+3450,Agnieszka Wojtowicz-Vosloo
+3451,Radu Mihăileanu
+3452,Richard Kelly
+3453,Edward James Olmos
+3454,Bo Zenga
+3455,Grant Heslov
+3456,Scott Sanders
+3457,Nelson McCormick
+3458,Jon Harris
+3459,Ricky Gervais; Matthew Robinson
+3460,Dave Parker
+3461,Ivan Engler; Ralph Etter
+3462,Bart Freundlich
+3463,Paco Plaza; Jaume Balagueró
+3464,Tim Blake Nelson
+3465,Peter Stebbings
+3466,Brad Turner; Kevin Hooks
+3467,Brian Koppelman; David Levien
+3468,Mike Judge
+3469,Mark A. Lewis
+3470,Shane Acker
+3471,D. Kerry Prior
+3472,Takeshi Koike
+3473,Nora Ephron
+3474,Todd Graff
+3475,Joel Anderson
+3476,Vin Diesel
+3477,Hoyt Yeatman
+3478,JK Youn
+3479,Gad Elmaleh
+3480,Don E. FauntLeRoy
+3481,Max Mayer
+3482,Mona Achache
+3483,Nia Vardalos
+3484,Masayuki; Kazuya Tsurumaki; Hideaki Anno
+3485,Abel Ferry
+3486,Lara Shapiro
+3487,Harold Ramis
+3488,Kieran Mulroney; Michele Mulroney
+3489,Jake West
+3490,Riad Sattouf
+3491,Allison Liddi-Brown
+3492,Brad Silberling
+3493,Harvey Glazer
+3494,Damien Dante Wayans
+3495,Jack Perez
+3496,Emily Young
+3497,Lee Hae-jun
+3498,Toby Wilkins
+3499,Chris Fisher
+3500,Savage Steve Holland
+3501,Gareth Carrivick
+3502,Mark Neveldine; Brian Taylor
+3503,Jody Hill
+3504,Drew Barrymore
+3505,Christopher Berkeley
+3506,Chris Nahon
+3507,Peter Cornwell
+3508,Derek Yee
+3509,Rob Letterman; Conrad Vernon
+3510,Valentino Picone; Salvatore Ficarra; Giambattista Avellino
+3511,Trevor Moore; Zach Cregger
+3512,James Wong
+3513,Philippe Lioret
+3514,Raymond De Felitta
+3515,Greg Marcks
+3516,Andrzej Bartkowiak
+3517,Steve Shill
+3518,Peter Avanzino
+3519,Patrick Alessandrin
+3520,Wayne Kramer
+3521,Nora Twomey; Tomm Moore
+3522,Stephen Belber
+3523,Ben Ramsey
+3524,Gábor Csupó
+3525,Peter Hyams
+3526,P.J. Hogan
+3527,Jonas Elmer
+3528,Thomas Guard; Charles Guard
+3529,Frank Paur
+3530,Jamin Winans
+3531,Patrick Tatopoulos
+3532,Seth Grossman
+3533,David S. Goyer
+3534,Pascale Pouzadoux
+3535,A. R. Murugadoss
+3536,Frank Miller
+3537,Marcello Cesena
+3538,Robert Stevenhagen; Sam Fell
+3539,Nicolas Bary
+3540,John Patrick Shanley
+3541,Aditya Chopra
+3542,Peter Werner
+3543,Cem Yılmaz; Ali Taner Baltacı
+3544,Tom Shankland
+3545,Darnell Martin
+3546,Lexi Alexander
+3547,Chris Williams; Byron Howard
+3548,Steve Miner
+3549,Guillermo Arriaga
+3550,Robert Hiltzik
+3551,Dwayne Carey-Hill
+3552,Kurt Kuenne
+3553,Eric Darnell; Tom McGrath
+3554,Chuck Patton
+3555,Jonathan Frakes
+3556,John Glenn
+3557,Christian Molina
+3558,Gerald McMorrow
+3559,Mats Stenberg
+3560,John Simpson
+3561,Yoshihiro Nishimura
+3562,Robert B. Weide
+3563,Hannes Stöhr
+3564,Kiyoshi Kurosawa
+3565,Clark Gregg
+3566,Matthew O'Callaghan
+3567,Laurent Cantet
+3568,Joe Sichta
+3569,Howard Deutch
+3570,Ed Harris
+3571,Yojiro Takita
+3572,Todd Kessler
+3573,Diane English
+3574,Jon Avnet
+3575,Robert Kenner
+3576,Marcel Sarmiento; Gadi Harel
+3577,Allen Hughes; Shekhar Kapur; Yvan Attal; Brett Ratner; Natalie Portman; Mira Nair; Shunji Iwai; Fatih Akin; Jiang Wen; Randall Balsmeyer; Joshua Marston
+3578,Neeraj Pandey
+3579,Gino Nichele
+3580,Sandra Goldbacher
+3581,Oxide Pang Chun; Danny Pang Phat
+3582,Peter Cattaneo
+3583,Mathieu Kassovitz
+3584,Nick Moore
+3585,Darren Grant
+3586,Lucky McKee; Trygve Allister Diesen
+3587,Simon Hunter
+3588,Dave Filoni
+3589,Hajime Kamegaki
+3590,Chris Carter
+3591,Eric Red
+3592,Edward Neumeier
+3593,Dario Piana
+3594,Mamoru Oshii
+3595,Yasuhiro Aoki; Futoshi Higashide; Toshiyuki Kubooka; Hiroshi Morioka; Jong-Sik Nam; Shojiro Nishimi; Yoshiaki Kawajiri
+3596,Doug Sweetland
+3597,Ramzy Bedia; Eric Judor
+3598,John Maybury
+3599,Matthew Diamond
+3600,Marco Schnabel
+3601,Kunio Katou
+3602,Steven Conrad
+3603,Mark Osborne; John Stevenson
+3604,Shamim Sarif
+3605,Andrew Adamson
+3606,David Ross
+3607,Mark Herman
+3608,Lana Wachowski; Lilly Wachowski
+3609,Paul Weiland
+3610,Joshua Seftel
+3611,Hayden Schlossberg; Jon Hurwitz
+3612,Michael McCullers
+3613,Marcel Langenegger
+3614,Howard McCain
+3615,Jay Lee
+3616,Marcos Siega
+3617,Marc Schölermann
+3618,David Mamet
+3619,Jennifer Flackett; Mark Levin
+3620,Carter Smith
+3621,Nikolai Müllerschön
+3622,Craig Mazin
+3623,Masayuki Ochiai
+3624,Guillaume Ivernel; Arthur Qwak
+3625,Robert C. Cooper
+3626,Steve Martino; Jimmy Hayward
+3627,Griffin Dunne
+3628,Kent Alterman
+3629,Dave Bullock
+3630,David Nerlich; Andrew Traucki
+3631,Jon Poll
+3632,Ashutosh Gowariker
+3633,Robert Allan Ackerman
+3634,Robert Vince
+3635,Jeff Lowell
+3636,Xavier Palud; David Moreau
+3637,Pete Travis
+3638,Thomas Langmann; Frédéric Forestier
+3639,Gregory Hoblit
+3640,Sean McGinly
+3641,Mitchell Lichtenstein
+3642,Christine Jeffs
+3643,Brett Simon
+3644,Callie Khouri
+3645,Mauro Lima
+3646,Eric Valette
+3647,Anna Błaszczyk
+3648,Luc Jacquet
+3649,Andrew Waller
+3650,Jay Russell
+3651,Colin Strause; Greg Strause
+3652,Barnaby Thompson; Oliver Parker
+3653,Aamir Khan
+3654,Mike Nichols
+3655,David Leland
+3656,Joby Harold
+3657,Frank A. Cappello
+3658,Jaume Balagueró; Paco Plaza
+3659,Frank Darabont
+3660,Kirsten Sheridan
+3661,Kevin Lima
+3662,Claudio Risi
+3663,Zach Helm
+3664,Félix Alcalá
+3665,Jim Capobianco
+3666,Rob Schneider
+3667,Menno Meyjes
+3668,Dario Argento
+3669,Steve Rash
+3670,Steve Hickner; Simon J. Smith
+3671,Imtiaz Ali
+3672,Jon Jones
+3673,Jeff Betancourt
+3674,Goran Dukić
+3675,Nick Lyon
+3676,Michael White Jr.; Craig Phillips; Harold Hayes Jr.
+3677,Alastair Fothergill; Mark Linfield
+3678,Volfango De Biasi
+3679,Luis Piedrahita; Rodrigo Sopeña
+3680,David L. Cunningham
+3681,Bruce Campbell
+3682,Masahiro Ando
+3683,Robert Benton
+3684,Marcos Jorge
+3685,Jan Kounen
+3686,Sidney Lumet
+3687,Andrzej Wajda
+3688,Mark Helfrich
+3689,Sean Penn
+3690,Lauren Montgomery; Bruce Timm; Brandon Vietti
+3691,Greg Richardson
+3692,Julie Taymor
+3693,Gillian Armstrong
+3694,Shekhar Kapur
+3695,Melisa Wallack; Bernie Goldmann
+3696,Aristomenis Tsirbas
+3697,Kazuya Tsurumaki; Masayuki; Hideaki Anno
+3698,Michael Radford
+3699,Paulo Morelli
+3700,Robert Ben Garant
+3701,Nic Balthazar
+3702,Philip G. Atwell
+3703,Frank Oz
+3704,Paddy Breathnach
+3705,Jay Oliva; Dick Sebast; Patrick Archibald
+3706,Shimit Amin
+3707,Fred Savage
+3708,Frederik Du Chau
+3709,Shim Hyung-rae
+3710,Tommy O'Haver
+3711,Michael Davis
+3712,Gregory Wilson
+3713,Seth Green
+3714,Jacob Gentry; David Bruckner; Dan Bush
+3715,Marjane Satrapi; Vincent Paronnaud
+3716,Jonah Markowitz
+3717,Daniel Waters
+3718,Lucía Puenzo
+3719,Chris Buck; Ash Brannon
+3720,Nikita Mikhalkov
+3721,Peter Joseph
+3722,Bruce A. Evans
+3723,Adrienne Shelly
+3724,Katherine Brooks
+3725,Darrell James Roodt
+3726,Curtis Hanson
+3727,Scott Wiper
+3728,Shane Meadows
+3729,Doug Lefler
+3730,Adrian Shergold
+3731,Jonathan King
+3732,Stephen J. Anderson
+3733,Martin Weisz
+3734,Steve Bendelack
+3735,Claude Berri
+3736,Giambattista Avellino; Valentino Picone; Salvatore Ficarra
+3737,Michael O. Sajbel
+3738,Franck Mancuso
+3739,Roland Joffé
+3740,Gregory Nava
+3741,Gérard Krawczyk
+3742,John Dahl
+3743,Robert Shaye
+3744,Mennan Yapo
+3745,Jieho Lee
+3746,Frank Nissen
+3747,Michael Lehmann
+3748,David Von Ancken
+3749,Jarrett Schaefer
+3750,Frank Paur; Jay Oliva; Patrick Archibald
+3751,John August
+3752,Dave Meyers
+3753,Michael Katleman
+3754,Les Mayfield
+3755,Paul Bolger
+3756,Glen Morgan
+3757,Stefen Fangmeier
+3758,Robert De Niro
+3759,Chris Noonan
+3760,Mort Nathan
+3761,Jean-Baptiste Andrea
+3762,Arturo Brachetti; Rinaldo Gaspari
+3763,Sanjay Gadhvi
+3764,Liam Lynch
+3765,J.S. Cardone
+3766,Bob Odenkirk
+3767,Jim Kammerud
+3768,Miloš Forman
+3769,Simón Brand
+3770,Richard Donner
+3771,Shusuke Kaneko
+3772,Michel Ocelot
+3773,David Bowers; Sam Fell
+3774,Michael Arias
+3775,Farhan Akhtar
+3776,Susannah Grant
+3777,John Bonito
+3778,John Shiban
+3779,Greg Coolidge
+3780,Satoshi Kon
+3781,Andrew Davis
+3782,Roger Allers; Jill Culton
+3783,Tony Bill
+3784,Michael Chang; Heather A. Maxwell; Matt Youngberg
+3785,Rachel Grady; Heidi Ewing
+3786,Chuck Sheetz
+3787,Steven Zaillian
+3788,Michael Ian Black
+3789,Andrew Currie
+3790,Corey Yuen Kwai
+3791,Keenen Ivory Wayans
+3792,Scott Glosserman
+3793,György Pálfi
+3794,Martha Coolidge
+3795,Ben Gluck
+3796,Jim Sonzero
+3797,Ryan Fleck
+3798,Will Meugniot; Dick Sebast; Bob Richardson
+3799,Toshiyuki Tsuru
+3800,Christopher Reeve; Colin Brady; Dan St. Pierre
+3801,Steve Oedekerk
+3802,John A. Davis
+3803,Geoffrey Sax
+3804,Hans Horn
+3805,Michelle MacLaren
+3806,Rakesh Roshan
+3807,Bobs Gannaway; Tony Craig
+3808,Vondie Curtis-Hall
+3809,Olivier Van Hoofstadt
+3810,Sylvain Chomet; Tom Tykwer; Gurinder Chadha; Richard LaGravenese; Isabel Coixet; Nobuhiro Suwa; Frédéric Auburtin; Alfonso Cuarón; Gérard Depardieu; Walter Salles; Christopher Doyle; Wes Craven; Daniela Thomas; Vincenzo Natali; Oliver Schmitz; Gus Van Sant; Olivier Assayas; Alexander Payne; Joel Coen; Ethan Coen; Bruno Podalydès
+3811,John Laing
+3812,Alejandro Agresti
+3813,Robert Altman
+3814,Davis Guggenheim
+3815,Gregory Dark
+3816,Kallan Kagan; Eric Fogel
+3817,Nicholas Mastandrea
+3818,Karey Kirkpatrick; Tim Johnson
+3819,Stewart Raffill
+3820,Wolfgang Petersen
+3821,Doug Atchison
+3822,Rich Thorne
+3823,Jessica Bendinger
+3824,Clark Johnson
+3825,Jesper Møller; Stefan Fjeldmark
+3826,David Zucker
+3827,Steve Williams
+3828,Laurent Tuel
+3829,Francis Veber
+3830,Michael Caton-Jones
+3831,Drew Heriot
+3832,Francine McDougall
+3833,James Isaac
+3834,Liz Friedlander
+3835,William Lau; Walter P. Martishius
+3836,Kurt Wimmer
+3837,Curt Geda; Steven E. Gordon; Bob Richardson
+3838,Aaron Seltzer
+3839,Joe Roth
+3840,Frank Marshall
+3841,Patrick Stettner
+3842,Kirby Dick
+3843,Brian Pimental
+3844,Ronny Yu
+3845,Espen Sandberg; Joachim Rønning
+3846,Craig Rosenberg
+3847,Wayne Wang
+3848,James Gartner
+3849,Daniel Filho
+3850,Nicholaus Goossen
+3851,Susan Stroman
+3852,Barry W. Blaustein
+3853,Cory Edwards
+3854,Michel Ocelot; Bénédicte Galup
+3855,Saul Blinkoff; Elliot M. Bour
+3856,Niall Johnson
+3857,Ron Underwood
+3858,Çağan Irmak
+3859,Clement Virgo
+3860,Luis de la Madrid
+3861,Randal Kleiser
+3862,Michael Goguen
+3863,Barbara Kopple
+3864,Ellory Elkayem
+3865,Roberto Benigni
+3866,Rupert Wainwright
+3867,Rob McKittrick
+3868,Bill Paxton
+3869,Danny Cannon
+3870,John Fawcett
+3871,Mark Levin
+3872,Shaun Monson
+3873,Jim Gillespie
+3874,Steve Box; Nick Park
+3875,Jamie Babbit
+3876,Mike Johnson; Tim Burton
+3877,John Gatins
+3878,Rick Bota
+3879,Liev Schreiber
+3880,Bill Kopp
+3881,Hunter Richards
+3882,Bruce Hunt
+3883,Tony Leondis; Michael LaBash
+3884,Koji Shiraishi
+3885,Breno Silveira
+3886,Mike Bigelow
+3887,Hirotsugu Kawasaki
+3888,David J. Burke
+3889,Sheldon Lettich
+3890,Pete Michels
+3891,Seiji Mizushima
+3892,Gary David Goldberg
+3893,Audu Paden
+3894,Tetsuya Nomura
+3895,Mark Andrews; Andrew Jimenez
+3896,Mark Rosman
+3897,Brian Smith
+3898,George Lucas
+3899,Jesse Dylan
+3900,Andrew Lau; Alan Mak Siu-Fai
+3901,Tim Sullivan
+3902,Jeremy Haft
+3903,Andrew Douglas
+3904,Sydney Pollack
+3905,Robert Rodriguez; Frank Miller
+3906,Gary Chapman
+3907,Kevin Rodney Sullivan
+3908,Tim Fywell
+3909,Dave Payne
+3910,John Pasquin
+3911,Duncan Tucker
+3912,Lawrence Guterman
+3913,Tim Maltby
+3914,Stephen Kay
+3915,Clare Kilner
+3916,Luis Mandoki
+3917,John Polson
+3918,Dave McKean
+3919,Patrick Braoudé
+3920,Brad Turner
+3921,Rob Bowman
+3922,Philippe Martinez
+3923,Joel Zwick
+3924,Stephen Hillenburg
+3925,Chazz Palminteri
+3926,Ömer Faruk Sorak
+3927,Beeban Kidron
+3928,Carole Holliday; Theresa Cullen; Matthew O'Callaghan; Peggy Holmes
+3929,Philippe Haïm
+3930,John H. Lee
+3931,Darrell Rooney; Lynne Southerland
+3932,Hans Weingartner
+3933,Omar Naim
+3934,Mark A.Z. Dippé
+3935,Alain Berbérian
+3936,Forest Whitaker
+3937,John Waters
+3938,Bibo Bergeron; Rob Letterman; Vicky Jenson
+3939,Kerry Conran
+3940,Laurence Dunmore
+3941,Alexander Witt
+3942,Parkpoom Wongpoom; Banjong Pisanthanakun
+3943,Shainee Gabel
+3944,E. Elias Merhige
+3945,Tensai Okamura
+3946,Fruit Chan; Takashi Miike; Park Chan-wook
+3947,Hatsuki Tsuji
+3948,Donovan Cook
+3949,Pitof
+3950,Katsuhiro Otomo
+3951,Grant Harvey
+3952,Danny Leiner
+3953,Gérard Pirès
+3954,Peter Chung
+3955,Brian Dannelly
+3956,Joseph Sargent
+3957,Jessy Terrero
+3958,Joe Sichta; Scott Jeralds
+3959,Alex Turner
+3960,Conrad Vernon; Kelly Asbury; Andrew Adamson
+3961,Niels Mueller
+3962,Dennie Gordon
+3963,Nick Hamm
+3964,Phil Weinstein
+3965,Will Finn; John Sanford
+3966,Kevin Bray
+3967,Roland Suso Richter
+3968,Enki Bilal
+3969,Luca Lucini
+3970,Kevin Allen
+3971,Philip Kaufman
+3972,Guy Ferland
+3973,Jeff Schaffer
+3974,Sara Sugarman
+3975,Shigeyasu Yamauchi
+3976,Yann Moix
+3977,François Desagnat; Thomas Sorriaux
+3978,C. Jay Cox
+3979,Chris Stokes
+3980,George Armitage
+3981,Brett Sullivan
+3982,Jessica Sharzer
+3983,Joshua Marston
+3984,Eric Bress; J. Mackye Gruber
+3985,Andy Cadiff
+3986,S.S. Wilson
+3987,Anthony Minghella
+3988,Troy Byer
+3989,Jean-Baptiste Andrea; Fabrice Canepa
+3990,Nikkhil Advani
+3991,Terry Zwigoff
+3992,Ringo Lam Ling-Tung
+3993,Bo Welch
+3994,Bud Luckey
+3995,Eric Till
+3996,Errol Morris
+3997,Chris Kentis
+3998,Michael Tollin
+3999,Aaron Blaise; Robert Walker
+4000,Tim Maltby; Curt Geda; Jennifer Graves
+4001,Bernardo Bertolucci
+4002,Carl Franklin
+4003,Scott Jeralds
+4004,Danny DeVito
+4005,Denys Arcand
+4006,Audrey Wells
+4007,Tim McCanlies
+4008,Mike Figgis
+4009,Ryan Little
+4010,Mark Achbar; Jennifer Abbott
+4011,Guel Arraes
+4012,David Grossman
+4013,Oz Scott
+4014,Gordon Chan
+4015,Dominique Monfery
+4016,Martin Brest
+4017,Jan de Bont
+4018,Stephen Norrington
+4019,Kenta Fukasaku; Kinji Fukasaku
+4020,Tim Johnson; Patrick Gilmore
+4021,Charles Herman-Wurmfeld
+4022,Tommy Wiseau
+4023,Jorge Furtado
+4024,John Eng; Norton Virgien
+4025,Ron Shelton
+4026,Rob Schmidt
+4027,Kazuhisa Takenouchi; Leiji Matsumoto; Hirotoshi Rissen; Daisuke Nishio
+4028,Simon J. Smith
+4029,David Mickey Evans
+4030,Matthew Ryan Hoge
+4031,Yoshiaki Kawajiri; Mahiro Maeda; Shinichiro Watanabe; Takeshi Koike; Peter Chung; Koji Morimoto; Andrew R. Jones
+4032,Jim Fall
+4033,John McTiernan
+4034,Christopher Guest
+4035,Troy Miller
+4036,Brian Yuzna
+4037,Paul Hunter
+4038,Jon Amiel
+4039,Bruno Barreto
+4040,Héctor Babenco
+4041,Lawrence Kasdan
+4042,Merzak Allouache
+4043,Francis Glebas
+4044,Jim Kammerud; Brian Smith
+4045,Victor Cook; Tad Stones; Toby Shelton
+4046,Alan Parker
+4047,Wolfgang Becker
+4048,Steve Trenbirth
+4049,Reggie Rock Bythewood
+4050,Larry Clark; Edward Lachman
+4051,David McNally
+4052,Chris Koch
+4053,Cathy Malkasian; Jeff McGrath
+4054,Massimo Venier; Aldo Baglio; Giacomo Poretti; Giovanni Storti
+4055,Tom Brady
+4056,Stuart Baird
+4057,Alan Mak Siu-Fai; Andrew Lau
+4058,Rob LaDuca; Robert C. Ramirez
+4059,Seth Kearsley
+4060,Marcus Raboy
+4061,Fernando Sariñana
+4062,David Carson
+4063,Rod Daniel
+4064,Yoji Yamada
+4065,Robert Harmon
+4066,Steve Beck
+4067,Peter Kosminsky
+4068,Roger Avary
+4069,Corey Yuen Kwai; Louis Leterrier
+4070,Carlos Carrera
+4071,Kevin Donovan
+4072,Wych Kaosayananda
+4073,Bob Dolman
+4074,Liliana Cavani
+4075,Peter Mullan
+4076,Lukas Moodysson
+4077,William Malone
+4078,Perry Andelin Blake
+4079,Hiroyuki Morita
+4080,Craig McCracken
+4081,Rick Rosenthal
+4082,Tuck Tucker
+4083,Don MacKinnon; Lisa Schaffer; Victor Cook; Steve Loter
+4084,David Jacobson
+4085,Dean DeBlois; Chris Sanders
+4086,Morgan J. Freeman
+4087,Pete Docter; Roger Gould
+4088,Kelly Asbury; Lorna Cook
+4089,Aleksandr Sokurov
+4090,Bob Misiorowski
+4091,Chen Kaige
+4092,Ed Decter
+4093,Chris Weitz; Paul Weitz
+4094,Barbet Schroeder
+4095,Andrzej Sekula
+4096,Bob Gale
+4097,Frédéric Forestier; Alain Berbérian
+4098,Wallace Wolodarsky
+4099,James T. Walker
+4100,Larry Shaw
+4101,Adam Doench; Lyndale V. Pettus; Cess Silvera
+4102,Costa-Gavras
+4103,John Kafka
+4104,Tamra Davis
+4105,Robin Budd
+4106,Michael Rymer
+4107,Barry Skolnick
+4108,Didier Bourdon; Bernard Campan
+4109,Joel Gallen
+4110,Étienne Chatiliez
+4111,Bobs Gannaway; Burny Mattinson; Tony Craig
+4112,Peter Farrelly; Bobby Farrelly
+4113,Harold Becker
+4114,Irwin Winkler
+4115,Penny Marshall
+4116,Stuart Gordon
+4117,Jim Stenstrum
+4118,Shunji Iwai
+4119,Brent Maddock
+4120,Daniel Sackheim
+4121,Erik Skjoldbjærg
+4122,Jez Butterworth
+4123,Blair Hayes
+4124,Henry Bean
+4125,Masamitsu Hidaka
+4126,Jerry Zucker
+4127,J.B. Rogers
+4128,Kwak Jae-yong
+4129,Hironobu Sakaguchi
+4130,Larry Clark
+4131,Gary Trousdale; Kirk Wise
+4132,Sam Weisman
+4133,Rintaro
+4134,Frank Pierson
+4135,Andrew Adamson; Vicky Jenson
+4136,Simon Wincer
+4137,Deborah Kaplan; Harry Elfont
+4138,Julien Seri; Ariel Zeitoun
+4139,Ted Demme
+4140,Gregory Poirier
+4141,Charles Nemes
+4142,David Mirkin
+4143,Demian Lichtenstein
+4144,Darrell Rooney; Jeannine Roussel
+4145,Pat O'Connor
+4146,John Boorman
+4147,Albert Hughes; Allen Hughes
+4148,Jamie Blanks
+4149,Léa Pool
+4150,Patrice Chéreau
+4151,Kinji Fukasaku
+4152,Giovanni Storti; Aldo Baglio; Giacomo Poretti; Massimo Venier
+4153,Curt Geda
+4154,Charles Grosvenor
+4155,Hiroyuki Kitakubo
+4156,Stig Bergqvist; Paul Demeyer
+4157,Antony Hoffman
+4158,Ralph Eggleston
+4159,Allan A. Goldstein
+4160,John Blanchard
+4161,Mamoru Hosoda; Shigeyasu Yamauchi
+4162,Michael Hegner; Stefan Fjeldmark; Greg Manwaring
+4163,John Ottman
+4164,Edward Yang
+4165,Joe Charbanic
+4166,Fabián Bielinsky
+4167,Yoshiaki Kawajiri
+4168,Geoffrey Wright
+4169,Joan Chen
+4170,Tad Stones
+4171,Des McAnuff
+4172,Coralie Trinh Thi; Virginie Despentes
+4173,Peter Lord; Nick Park
+4174,Robert Iscove
+4175,Don Bluth; Gary Goldman
+4176,Eric Leighton; Ralph Zondag
+4177,Craig Shapiro
+4178,Roger Christian
+4179,Aleksey Balabanov
+4180,Matt Williams
+4181,Mary Harron
+4182,Bonnie Hunt
+4183,Priyadarshan
+4184,David Raynr
+4185,Bibo Bergeron; Don Paul
+4186,Silvio Soldini
+4187,Agnès Jaoui
+4188,Douglas McCarthy
+4189,John Frankenheimer
+4190,Jun Falkenstein
+4191,Tinto Brass
+4192,Norio Tsuruta
+4193,Walter Hill; Jack Sholder
+4194,James Algar; Gaëtan Brizzi; Paul Brizzi; Hendel Butoy; Francis Glebas; Eric Goldberg; Don Hahn; Pixote Hunt
+4195,Domenico Saverni
+4196,Takao Okawara
+4197,Charles T. Kanganis
+4198,John Swanbeck
+4199,Alan Metter
+4200,Gary Sinyor
+4201,Bill Speers; Toby Shelton; Bradley Raymond; Jun Falkenstein; Alex Mann
+4202,Bruce McCulloch
+4203,John G. Avildsen
+4204,Norman Jewison
+4205,Peter Kassovitz
+4206,Lasse Spang Olsen
+4207,Rand Ravich
+4208,Kelly Makin
+4209,Jonathan Kaplan
+4210,Adam Rifkin
+4211,Kevin Williamson
+4212,Kinka Usher
+4213,Mic Rodgers
+4214,Michael Patrick Jann
+4215,David Kellogg
+4216,Stanley Kubrick
+4217,Daniel Myrick; Eduardo Sánchez
+4218,Turi Meyer
+4219,Martyn Burke
+4220,Chris Buck; Kevin Lima
+4221,Justin Kerrigan
+4222,Arturo Brachetti
+4223,Rodman Flender
+4224,Josef Rusnak
+4225,Catherine Breillat
+4226,Antonia Bird
+4227,Ulu Grosbard
+4228,Bob Clark
+4229,Jack Sholder
+4230,Bronwen Hughes
+4231,Christopher Roberts
+4232,Nick Willing
+4233,Hugh Wilson
+4234,Vincent Kok Tak-Chiu
+4235,Claude Zidi
+4236,John Bruno
+4237,Enzo D'Alò
+4238,Massimo Venier; Aldo Baglio; Giovanni Storti; Giacomo Poretti
+4239,Steve Hickner; Brenda Chapman; Simon Wells
+4240,Peter MacDonald
+4241,Norton Virgien; Igor Kovalyov
+4242,Duwayne Dunham
+4243,Darrell Rooney
+4244,Luciano Ligabue
+4245,Todd Solondz
+4246,Vincent Ward
+4247,Eric Darnell; Tim Johnson
+4248,John Fortenberry
+4249,Skip Woods
+4250,James Merendino
+4251,Jim Stenstrum; Kazumi Fukushima; Hiroshi Aoyama
+4252,Mark Christopher
+4253,Jeremiah S. Chechik
+4254,Tom Ellery; Bradley Raymond
+4255,David Nutter
+4256,Pat Proft
+4257,Dean Semler
+4258,Mike Hodges
+4259,Tony Bancroft; Barry Cook
+4260,Bob Saget
+4261,Emir Kusturica
+4262,Kevin Hooks
+4263,Kirk Wong Chi-Keung
+4264,John Roberts
+4265,Peter Medak
+4266,John McNaughton
+4267,Jonathan Darby
+4268,Penelope Spheeris
+4269,Marshall Herskovitz
+4270,Cullen Blaine; Dale Case; Bob Kline
+4271,Boyd Kirkland
+4272,Joe Chappelle
+4273,Vincent Gallo
+4274,Jackie Chan; Benny Chan Muk-Sing
+4275,Mikael Salomon
+4276,Aldo Baglio; Massimo Venier; Giacomo Poretti; Giovanni Storti
+4277,Bob Spiers
+4278,Jan Pinkava
+4279,Gary Goldman; Don Bluth
+4280,Andrew Knight
+4281,Bernard Campan; Didier Bourdon
+4282,Robert Kurtzman
+4283,Peter O'Fallon
+4284,Stan Winston
+4285,Brian Gilbert
+4286,Marco Brambilla
+4287,Kenneth Johnson
+4288,Sam Pillsbury
+4289,Karl Geurs
+4290,Majid Majidi
+4291,Glenn Gordon Caron
+4292,Hideaki Anno; Kazuya Tsurumaki
+4293,Michael Cohn
+4294,Mel Smith
+4295,Richard Rich
+4296,Anthony Waller
+4297,Luis Llosa
+4298,Shuki Levy; David Winning
+4299,Osamu Kasai
+4300,Dean Cundey
+4301,Hideaki Anno; Masayuki; Kazuya Tsurumaki; Ken Ando; Naoyasu Habu; Hiroyuki Ishido; Tsuyoshi Kaga; Shoichi Masuo; Seiji Mizushima; Tensai Okamura; Akira Takamura; Tetsuya Watanabe; Minoru Ohara; Masahiko Otsuka; Keiichi Sugiyama
+4302,Alan J. Pakula
+4303,Thomas Jahn
+4304,Stephen Kessler
+4305,Sammo Hung Kam-Bo
+4306,Robert Young; Fred Schepisi
+4307,Robert Butler
+4308,Jerry Zaks
+4309,Yavuz Turgul
+4310,Barbra Streisand
+4311,Joe Pytka
+4312,Roy Allen Smith
+4313,Tom Holland
+4314,Rob Lieberman
+4315,John Gray
+4316,Coline Serreau
+4317,Carroll Ballard
+4318,Ernest R. Dickerson
+4319,Billy Bob Thornton
+4320,Tim Pope
+4321,Edward Burns
+4322,Matthew Bright
+4323,John Frankenheimer; Richard Stanley
+4324,Gilbert Adler
+4325,Hiroshi Watanabe
+4326,John Payson
+4327,Paul Michael Glaser
+4328,Andrew Bergman
+4329,John Sayles
+4330,Hettie Macdonald
+4331,Kirk Wise; Gary Trousdale
+4332,Rick Friedberg
+4333,Alan Shapiro
+4334,David Hogan
+4335,Robert Mandel
+4336,Jean-Claude Van Damme
+4337,Tibor Takács
+4338,Larry Leker; Paul Sabella
+4339,Alan Smithee; Kevin Yagher
+4340,David S. Ward
+4341,Brian Gibson
+4342,John Schlesinger
+4343,Paris Barclay
+4344,Jason Bloom
+4345,Tim Robbins
+4346,Katsuhiro Otomo; Koji Morimoto; Tensai Okamura
+4347,Mel Brooks
+4348,Allison Anders; Alexandre Rockwell; Robert Rodriguez; Quentin Tarantino
+4349,John Badham
+4350,Andrew Sipes
+4351,Mario Bava
+4352,Lesli Linka Glatter
+4353,Abel Ferrara
+4354,Kim Henkel
+4355,Allan Moyle
+4356,Claude Chabrol
+4357,Clive Barker
+4358,John N. Smith
+4359,Gregory Widen
+4360,Brett Leonard
+4361,Tom DiCillo
+4362,Mitsuo Hashimoto
+4363,Yoshifumi Kondo
+4364,Geoff Murphy
+4365,Bradford May
+4366,Bryan Spicer
+4367,Brian Trenchard-Smith
+4368,Mike Gabriel; Eric Goldberg
+4369,Alfonso Arau
+4370,Robert Longo
+4371,Jean-Pierre Jeunet; Marc Caro
+4372,Christopher Monger
+4373,Scott Kalvert
+4374,Peter Horton
+4375,Nick Castle
+4376,Chris Gerolmo
+4377,Arne Glimcher
+4378,Jeffrey Lau
+4379,Marc Rocco
+4380,Josiane Balasko

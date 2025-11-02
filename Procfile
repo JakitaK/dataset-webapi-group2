@@ -1,1 +1,1 @@
-web: node src/server.js
+web: cd movies-api && node src/server.js

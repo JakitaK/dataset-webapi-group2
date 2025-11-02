@@ -7,3 +7,14 @@ coverage/
 .DS_Store
 .vscode/
 .idea/
+
+# API-specific environments
+movies-api/.env
+credentials-api/.env
+
+# API-specific node_modules
+movies-api/node_modules/
+credentials-api/node_modules/
+
+# Old files (backup)
+README_old.md

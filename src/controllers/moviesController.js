@@ -530,14 +530,14 @@ const getMoviesByMPARating = async (req, res) => {
     const moviesSql = `
       SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
              overview, genres, director_name, budget, studios, poster_url, backdrop_url,
-             collection, original_title, actors
+             collection, original_title, actors, mpa_rating
       FROM movie
-      WHERE UPPER(rating) = $1
+      WHERE UPPER(mpa_rating) = $1
       ORDER BY box_office DESC NULLS LAST, title ASC
       LIMIT $2 OFFSET $3
     `;
 
-    const countSql = `SELECT COUNT(*) FROM movie WHERE UPPER(rating) = $1`;
+    const countSql = `SELECT COUNT(*) FROM movie WHERE UPPER(mpa_rating) = $1`;
 
     const [moviesResult, countResult] = await Promise.all([
       pool.query(moviesSql, [rating, limit, offset]),

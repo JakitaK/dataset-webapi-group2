@@ -68,7 +68,7 @@ const options = {
             },
             account_role: {
               type: 'integer',
-              description: 'User role (1=User, 2=Admin, 3=Super Admin)',
+              description: 'User role: 1=User, 2=Moderator, 3=Admin, 4=SuperAdmin, 5=Owner',
               example: 1
             },
             email_verified: {

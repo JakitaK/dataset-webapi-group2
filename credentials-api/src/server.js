@@ -35,8 +35,10 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs, {
 }));
 
 // Routes
+const adminRoutes = require('./routes/admin');
 app.use('/', openRoutes);      // Public routes (no auth required)
 app.use('/', closedRoutes);    // Protected routes (JWT required)
+app.use('/', adminRoutes);     // Admin routes (admin role required)
 
 // 404 handler
 app.use((req, res) => {

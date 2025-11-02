@@ -50,6 +50,56 @@ router.get('/auth/me', AuthController.getCurrentUser);
 
 /**
  * @swagger
+ * /auth/me:
+ *   delete:
+ *     summary: Delete account
+ *     description: Permanently delete the authenticated user's account and all associated data
+ *     tags: [User]
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Account deleted successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: Account deleted successfully
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     message:
+ *                       type: string
+ *                       example: Account deleted successfully
+ *                     email:
+ *                       type: string
+ *                       example: user@example.com
+ *                     username:
+ *                       type: string
+ *                       example: johndoe
+ *       401:
+ *         description: Unauthorized - Invalid or missing token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       404:
+ *         description: Account not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ */
+router.delete('/auth/me', AuthController.deleteAccount);
+
+/**
+ * @swagger
  * /auth/user/password/change:
  *   post:
  *     summary: Change password

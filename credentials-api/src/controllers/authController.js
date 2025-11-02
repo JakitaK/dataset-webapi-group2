@@ -391,6 +391,60 @@ class AuthController {
             sendError(res, 500, 'Failed to retrieve user information');
         }
     }
+
+    /**
+     * Delete current user account
+     * DELETE /auth/me
+     */
+    static async deleteAccount(req, res) {
+        const accountId = req.account.account_id;
+        
+        const client = await pool.connect();
+        try {
+            await client.query('BEGIN');
+            
+            // Delete from Account_Credential first (foreign key constraint)
+            await client.query(
+                'DELETE FROM Account_Credential WHERE Account_ID = $1',
+                [accountId]
+            );
+            
+            // Delete verification records
+            await client.query(
+                'DELETE FROM Email_Verification WHERE Account_ID = $1',
+                [accountId]
+            );
+            await client.query(
+                'DELETE FROM Phone_Verification WHERE Account_ID = $1',
+                [accountId]
+            );
+            
+            // Finally delete the account
+            const result = await client.query(
+                'DELETE FROM Account WHERE Account_ID = $1 RETURNING Email, Username',
+                [accountId]
+            );
+            
+            await client.query('COMMIT');
+            
+            if (result.rows.length === 0) {
+                return sendError(res, 404, 'Account not found');
+            }
+            
+            sendSuccess(res, {
+                message: 'Account deleted successfully',
+                email: result.rows[0].email,
+                username: result.rows[0].username
+            });
+            
+        } catch (error) {
+            await client.query('ROLLBACK');
+            console.error('Delete account error:', error);
+            sendError(res, 500, 'Failed to delete account');
+        } finally {
+            client.release();
+        }
+    }
 }
 
 module.exports = AuthController;

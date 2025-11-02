@@ -5,20 +5,20 @@ const nodemailer = require('nodemailer');
 
 /**
  * Create nodemailer transporter
- * Uses Gmail with App Password (2FA bypass)
+ * Uses Gmail with App Password (requires 2FA enabled on Gmail account)
  * Set these environment variables:
  * - EMAIL_USER: Your Gmail address (e.g., yourgroup@gmail.com)
- * - EMAIL_PASSWORD: Your Gmail App Password (NOT your regular password)
+ * - EMAIL_APP_PASSWORD: Your Gmail App Password (NOT your regular password)
  * 
  * To create an App Password:
  * 1. Go to Google Account settings
- * 2. Security > 2-Step Verification (enable if not enabled)
+ * 2. Security > 2-Step Verification (ENABLE 2FA if not already enabled)
  * 3. App passwords > Select app: Mail, Select device: Other (Custom name)
- * 4. Copy the 16-character password and use it as EMAIL_PASSWORD
+ * 4. Copy the 16-character password and use it as EMAIL_APP_PASSWORD
  */
 function createTransporter() {
     const emailUser = process.env.EMAIL_USER;
-    const emailPassword = process.env.EMAIL_PASSWORD;
+    const emailPassword = process.env.EMAIL_APP_PASSWORD || process.env.EMAIL_PASSWORD;
     
     // If credentials not configured, return null (will use dev mode)
     if (!emailUser || !emailPassword) {

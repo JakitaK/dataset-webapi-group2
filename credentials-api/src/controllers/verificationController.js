@@ -72,22 +72,19 @@ class VerificationController {
             const baseUrl = process.env.APP_BASE_URL || `http://localhost:${process.env.PORT || 3001}`;
             const verificationUrl = `${baseUrl}/auth/verify/email/confirm?token=${verificationToken}`;
             
-            // Send email
+            // Send email (in dev mode, it just logs to console)
             const emailSent = await sendVerificationEmail(email, firstname, verificationUrl);
             
-            if (!emailSent && process.env.NODE_ENV === 'production') {
+            if (!emailSent) {
                 return sendError(res, 500, 'Failed to send verification email');
             }
             
-            // Build response data
+            // Build response data - always include URL for testing
             const responseData = {
-                expiresIn: '48 hours'
+                expiresIn: '48 hours',
+                verificationUrl: verificationUrl,
+                message: 'In dev mode, check Heroku logs for the verification link'
             };
-            
-            // In development, include the verification URL
-            if (process.env.NODE_ENV !== 'production') {
-                responseData.verificationUrl = verificationUrl;
-            }
             
             sendSuccess(res, responseData, 'Verification email sent successfully');
             

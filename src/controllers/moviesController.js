@@ -22,24 +22,74 @@ const getAllMovies = async (req, res) => {
   try {
     const limit = parseInt(req.query.limit) || 10;
     const offset = parseInt(req.query.offset) || 0;
+    
+    // Extract filter parameters
+    const { mpaRating, yearMin, yearMax, genre, director, actor } = req.query;
+    
+    // Build WHERE clause dynamically
+    const conditions = [];
+    const params = [];
+    let paramCounter = 1;
+    
+    if (mpaRating) {
+      conditions.push(`UPPER(mpa_rating) = UPPER($${paramCounter})`);
+      params.push(mpaRating);
+      paramCounter++;
+    }
+    
+    if (yearMin) {
+      conditions.push(`release_year >= $${paramCounter}`);
+      params.push(parseInt(yearMin));
+      paramCounter++;
+    }
+    
+    if (yearMax) {
+      conditions.push(`release_year <= $${paramCounter}`);
+      params.push(parseInt(yearMax));
+      paramCounter++;
+    }
+    
+    if (genre) {
+      conditions.push(`LOWER(genres) LIKE LOWER($${paramCounter})`);
+      params.push(`%${genre}%`);
+      paramCounter++;
+    }
+    
+    if (director) {
+      conditions.push(`LOWER(director_name) LIKE LOWER($${paramCounter})`);
+      params.push(`%${director}%`);
+      paramCounter++;
+    }
+    
+    if (actor) {
+      conditions.push(`LOWER(actors) LIKE LOWER($${paramCounter})`);
+      params.push(`%${actor}%`);
+      paramCounter++;
+    }
+    
+    const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
 
     // Query for paginated movies with all enhanced fields
     const moviesSql = `
       SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
              overview, genres, director_name, budget, studios, poster_url, backdrop_url, 
-             collection, original_title, actors
+             collection, original_title, actors, mpa_rating
       FROM movie
+      ${whereClause}
       ORDER BY title ASC
-      LIMIT $1 OFFSET $2
+      LIMIT $${paramCounter} OFFSET $${paramCounter + 1}
     `;
+    
+    params.push(limit, offset);
 
     // Query for total count
-    const countSql = 'SELECT COUNT(*) FROM movie';
+    const countSql = `SELECT COUNT(*) FROM movie ${whereClause}`;
+    const countParams = params.slice(0, -2); // Remove limit and offset for count query
 
     // Execute both queries in parallel
     const [moviesResult, countResult] = await Promise.all([
-      pool.query(moviesSql, [limit, offset]),
-      pool.query(countSql)
+      pool.query(moviesSql, params),
+      pool.query(countSql, countParams)
     ]);
 
     const totalCount = parseInt(countResult.rows[0].count);

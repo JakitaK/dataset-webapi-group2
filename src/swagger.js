@@ -238,6 +238,40 @@ const options = {
               }
             }
           }
+        },
+        SuccessResponse: {
+          type: 'object',
+          properties: {
+            success: {
+              type: 'boolean',
+              example: true
+            },
+            message: {
+              type: 'string',
+              example: 'Operation completed successfully'
+            },
+            data: {
+              type: 'object',
+              description: 'Response data (structure varies by endpoint)'
+            }
+          }
+        },
+        ErrorResponse: {
+          type: 'object',
+          properties: {
+            success: {
+              type: 'boolean',
+              example: false
+            },
+            error: {
+              type: 'string',
+              example: 'Bad Request'
+            },
+            details: {
+              type: 'string',
+              example: 'Invalid input provided'
+            }
+          }
         }
       }
     }

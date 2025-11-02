@@ -42,8 +42,10 @@ app.get('/', (_req, res) => res.redirect('/api-docs'));
 // Mount API routes
 const movieByYearRouter = require('./routes/moviebyyear');
 const movieRoutes = require('./routes/movies');
+const directorRoutes = require('./routes/directors');
 app.use('/api/v1', movieByYearRouter);
 app.use('/api/v1', movieRoutes);
+app.use('/api/v1', directorRoutes);
 
 // allow Render/Heroku to set PORT, default to 3000 for local dev
 const PORT = process.env.PORT || 3000;

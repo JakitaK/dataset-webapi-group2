@@ -1,7 +1,7 @@
 // credentials-api/src/utilities/index.js
 // Central export for all utilities
 
-const { sendSuccess, sendError } = require('../../../shared/responseUtils');
+const { sendSuccess, sendError } = require('./responseUtils');
 const passwordUtils = require('./passwordUtils');
 const tokenUtils = require('./tokenUtils');
 const emailService = require('./emailService');

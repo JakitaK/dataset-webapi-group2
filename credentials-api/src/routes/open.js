@@ -162,6 +162,30 @@ router.post('/auth/password/reset-request', validatePasswordResetRequest, AuthCo
 /**
  * @swagger
  * /auth/password/reset:
+ *   get:
+ *     summary: Password reset form page
+ *     description: Displays HTML form for resetting password (accepts token from email link)
+ *     tags: [Authentication]
+ *     parameters:
+ *       - in: query
+ *         name: token
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Password reset token from email
+ *     responses:
+ *       200:
+ *         description: HTML password reset form
+ *         content:
+ *           text/html:
+ *             schema:
+ *               type: string
+ */
+router.get('/auth/password/reset', AuthController.showPasswordResetForm);
+
+/**
+ * @swagger
+ * /auth/password/reset:
  *   post:
  *     summary: Reset password with token
  *     description: Reset password using token from email

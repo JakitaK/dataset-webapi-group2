@@ -296,6 +296,233 @@ class AuthController {
     }
     
     /**
+     * Show password reset form (GET)
+     * GET /auth/password/reset?token=xyz
+     * Public route - displays HTML form
+     */
+    static async showPasswordResetForm(req, res) {
+        const { token } = req.query;
+        
+        if (!token) {
+            return res.status(400).send(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Password Reset - Error</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
+                        .error { color: #d32f2f; background: #ffebee; padding: 15px; border-radius: 4px; }
+                    </style>
+                </head>
+                <body>
+                    <h1>Password Reset</h1>
+                    <div class="error">
+                        <strong>Error:</strong> No reset token provided. Please use the link from your email.
+                    </div>
+                </body>
+                </html>
+            `);
+        }
+        
+        // Return HTML form with token embedded
+        res.send(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Reset Your Password</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <style>
+                    body {
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        min-height: 100vh;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 0;
+                        padding: 20px;
+                    }
+                    .container {
+                        background: white;
+                        padding: 40px;
+                        border-radius: 10px;
+                        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                        max-width: 400px;
+                        width: 100%;
+                    }
+                    h1 {
+                        color: #333;
+                        margin-top: 0;
+                        font-size: 24px;
+                    }
+                    .form-group {
+                        margin-bottom: 20px;
+                    }
+                    label {
+                        display: block;
+                        margin-bottom: 5px;
+                        color: #555;
+                        font-weight: 500;
+                    }
+                    input[type="password"] {
+                        width: 100%;
+                        padding: 12px;
+                        border: 2px solid #ddd;
+                        border-radius: 4px;
+                        font-size: 14px;
+                        box-sizing: border-box;
+                        transition: border-color 0.3s;
+                    }
+                    input[type="password"]:focus {
+                        outline: none;
+                        border-color: #667eea;
+                    }
+                    button {
+                        width: 100%;
+                        padding: 12px;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        border: none;
+                        border-radius: 4px;
+                        font-size: 16px;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: opacity 0.3s;
+                    }
+                    button:hover {
+                        opacity: 0.9;
+                    }
+                    button:disabled {
+                        opacity: 0.6;
+                        cursor: not-allowed;
+                    }
+                    .message {
+                        padding: 12px;
+                        border-radius: 4px;
+                        margin-bottom: 20px;
+                        display: none;
+                    }
+                    .success {
+                        background: #d4edda;
+                        color: #155724;
+                        border: 1px solid #c3e6cb;
+                    }
+                    .error {
+                        background: #f8d7da;
+                        color: #721c24;
+                        border: 1px solid #f5c6cb;
+                    }
+                    .requirements {
+                        font-size: 12px;
+                        color: #666;
+                        margin-top: 5px;
+                        line-height: 1.4;
+                    }
+                    .spinner {
+                        display: none;
+                        border: 3px solid #f3f3f3;
+                        border-top: 3px solid #667eea;
+                        border-radius: 50%;
+                        width: 20px;
+                        height: 20px;
+                        animation: spin 1s linear infinite;
+                        margin: 0 auto;
+                    }
+                    @keyframes spin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <h1>🔑 Reset Your Password</h1>
+                    <div id="message" class="message"></div>
+                    
+                    <form id="resetForm">
+                        <div class="form-group">
+                            <label for="password">New Password</label>
+                            <input type="password" id="password" name="password" required minlength="8">
+                            <div class="requirements">
+                                Must be at least 8 characters with uppercase, lowercase, number, and special character
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm New Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+                        
+                        <div id="spinner" class="spinner"></div>
+                        <button type="submit" id="submitBtn">Reset Password</button>
+                    </form>
+                </div>
+                
+                <script>
+                    const form = document.getElementById('resetForm');
+                    const message = document.getElementById('message');
+                    const submitBtn = document.getElementById('submitBtn');
+                    const spinner = document.getElementById('spinner');
+                    const token = '${token}';
+                    
+                    function showMessage(text, type) {
+                        message.textContent = text;
+                        message.className = 'message ' + type;
+                        message.style.display = 'block';
+                    }
+                    
+                    form.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        
+                        const password = document.getElementById('password').value;
+                        const confirmPassword = document.getElementById('confirmPassword').value;
+                        
+                        // Validate passwords match
+                        if (password !== confirmPassword) {
+                            showMessage('Passwords do not match', 'error');
+                            return;
+                        }
+                        
+                        // Disable form
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'Resetting...';
+                        spinner.style.display = 'block';
+                        message.style.display = 'none';
+                        
+                        try {
+                            const response = await fetch('/auth/password/reset', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ token, password })
+                            });
+                            
+                            const data = await response.json();
+                            
+                            if (response.ok) {
+                                showMessage('✅ Password reset successful! You can now log in with your new password.', 'success');
+                                form.style.display = 'none';
+                            } else {
+                                showMessage(data.message || 'Failed to reset password. The link may have expired.', 'error');
+                                submitBtn.disabled = false;
+                                submitBtn.textContent = 'Reset Password';
+                            }
+                        } catch (error) {
+                            showMessage('Network error. Please try again.', 'error');
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Reset Password';
+                        } finally {
+                            spinner.style.display = 'none';
+                        }
+                    });
+                </script>
+            </body>
+            </html>
+        `);
+    }
+    
+    /**
      * Reset password with token
      * POST /auth/password/reset
      * Public route

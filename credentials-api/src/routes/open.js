@@ -156,6 +156,7 @@ router.post('/auth/login', validateLogin, AuthController.login);
  *             email: "johndoe@example.com"
  *             username: "johndoe"
  *             password: "SecurePassword123!"
+ *             phone: "2065551234"
  *     responses:
  *       201:
  *         description: Registration successful

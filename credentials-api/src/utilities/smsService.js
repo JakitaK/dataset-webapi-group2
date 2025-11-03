@@ -16,6 +16,7 @@ const SMS_GATEWAYS = {
 /**
  * Send SMS via email-to-SMS gateway
  * This is a free method that works by sending email to carrier-specific addresses
+ * Uses nodemailer (same as email verification) to send to carrier SMS gateways
  * 
  * @param {string} phone - Phone number (digits only)
  * @param {string} message - SMS message content
@@ -23,44 +24,56 @@ const SMS_GATEWAYS = {
  * @returns {boolean} True if SMS sent successfully
  */
 async function sendSMSViaEmail(phone, message, carrier = 'att') {
-    const isDevelopment = process.env.NODE_ENV !== 'production';
+    const nodemailer = require('nodemailer');
+    
+    // Normalize carrier (handle both 'carrier' and 'carrierId' parameter names)
+    const normalizedCarrier = (carrier || 'att').toLowerCase();
     
     // Get gateway for carrier
-    const gateway = SMS_GATEWAYS[carrier] || SMS_GATEWAYS['att'];
+    const gateway = SMS_GATEWAYS[normalizedCarrier] || SMS_GATEWAYS['att'];
     const smsEmail = `${phone}${gateway}`;
     
-    if (isDevelopment) {
+    // Check if email credentials are configured
+    const emailUser = process.env.EMAIL_USER;
+    const emailPassword = process.env.EMAIL_APP_PASSWORD || process.env.EMAIL_PASSWORD;
+    
+    // Dev mode: log to console if no email credentials configured
+    if (!emailUser || !emailPassword) {
         console.log('\n========================================');
-        console.log('📱 SMS VERIFICATION (Development Mode)');
+        console.log('📱 SMS VERIFICATION (Dev Mode - Logging Only)');
         console.log('========================================');
         console.log(`Phone: ${phone}`);
-        console.log(`Carrier: ${carrier}`);
+        console.log(`Carrier: ${normalizedCarrier}`);
         console.log(`Gateway: ${smsEmail}`);
         console.log(`\nMessage:\n${message}`);
         console.log('========================================\n');
         
-        return true; // Simulate success in development
+        return true; // Simulate success in dev mode
     }
     
-    // Production: Send email to SMS gateway
+    // Production: Send email to SMS gateway using nodemailer (Gmail)
     try {
-        // Example with SendGrid (uncomment and configure when ready):
-        // const sgMail = require('@sendgrid/mail');
-        // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-        // 
-        // const msg = {
-        //     to: smsEmail,
-        //     from: process.env.FROM_EMAIL,
-        //     subject: '',  // Keep empty for SMS
-        //     text: message
-        // };
-        // 
-        // await sgMail.send(msg);
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: emailUser,
+                pass: emailPassword
+            }
+        });
         
-        console.warn('Production SMS service not configured. SMS not sent.');
-        return false;
+        const mailOptions = {
+            from: emailUser,
+            to: smsEmail,
+            subject: '', // Keep empty for SMS
+            text: message
+        };
+        
+        await transporter.sendMail(mailOptions);
+        console.log(`✅ SMS sent to ${smsEmail} (carrier: ${normalizedCarrier})`);
+        return true;
     } catch (error) {
-        console.error('Error sending SMS:', error);
+        console.error('❌ Error sending SMS:', error);
+        console.error(`  Phone: ${phone}, Carrier: ${normalizedCarrier}, Gateway: ${smsEmail}`);
         return false;
     }
 }

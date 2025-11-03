@@ -85,7 +85,7 @@ const options = {
         },
         RegisterRequest: {
           type: 'object',
-          required: ['firstname', 'lastname', 'email', 'username', 'password'],
+          required: ['firstname', 'lastname', 'email', 'username', 'password', 'phone'],
           properties: {
             firstname: {
               type: 'string',
@@ -115,9 +115,9 @@ const options = {
             },
             phone: {
               type: 'string',
-              pattern: '^[0-9]{10}$',
-              description: 'Optional 10-digit phone number',
-              example: '1234567890'
+              minLength: 10,
+              description: 'Phone number (at least 10 digits)',
+              example: '2065551234'
             }
           }
         },

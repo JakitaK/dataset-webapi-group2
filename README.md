@@ -29,6 +29,8 @@ Replace `<youruser>` and `<yourdb>` with your Postgres username and database nam
 
 > 🔐 **Note:** To test any protected routes in the [Swagger UI](https://movie-api-group2-20e70498bde4.herokuapp.com/api-docs), click the green **“Authorize”** button at the top, enter your provided API key in the `x-api-key` field (in Postman Testing), and then click **Authorize → Close** before sending requests.
 
+## URL link to the Heroku-hosted Credentials web API
+- ** https://credentials-api-group2-20f368b8528b.herokuapp.com/api-docs/
 
 ## Alpha Sprint Contribution
 - **Primitivo Bambao** — Created the ER diagram and led the planning of the API’s proposed functionality.  

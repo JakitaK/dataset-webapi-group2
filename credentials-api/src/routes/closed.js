@@ -39,12 +39,29 @@ router.use(checkToken);
  *                   example: true
  *                 user:
  *                   $ref: '#/components/schemas/User'
+ *             example:
+ *               success: true
+ *               user:
+ *                 id: 1
+ *                 email: "user@example.com"
+ *                 username: "johndoe"
+ *                 firstname: "John"
+ *                 lastname: "Doe"
+ *                 role: 1
+ *                 email_verified: true
+ *                 phone_verified: false
+ *                 phone: null
+ *                 created_at: "2024-01-15T10:30:00.000Z"
  *       401:
  *         description: Unauthorized - Invalid or missing token
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Unauthorized"
+ *               details: "Invalid or missing JWT token"
  */
 router.get('/auth/me', AuthController.getCurrentUser);
 
@@ -113,6 +130,9 @@ router.delete('/auth/me', AuthController.deleteAccount);
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/PasswordChange'
+ *           example:
+ *             currentPassword: "OldPassword123!"
+ *             newPassword: "NewSecurePassword123!"
  *     responses:
  *       200:
  *         description: Password changed successfully
@@ -120,18 +140,29 @@ router.delete('/auth/me', AuthController.deleteAccount);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/SuccessResponse'
+ *             example:
+ *               success: true
+ *               message: "Password changed successfully"
  *       400:
  *         description: Invalid current password or validation failed
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Bad Request"
+ *               details: "Current password is incorrect"
  *       401:
  *         description: Unauthorized - Invalid or missing token
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Unauthorized"
+ *               details: "Invalid or missing JWT token"
  */
 router.post('/auth/user/password/change', validatePasswordChange, AuthController.changePassword);
 
@@ -152,6 +183,9 @@ router.post('/auth/user/password/change', validatePasswordChange, AuthController
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/PhoneVerifySend'
+ *           example:
+ *             phone: "5551234567"
+ *             carrier: "verizon"
  *     responses:
  *       200:
  *         description: SMS sent successfully
@@ -159,18 +193,29 @@ router.post('/auth/user/password/change', validatePasswordChange, AuthController
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/SuccessResponse'
+ *             example:
+ *               success: true
+ *               message: "Verification code sent via SMS"
  *       400:
  *         description: Invalid phone or carrier
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Bad Request"
+ *               details: "Invalid phone number format"
  *       401:
  *         description: Unauthorized - Invalid or missing token
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Unauthorized"
+ *               details: "Invalid or missing JWT token"
  */
 router.post('/auth/verify/phone/send', validatePhoneSend, VerificationController.sendSMSVerification);
 
@@ -189,6 +234,8 @@ router.post('/auth/verify/phone/send', validatePhoneSend, VerificationController
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/PhoneVerifyCode'
+ *           example:
+ *             code: "123456"
  *     responses:
  *       200:
  *         description: Phone verified successfully
@@ -196,18 +243,29 @@ router.post('/auth/verify/phone/send', validatePhoneSend, VerificationController
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/SuccessResponse'
+ *             example:
+ *               success: true
+ *               message: "Phone verified successfully"
  *       400:
  *         description: Invalid or expired code
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Bad Request"
+ *               details: "Invalid or expired verification code"
  *       401:
  *         description: Unauthorized - Invalid or missing token
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Unauthorized"
+ *               details: "Invalid or missing JWT token"
  */
 router.post('/auth/verify/phone/verify', validatePhoneVerify, VerificationController.verifySMSCode);
 
@@ -227,18 +285,29 @@ router.post('/auth/verify/phone/verify', validatePhoneVerify, VerificationContro
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/SuccessResponse'
+ *             example:
+ *               success: true
+ *               message: "Verification email sent"
  *       400:
  *         description: Email already verified
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Bad Request"
+ *               details: "Email is already verified"
  *       401:
  *         description: Unauthorized - Invalid or missing token
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Unauthorized"
+ *               details: "Invalid or missing JWT token"
  */
 router.post('/auth/verify/email/send', VerificationController.sendEmailVerification);
 

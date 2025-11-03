@@ -29,6 +29,8 @@ Replace `<youruser>` and `<yourdb>` with your Postgres username and database nam
 
 > 🔐 **Note:** To test any protected routes in the [Swagger UI](https://movie-api-group2-20e70498bde4.herokuapp.com/api-docs), click the green **“Authorize”** button at the top, enter your provided API key in the `x-api-key` field (in Postman Testing), and then click **Authorize → Close** before sending requests.
 
+## URL link to the Heroku-hosted Credentials web API
+- ** https://credentials-api-group2-20f368b8528b.herokuapp.com/api-docs/
 
 ## Alpha Sprint Contribution
 - **Primitivo Bambao** — Created the ER diagram and led the planning of the API’s proposed functionality.  
@@ -54,10 +56,10 @@ Replace `<youruser>` and `<yourdb>` with your Postgres username and database nam
 - **George Njane** — Migrated the project from Render to Heroku and configured environment variables for API hosting.
 
 ## Published Web API Production Version — Sprint Contribution
-- **Primitivo Bambao** — Implemented the **PUT**, **DELETE**, and **POST** routes for movies and directors, added **admin routes** (in progress), and connected the current Web API repository to the **new Credentials API** for authentication integration.  
+- **Primitivo Bambao** — Implemented the **PUT**, **DELETE**, and **POST** routes for movies and directors, added **admin routes** in credentials, and connected the current Web API repository to the **new Credentials API** for authentication integration.  
 - **Jakita Kaur** — Completed all **unit testing** in Postman for both the **Web API** and **Credentials API**, tested every route thoroughly to ensure correct responses and error handling, and verified full endpoint functionality.  
 - **Evan Tran** — Created and refined **documentation** for both the Web API and Credentials API, ensuring accuracy, clarity, and alignment with the final deployed routes.  
-- **George Njane** — Set up the **Credentials repository**, deployed it to **Heroku**, and configured all environment variables and credentials for production hosting.  
+- **George Njane** — Set up the **Credentials repository**, deployed it to **Heroku**.
 
 ## Meetings
 ### **10/15, 10:00–10:52 PM (Discord call, all members):**  

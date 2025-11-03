@@ -28,6 +28,26 @@ const router = express.Router();
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/SuccessResponse'
+ *             example:
+ *               success: true
+ *               message: "Credentials API"
+ *               version: "1.0.0"
+ *               endpoints:
+ *                 public:
+ *                   - "POST /auth/register"
+ *                   - "POST /auth/login"
+ *                   - "POST /auth/password/reset/request"
+ *                   - "POST /auth/password/reset"
+ *                   - "GET /auth/verify/email/:token"
+ *                   - "GET /auth/carriers"
+ *                   - "GET /health"
+ *                 protected:
+ *                   - "GET /auth/me (requires JWT)"
+ *                   - "POST /auth/password/change (requires JWT)"
+ *                   - "POST /auth/verify/email/send (requires JWT)"
+ *                   - "POST /auth/verify/phone/send (requires JWT)"
+ *                   - "POST /auth/verify/phone/verify (requires JWT)"
+ *               documentation: "https://github.com/JakitaK/dataset-webapi-group2"
  */
 router.get('/', (req, res) => {
     res.json({
@@ -71,6 +91,9 @@ router.get('/', (req, res) => {
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/LoginRequest'
+ *           example:
+ *             email: "user@example.com"
+ *             password: "SecurePassword123!"
  *     responses:
  *       200:
  *         description: Login successful
@@ -78,18 +101,39 @@ router.get('/', (req, res) => {
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/AuthResponse'
+ *             example:
+ *               success: true
+ *               message: "Login successful"
+ *               token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGUiOjEsImlhdCI6MTcwOTMyMTYwMCwiZXhwIjoxNzA5NDA4MDAwfQ.dGVzdFRva2VuU2lnbmF0dXJl"
+ *               user:
+ *                 id: 1
+ *                 email: "user@example.com"
+ *                 username: "johndoe"
+ *                 firstname: "John"
+ *                 lastname: "Doe"
+ *                 role: 1
+ *                 email_verified: true
+ *                 phone_verified: false
  *       400:
  *         description: Invalid email or password
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Bad Request"
+ *               details: "Invalid email format"
  *       401:
  *         description: Authentication failed
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Unauthorized"
+ *               details: "Invalid email or password"
  */
 router.post('/auth/login', validateLogin, AuthController.login);
 
@@ -106,6 +150,12 @@ router.post('/auth/login', validateLogin, AuthController.login);
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/RegisterRequest'
+ *           example:
+ *             firstname: "John"
+ *             lastname: "Doe"
+ *             email: "johndoe@example.com"
+ *             username: "johndoe"
+ *             password: "SecurePassword123!"
  *     responses:
  *       201:
  *         description: Registration successful
@@ -113,18 +163,39 @@ router.post('/auth/login', validateLogin, AuthController.login);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/AuthResponse'
+ *             example:
+ *               success: true
+ *               message: "Registration successful"
+ *               token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGUiOjEsImlhdCI6MTcwOTMyMTYwMCwiZXhwIjoxNzA5NDA4MDAwfQ.dGVzdFRva2VuU2lnbmF0dXJl"
+ *               user:
+ *                 id: 2
+ *                 email: "johndoe@example.com"
+ *                 username: "johndoe"
+ *                 firstname: "John"
+ *                 lastname: "Doe"
+ *                 role: 1
+ *                 email_verified: false
+ *                 phone_verified: false
  *       400:
  *         description: Invalid input or validation failed
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Bad Request"
+ *               details: "Password must be at least 8 characters"
  *       409:
  *         description: Email or username already exists
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Conflict"
+ *               details: "Email already registered"
  */
 router.post('/auth/register', validateRegister, AuthController.register);
 
@@ -143,6 +214,8 @@ router.post('/auth/register', validateRegister, AuthController.register);
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/PasswordResetRequest'
+ *           example:
+ *             email: "user@example.com"
  *     responses:
  *       200:
  *         description: Reset email sent
@@ -150,12 +223,19 @@ router.post('/auth/register', validateRegister, AuthController.register);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/SuccessResponse'
+ *             example:
+ *               success: true
+ *               message: "Password reset email sent"
  *       400:
  *         description: Email not verified or user not found
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Bad Request"
+ *               details: "Email address is not verified"
  */
 router.post('/auth/password/reset-request', validatePasswordResetRequest, AuthController.requestPasswordReset);
 
@@ -196,6 +276,9 @@ router.get('/auth/password/reset', AuthController.showPasswordResetForm);
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/PasswordReset'
+ *           example:
+ *             token: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6"
+ *             newPassword: "NewSecurePassword123!"
  *     responses:
  *       200:
  *         description: Password reset successful
@@ -203,12 +286,19 @@ router.get('/auth/password/reset', AuthController.showPasswordResetForm);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/SuccessResponse'
+ *             example:
+ *               success: true
+ *               message: "Password reset successful"
  *       400:
  *         description: Invalid or expired token
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Bad Request"
+ *               details: "Invalid or expired reset token"
  */
 router.post('/auth/password/reset', validatePasswordReset, AuthController.resetPassword);
 
@@ -236,6 +326,21 @@ router.post('/auth/password/reset', validatePasswordReset, AuthController.resetP
  *                   type: array
  *                   items:
  *                     $ref: '#/components/schemas/Carrier'
+ *             example:
+ *               success: true
+ *               carriers:
+ *                 - id: "att"
+ *                   name: "AT&T"
+ *                   domain: "txt.att.net"
+ *                 - id: "tmobile"
+ *                   name: "T-Mobile"
+ *                   domain: "tmomail.net"
+ *                 - id: "verizon"
+ *                   name: "Verizon"
+ *                   domain: "vtext.com"
+ *                 - id: "sprint"
+ *                   name: "Sprint"
+ *                   domain: "messaging.sprintpcs.com"
  */
 router.get('/auth/verify/carriers', VerificationController.getCarriers);
 
@@ -253,6 +358,7 @@ router.get('/auth/verify/carriers', VerificationController.getCarriers);
  *         schema:
  *           type: string
  *         description: Email verification token from email link
+ *         example: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"
  *     responses:
  *       200:
  *         description: Email verified successfully
@@ -260,12 +366,19 @@ router.get('/auth/verify/carriers', VerificationController.getCarriers);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/SuccessResponse'
+ *             example:
+ *               success: true
+ *               message: "Email verified successfully"
  *       400:
  *         description: Invalid or expired token
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
+ *             example:
+ *               success: false
+ *               error: "Bad Request"
+ *               details: "Invalid or expired verification token"
  */
 router.get('/auth/verify/email/confirm', VerificationController.confirmEmailVerification);
 

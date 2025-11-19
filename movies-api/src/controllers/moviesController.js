@@ -505,6 +505,76 @@ const searchMovies = async (req, res) => {
 };
 
 /**
+ * Search for actors by name
+ * Returns all movies featuring actors that match the search term
+ *
+ * @example Request:
+ * GET /api/v1/actors/search?q=Tom&limit=5
+ *
+ * @example Response:
+ * {
+ *   success: true,
+ *   message: "Found 3 movies with actors matching 'Tom'",
+ *   data: {
+ *     data: [...movies...],
+ *     pagination: { limit: 5, offset: 0, totalCount: 3, hasNext: false, hasPrevious: false },
+ *     searchTerm: "Tom"
+ *   }
+ * }
+ */
+const searchActors = async (req, res) => {
+  try {
+    const searchTerm = req.query.q || '';
+    const limit = parseInt(req.query.limit) || 20;
+    const offset = parseInt(req.query.offset) || 0;
+
+    // SQL query to search for actors (case-insensitive partial match)
+    const moviesSql = `
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office,
+             director_id, country_id, overview, genres, director_name, budget,
+             studios, poster_url, backdrop_url, collection, original_title, actors
+      FROM movie
+      WHERE LOWER(actors) LIKE LOWER($1)
+      ORDER BY box_office DESC, title ASC
+      LIMIT $2 OFFSET $3
+    `;
+
+    const countSql = `
+      SELECT COUNT(*)
+      FROM movie
+      WHERE LOWER(actors) LIKE LOWER($1)
+    `;
+
+    const searchPattern = `%${searchTerm}%`;
+
+    const [moviesResult, countResult] = await Promise.all([
+      pool.query(moviesSql, [searchPattern, limit, offset]),
+      pool.query(countSql, [searchPattern])
+    ]);
+
+    const totalCount = parseInt(countResult.rows[0].count);
+
+    const responseData = {
+      data: moviesResult.rows,
+      pagination: {
+        limit,
+        offset,
+        totalCount,
+        hasNext: offset + limit < totalCount,
+        hasPrevious: offset > 0
+      },
+      searchTerm
+    };
+
+    return sendSuccess(res, responseData, `Found ${moviesResult.rows.length} movies with actors matching "${searchTerm}"`);
+
+  } catch (error) {
+    console.error('Error in searchActors:', error);
+    return sendError(res, 500, 'Internal Server Error', 'An error occurred while searching actors');
+  }
+};
+
+/**
  * Get movies by MPA rating (G, PG, PG-13, R, etc.)
  */
 const getMoviesByRating = async (req, res) => {
@@ -881,6 +951,7 @@ module.exports = {
   getMoviesByActor,
   getRecentMovies,
   searchMovies,
+  searchActors,
   getMoviesByRating,
   getMoviesByMPARating,
   getMovieById,

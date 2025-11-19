@@ -15,6 +15,7 @@ const {
   getMoviesByActor,
   getRecentMovies,
   searchMovies,
+  searchActors,
   getMoviesByRating,
   getMoviesByMPARating,
   getMovieById,
@@ -367,6 +368,73 @@ router.get('/movies/actor/:id', validateApiKey, validateActorId, validatePaginat
  *         description: Internal server error
  */
 router.get('/movies/search', validateApiKey, validatePagination, searchMovies);
+
+/**
+ * @swagger
+ * /api/v1/movies/actors/search:
+ *   get:
+ *     summary: Search for actors by name
+ *     description: Returns all movies featuring actors that match the search term (case-insensitive partial match). Searches across all actor names in the database.
+ *     tags: [Actors]
+ *     security:
+ *       - ApiKeyAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: q
+ *         required: false
+ *         schema:
+ *           type: string
+ *         description: Search term to match against actor names (case-insensitive)
+ *         example: Tom Hanks
+ *       - in: query
+ *         name: limit
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 20
+ *         description: Maximum number of results to return
+ *       - in: query
+ *         name: offset
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           minimum: 0
+ *           default: 0
+ *         description: Number of results to skip for pagination
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved search results
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: Found 5 movies with actors matching "Tom"
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     data:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/Movie'
+ *                     pagination:
+ *                       $ref: '#/components/schemas/Pagination'
+ *                     searchTerm:
+ *                       type: string
+ *                       example: Tom
+ *       400:
+ *         description: Invalid pagination parameters
+ *       500:
+ *         description: Internal server error
+ */
+router.get('/movies/actors/search', validateApiKey, validatePagination, searchActors);
 
 /**
  * @swagger

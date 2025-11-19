@@ -301,7 +301,71 @@ router.get('/movies/director/:id', validateApiKey, validateDirectorId, validateP
  */
 router.get('/movies/actor/:id', validateApiKey, validateActorId, validatePagination, getMoviesByActor);
 
-// Movie search route
+/**
+ * @swagger
+ * /api/v1/movies/search:
+ *   get:
+ *     summary: Search for movies by title
+ *     description: Returns all movies matching the search term in their title (case-insensitive partial match)
+ *     tags: [Movies]
+ *     security:
+ *       - ApiKeyAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: q
+ *         required: false
+ *         schema:
+ *           type: string
+ *         description: Search term to match against movie titles (case-insensitive)
+ *         example: Avatar
+ *       - in: query
+ *         name: limit
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 20
+ *         description: Maximum number of results to return
+ *       - in: query
+ *         name: offset
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           minimum: 0
+ *           default: 0
+ *         description: Number of results to skip for pagination
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved search results
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: Found 2 movies matching "Avatar"
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     data:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/Movie'
+ *                     pagination:
+ *                       $ref: '#/components/schemas/Pagination'
+ *                     searchTerm:
+ *                       type: string
+ *                       example: Avatar
+ *       400:
+ *         description: Invalid pagination parameters
+ *       500:
+ *         description: Internal server error
+ */
 router.get('/movies/search', validateApiKey, validatePagination, searchMovies);
 
 /**

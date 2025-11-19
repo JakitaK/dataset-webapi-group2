@@ -720,6 +720,82 @@ const getMovieById = async (req, res) => {
 };
 
 /**
+ * Get actor IDs from a specific movie
+ * Returns a list of actors with their assigned IDs based on alphabetical ordering
+ *
+ * @route GET /api/v1/movies/:id/actors
+ */
+const getActorsFromMovie = async (req, res) => {
+  try {
+    const movieId = parseInt(req.params.id);
+
+    if (Number.isNaN(movieId) || movieId < 1) {
+      return sendError(res, 400, 'Bad Request', 'Movie ID must be a valid positive number');
+    }
+
+    // Get the movie's actors
+    const movieSql = `
+      SELECT movie_id, title, actors
+      FROM movie
+      WHERE movie_id = $1
+    `;
+
+    const movieResult = await pool.query(movieSql, [movieId]);
+
+    if (movieResult.rows.length === 0) {
+      return sendError(res, 404, 'Movie Not Found', `Movie with ID ${movieId} not found`);
+    }
+
+    const movie = movieResult.rows[0];
+
+    if (!movie.actors || movie.actors.trim() === '') {
+      return sendSuccess(res, {
+        movieId: movie.movie_id,
+        title: movie.title,
+        actors: [],
+        totalActors: 0
+      }, 'No actors found for this movie');
+    }
+
+    // Get all unique actors from the database to create consistent IDs
+    const allActorsSql = `
+      SELECT DISTINCT
+        UNNEST(STRING_TO_ARRAY(actors, ', ')) as actor_name
+      FROM movie
+      WHERE actors IS NOT NULL AND actors != ''
+      ORDER BY actor_name
+    `;
+
+    const allActorsResult = await pool.query(allActorsSql);
+
+    // Create a mapping of actor names to IDs
+    const actorNameToId = {};
+    allActorsResult.rows.forEach((row, index) => {
+      actorNameToId[row.actor_name] = index + 1;
+    });
+
+    // Parse the movie's actors and assign IDs
+    const movieActors = movie.actors.split(', ').map(actorName => ({
+      actorId: actorNameToId[actorName] || null,
+      actorName: actorName.trim()
+    }));
+
+    const responseData = {
+      movieId: movie.movie_id,
+      title: movie.title,
+      actors: movieActors,
+      totalActors: movieActors.length
+    };
+
+    return sendSuccess(res, responseData, `Retrieved ${movieActors.length} actors for movie "${movie.title}"`);
+
+  } catch (error) {
+    console.error('Error in getActorsFromMovie:', error);
+    return sendError(res, 500, 'Internal Server Error', 'An error occurred while retrieving actors');
+  }
+};
+
+/**
  * Get basic API statistics
  */
 const getStats = async (req, res) => {
@@ -955,6 +1031,7 @@ module.exports = {
   getMoviesByRating,
   getMoviesByMPARating,
   getMovieById,
+  getActorsFromMovie,
   getStats,
   createMovie,
   updateMovie,

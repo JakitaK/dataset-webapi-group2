@@ -19,6 +19,7 @@ const {
   getMoviesByRating,
   getMoviesByMPARating,
   getMovieById,
+  getActorsFromMovie,
   getStats,
   createMovie,
   updateMovie,
@@ -498,6 +499,70 @@ router.get('/stats', validateApiKey, getStats);
 
 // Individual movie details route (MUST be last due to :id param matching)
 router.get('/movies/:id', validateApiKey, getMovieById);
+
+/**
+ * @swagger
+ * /api/v1/movies/{id}/actors:
+ *   get:
+ *     summary: Get actor IDs from a movie
+ *     description: Returns a list of actors with their assigned IDs for a specific movie. Actor IDs are consistent across the entire database based on alphabetical ordering.
+ *     tags: [Actors]
+ *     security:
+ *       - ApiKeyAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: The unique movie ID
+ *         example: 2612
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved actors
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: 'Retrieved 10 actors for movie Avengers Infinity War'
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     movieId:
+ *                       type: integer
+ *                       example: 2612
+ *                     title:
+ *                       type: string
+ *                       example: 'Avengers Infinity War'
+ *                     actors:
+ *                       type: array
+ *                       items:
+ *                         type: object
+ *                         properties:
+ *                           actorId:
+ *                             type: integer
+ *                             example: 1523
+ *                           actorName:
+ *                             type: string
+ *                             example: Robert Downey Jr.
+ *                     totalActors:
+ *                       type: integer
+ *                       example: 10
+ *       400:
+ *         description: Invalid movie ID
+ *       404:
+ *         description: Movie not found
+ *       500:
+ *         description: Internal server error
+ */
+router.get('/movies/:id/actors', validateApiKey, getActorsFromMovie);
 
 /**
  * @swagger

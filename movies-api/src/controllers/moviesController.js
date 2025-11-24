@@ -505,6 +505,52 @@ const searchMovies = async (req, res) => {
 };
 
 /**
+ * Search for a movie by its ID
+ * Returns the movie with the specified ID
+ *
+ * @route GET /api/v1/movies/search/id?movieId=500
+ */
+const searchMovieById = async (req, res) => {
+  try {
+    const movieId = req.query.movieId ? parseInt(req.query.movieId) : null;
+
+    if (!movieId) {
+      return sendError(res, 400, 'Bad Request', 'movieId query parameter is required');
+    }
+
+    if (Number.isNaN(movieId) || movieId < 1) {
+      return sendError(res, 400, 'Bad Request', 'Movie ID must be a valid positive number');
+    }
+
+    const movieSql = `
+      SELECT movie_id, title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
+             overview, genres, director_name, budget, studios, poster_url, backdrop_url,
+             collection, original_title, actors
+      FROM movie
+      WHERE movie_id = $1
+    `;
+
+    const movieResult = await pool.query(movieSql, [movieId]);
+
+    if (movieResult.rows.length === 0) {
+      return sendError(res, 404, 'Movie Not Found', `No movie found with ID ${movieId}`);
+    }
+
+    const responseData = {
+      data: movieResult.rows,
+      movieId,
+      total: movieResult.rows.length
+    };
+
+    return sendSuccess(res, responseData, `Found movie with ID ${movieId}`);
+
+  } catch (error) {
+    console.error('Error in searchMovieById:', error);
+    return sendError(res, 500, 'Internal Server Error', 'An error occurred while searching for movie by ID');
+  }
+};
+
+/**
  * Search for actors by name
  * Returns all movies featuring actors that match the search term
  *
@@ -1027,6 +1073,7 @@ module.exports = {
   getMoviesByActor,
   getRecentMovies,
   searchMovies,
+  searchMovieById,
   searchActors,
   getMoviesByRating,
   getMoviesByMPARating,

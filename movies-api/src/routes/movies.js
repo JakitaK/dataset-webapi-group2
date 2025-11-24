@@ -15,6 +15,7 @@ const {
   getMoviesByActor,
   getRecentMovies,
   searchMovies,
+  searchMovieById,
   searchActors,
   getMoviesByRating,
   getMoviesByMPARating,
@@ -369,6 +370,60 @@ router.get('/movies/actor/:id', validateApiKey, validateActorId, validatePaginat
  *         description: Internal server error
  */
 router.get('/movies/search', validateApiKey, validatePagination, searchMovies);
+
+/**
+ * @swagger
+ * /api/v1/movies/search/id:
+ *   get:
+ *     summary: Search for a movie by ID
+ *     description: Returns a specific movie by searching for its unique movie ID
+ *     tags: [Movies]
+ *     security:
+ *       - ApiKeyAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: movieId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: The unique movie ID to search for
+ *         example: 500
+ *     responses:
+ *       200:
+ *         description: Successfully found movie
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: Found movie with ID 500
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     data:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/Movie'
+ *                     movieId:
+ *                       type: integer
+ *                       example: 500
+ *                     total:
+ *                       type: integer
+ *                       example: 1
+ *       400:
+ *         description: Invalid or missing movie ID
+ *       404:
+ *         description: Movie not found
+ *       500:
+ *         description: Internal server error
+ */
+router.get('/movies/search/id', validateApiKey, searchMovieById);
 
 /**
  * @swagger

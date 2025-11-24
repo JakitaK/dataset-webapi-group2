@@ -551,6 +551,49 @@ const searchMovieById = async (req, res) => {
 };
 
 /**
+ * Get poster URL for a specific movie
+ * Returns only the poster and backdrop URLs for a movie
+ *
+ * @route GET /api/v1/movies/:id/poster
+ */
+const getMoviePoster = async (req, res) => {
+  try {
+    const movieId = parseInt(req.params.id);
+
+    if (Number.isNaN(movieId) || movieId < 1) {
+      return sendError(res, 400, 'Bad Request', 'Movie ID must be a valid positive number');
+    }
+
+    const posterSql = `
+      SELECT movie_id, title, poster_url, backdrop_url
+      FROM movie
+      WHERE movie_id = $1
+    `;
+
+    const result = await pool.query(posterSql, [movieId]);
+
+    if (result.rows.length === 0) {
+      return sendError(res, 404, 'Movie Not Found', `No movie found with ID ${movieId}`);
+    }
+
+    const movie = result.rows[0];
+
+    const responseData = {
+      movieId: movie.movie_id,
+      title: movie.title,
+      posterUrl: movie.poster_url,
+      backdropUrl: movie.backdrop_url
+    };
+
+    return sendSuccess(res, responseData, `Retrieved poster information for movie "${movie.title}"`);
+
+  } catch (error) {
+    console.error('Error in getMoviePoster:', error);
+    return sendError(res, 500, 'Internal Server Error', 'An error occurred while retrieving poster information');
+  }
+};
+
+/**
  * Search for actors by name
  * Returns all movies featuring actors that match the search term
  *
@@ -1078,6 +1121,7 @@ module.exports = {
   getMoviesByRating,
   getMoviesByMPARating,
   getMovieById,
+  getMoviePoster,
   getActorsFromMovie,
   getStats,
   createMovie,

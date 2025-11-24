@@ -20,6 +20,7 @@ const {
   getMoviesByRating,
   getMoviesByMPARating,
   getMovieById,
+  getMoviePoster,
   getActorsFromMovie,
   getStats,
   createMovie,
@@ -618,6 +619,62 @@ router.get('/movies/:id', validateApiKey, getMovieById);
  *         description: Internal server error
  */
 router.get('/movies/:id/actors', validateApiKey, getActorsFromMovie);
+
+/**
+ * @swagger
+ * /api/v1/movies/{id}/poster:
+ *   get:
+ *     summary: Get poster URL for a movie
+ *     description: Returns the poster and backdrop image URLs for a specific movie
+ *     tags: [Movies]
+ *     security:
+ *       - ApiKeyAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: The unique movie ID
+ *         example: 500
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved poster information
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: Retrieved poster information for movie "Avatar"
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     movieId:
+ *                       type: integer
+ *                       example: 500
+ *                     title:
+ *                       type: string
+ *                       example: Avatar
+ *                     posterUrl:
+ *                       type: string
+ *                       example: /gKY6q7SjCkAU6FqvqWybDYgUKIF.jpg
+ *                     backdropUrl:
+ *                       type: string
+ *                       example: /vL5LR6WdxWPjLPFRLe133jXWsh5.jpg
+ *       400:
+ *         description: Invalid movie ID
+ *       404:
+ *         description: Movie not found
+ *       500:
+ *         description: Internal server error
+ */
+router.get('/movies/:id/poster', validateApiKey, getMoviePoster);
 
 /**
  * @swagger

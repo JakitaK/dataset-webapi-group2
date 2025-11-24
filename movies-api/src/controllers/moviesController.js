@@ -105,7 +105,7 @@ const getAllMovies = async (req, res) => {
       }
     };
 
-    sendSuccess(res, 'Retrieved all movies', responseData);
+    sendSuccess(res, responseData, `Retrieved ${moviesResult.rows.length} movies`);
   } catch (error) {
     console.error('Error getting all movies:', error);
     sendError(res, 'Failed to retrieve movies', 500);

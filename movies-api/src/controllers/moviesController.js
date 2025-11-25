@@ -578,11 +578,18 @@ const getMoviePoster = async (req, res) => {
 
     const movie = result.rows[0];
 
+    // TMDB image base URL
+    const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+
+    // Build complete URLs for posters
+    const posterUrl = movie.poster_url ? `${TMDB_IMAGE_BASE_URL}${movie.poster_url}` : null;
+    const backdropUrl = movie.backdrop_url ? `${TMDB_IMAGE_BASE_URL}${movie.backdrop_url}` : null;
+
     const responseData = {
       movieId: movie.movie_id,
       title: movie.title,
-      posterUrl: movie.poster_url,
-      backdropUrl: movie.backdrop_url
+      posterUrl,
+      backdropUrl
     };
 
     return sendSuccess(res, responseData, `Retrieved poster information for movie "${movie.title}"`);

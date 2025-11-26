@@ -15,7 +15,6 @@ const {
   getMoviesByActor,
   getRecentMovies,
   searchMovies,
-  getMoviesByRating,
   getMoviesByMPARating,
   getMovieById,
   getStats,

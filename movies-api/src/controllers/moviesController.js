@@ -7,6 +7,24 @@
 const pool = require('../db');
 const { sendSuccess, sendError } = require('../utilities/responseUtils');
 
+// TMDB image base URL
+const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+
+/**
+ * Helper function to convert movie poster paths to complete URLs
+ * @param {Object} movie - Movie object from database
+ * @returns {Object} Movie object with complete poster URLs
+ */
+const addCompleteImageUrls = (movie) => {
+  if (!movie) return movie;
+
+  return {
+    ...movie,
+    poster_url: movie.poster_url ? `${TMDB_IMAGE_BASE_URL}${movie.poster_url}` : null,
+    backdrop_url: movie.backdrop_url ? `${TMDB_IMAGE_BASE_URL}${movie.backdrop_url}` : null
+  };
+};
+
 /**
  * Get all movies with pagination and enhanced data
  * Returns movies with comprehensive metadata including overview, genres, cast, etc.
@@ -94,8 +112,11 @@ const getAllMovies = async (req, res) => {
 
     const totalCount = parseInt(countResult.rows[0].count);
 
+    // Convert poster paths to complete URLs
+    const moviesWithCompleteUrls = moviesResult.rows.map(addCompleteImageUrls);
+
     const responseData = {
-      data: moviesResult.rows,
+      data: moviesWithCompleteUrls,
       pagination: {
         limit,
         offset,
@@ -160,8 +181,11 @@ const getTopGrossingMovies = async (req, res) => {
 
     const totalCount = parseInt(countResult.rows[0].count);
 
+    // Convert poster paths to complete URLs
+    const moviesWithCompleteUrls = moviesResult.rows.map(addCompleteImageUrls);
+
     const responseData = {
-      data: moviesResult.rows,
+      data: moviesWithCompleteUrls,
       pagination: {
         limit,
         offset,
@@ -259,8 +283,11 @@ const getMoviesByDirector = async (req, res) => {
       return sendError(res, 404, 'No movies found', `No movies found for director ID ${directorId} (${targetDirectorName})`);
     }
 
+    // Convert poster paths to complete URLs
+    const moviesWithCompleteUrls = moviesResult.rows.map(addCompleteImageUrls);
+
     const responseData = {
-      data: moviesResult.rows,
+      data: moviesWithCompleteUrls,
       pagination: {
         limit,
         offset,
@@ -366,8 +393,11 @@ const getMoviesByActor = async (req, res) => {
       return sendError(res, 404, 'No movies found', `No movies found for actor ID ${actorId} (${targetActorName})`);
     }
 
+    // Convert poster paths to complete URLs
+    const moviesWithCompleteUrls = moviesResult.rows.map(addCompleteImageUrls);
+
     const responseData = {
-      data: moviesResult.rows,
+      data: moviesWithCompleteUrls,
       pagination: {
         limit,
         offset,
@@ -426,8 +456,11 @@ const getRecentMovies = async (req, res) => {
 
     const moviesResult = await pool.query(moviesSql, [currentYear]);
 
+    // Convert poster paths to complete URLs
+    const moviesWithCompleteUrls = moviesResult.rows.map(addCompleteImageUrls);
+
     const responseData = {
-      data: moviesResult.rows,
+      data: moviesWithCompleteUrls,
       total: moviesResult.rows.length,
       year: currentYear
     };
@@ -484,8 +517,11 @@ const searchMovies = async (req, res) => {
 
     const totalCount = parseInt(countResult.rows[0].count);
 
+    // Convert poster paths to complete URLs
+    const moviesWithCompleteUrls = moviesResult.rows.map(addCompleteImageUrls);
+
     const responseData = {
-      data: moviesResult.rows,
+      data: moviesWithCompleteUrls,
       pagination: {
         limit,
         offset,
@@ -650,8 +686,11 @@ const searchActors = async (req, res) => {
 
     const totalCount = parseInt(countResult.rows[0].count);
 
+    // Convert poster paths to complete URLs
+    const moviesWithCompleteUrls = moviesResult.rows.map(addCompleteImageUrls);
+
     const responseData = {
-      data: moviesResult.rows,
+      data: moviesWithCompleteUrls,
       pagination: {
         limit,
         offset,
@@ -702,8 +741,11 @@ const getMoviesByRating = async (req, res) => {
 
     const totalCount = parseInt(countResult.rows[0].count);
 
+    // Convert poster paths to complete URLs
+    const moviesWithCompleteUrls = moviesResult.rows.map(addCompleteImageUrls);
+
     const responseData = {
-      data: moviesResult.rows,
+      data: moviesWithCompleteUrls,
       pagination: {
         limit,
         offset,
@@ -762,8 +804,11 @@ const getMoviesByMPARating = async (req, res) => {
 
     const totalCount = parseInt(countResult.rows[0].count);
 
+    // Convert poster paths to complete URLs
+    const moviesWithCompleteUrls = moviesResult.rows.map(addCompleteImageUrls);
+
     const responseData = {
-      data: moviesResult.rows,
+      data: moviesWithCompleteUrls,
       pagination: {
         limit,
         offset,

@@ -572,8 +572,11 @@ const searchMovieById = async (req, res) => {
       return sendError(res, 404, 'Movie Not Found', `No movie found with ID ${movieId}`);
     }
 
+    // Convert poster paths to complete URLs
+    const moviesWithCompleteUrls = movieResult.rows.map(addCompleteImageUrls);
+
     const responseData = {
-      data: movieResult.rows,
+      data: moviesWithCompleteUrls,
       movieId,
       total: movieResult.rows.length
     };

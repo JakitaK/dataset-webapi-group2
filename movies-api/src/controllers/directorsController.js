@@ -53,8 +53,70 @@ const getAllDirectors = async (req, res) => {
 };
 
 /**
+ * Search directors by name
+ *
+ * @route GET /api/v1/directors/search
+ */
+const searchDirectors = async (req, res) => {
+  try {
+    const searchTerm = req.query.name;
+
+    if (!searchTerm) {
+      return sendError(res, 400, 'Missing Search Term', 'Please provide a name query parameter');
+    }
+
+    const limit = parseInt(req.query.limit) || 50;
+    const offset = parseInt(req.query.offset) || 0;
+
+    // Use ILIKE for case-insensitive search (PostgreSQL specific)
+    const searchSql = `
+      SELECT d.director_id, d.name, COUNT(m.movie_id) as movie_count
+      FROM director d
+      LEFT JOIN movie m ON d.director_id = m.director_id
+      WHERE d.name ILIKE $1
+      GROUP BY d.director_id, d.name
+      ORDER BY d.name ASC
+      LIMIT $2 OFFSET $3
+    `;
+
+    const countSql = `
+      SELECT COUNT(*)
+      FROM director
+      WHERE name ILIKE $1
+    `;
+
+    const searchPattern = `%${searchTerm}%`;
+
+    const [directorsResult, countResult] = await Promise.all([
+      pool.query(searchSql, [searchPattern, limit, offset]),
+      pool.query(countSql, [searchPattern])
+    ]);
+
+    const totalCount = parseInt(countResult.rows[0].count);
+
+    const responseData = {
+      data: directorsResult.rows,
+      pagination: {
+        limit,
+        offset,
+        totalCount,
+        hasNext: offset + limit < totalCount,
+        hasPrevious: offset > 0
+      },
+      searchTerm
+    };
+
+    return sendSuccess(res, responseData, `Found ${totalCount} director(s) matching "${searchTerm}"`);
+
+  } catch (error) {
+    console.error('Error searching directors:', error);
+    return sendError(res, 500, 'Internal Server Error', 'An error occurred while searching directors');
+  }
+};
+
+/**
  * Create a new director
- * 
+ *
  * @route POST /api/v1/directors
  */
 const createDirector = async (req, res) => {
@@ -159,6 +221,7 @@ const deleteDirector = async (req, res) => {
 
 module.exports = {
   getAllDirectors,
+  searchDirectors,
   createDirector,
   updateDirector,
   deleteDirector

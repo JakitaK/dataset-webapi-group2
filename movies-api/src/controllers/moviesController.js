@@ -984,13 +984,13 @@ const getStats = async (req, res) => {
  */
 const createMovie = async (req, res) => {
   try {
-    const { 
-      title, 
-      release_year, 
-      runtime_minutes, 
-      rating, 
-      box_office, 
-      director_id, 
+    const {
+      title,
+      release_year,
+      runtime_minutes,
+      rating,
+      box_office,
+      director_id,
       country_id,
       overview,
       genres,
@@ -1021,18 +1021,28 @@ const createMovie = async (req, res) => {
       return sendError(res, 400, 'Invalid Rating', 'Rating must be between 0 and 10');
     }
 
+    // Fetch director name if director_id is provided
+    let director_name = null;
+    if (director_id) {
+      const directorResult = await pool.query('SELECT name FROM director WHERE director_id = $1', [director_id]);
+      if (directorResult.rows.length === 0) {
+        return sendError(res, 400, 'Invalid Director ID', `Director with ID ${director_id} does not exist`);
+      }
+      director_name = directorResult.rows[0].name;
+    }
+
     const movieSql = `
       INSERT INTO movie (
-        title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
-        overview, genres, budget, studios, poster_url, backdrop_url, collection, 
+        title, release_year, runtime_minutes, rating, box_office, director_id, director_name, country_id,
+        overview, genres, budget, studios, poster_url, backdrop_url, collection,
         original_title, mpa_rating
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
       RETURNING *
     `;
 
     const result = await pool.query(movieSql, [
-      title, release_year, runtime_minutes, rating, box_office, director_id, country_id,
-      overview, genres, budget, studios, poster_url, backdrop_url, collection, 
+      title, release_year, runtime_minutes, rating, box_office, director_id, director_name, country_id,
+      overview, genres, budget, studios, poster_url, backdrop_url, collection,
       original_title, mpa_rating
     ]);
 
@@ -1040,7 +1050,7 @@ const createMovie = async (req, res) => {
 
   } catch (error) {
     console.error('Error creating movie:', error);
-    
+
     // Provide specific error messages for constraint violations
     if (error.code === '23514') { // Check constraint violation
       return sendError(res, 400, 'Validation Error', error.detail || 'Data violates database constraints');
@@ -1048,7 +1058,7 @@ const createMovie = async (req, res) => {
     if (error.code === '23503') { // Foreign key violation
       return sendError(res, 400, 'Invalid Reference', 'Referenced director or country does not exist');
     }
-    
+
     return sendError(res, 500, 'Internal Server Error', 'An error occurred while creating the movie');
   }
 };

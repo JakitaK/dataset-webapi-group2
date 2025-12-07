@@ -681,7 +681,7 @@ router.get('/movies/:id/poster', validateApiKey, getMoviePoster);
  * /api/v1/movies:
  *   post:
  *     summary: Create a new movie
- *     description: Adds a new movie to the database
+ *     description: Adds a new movie to the database. The director_name will be automatically populated based on the director_id provided.
  *     tags: [Movies]
  *     security:
  *       - ApiKeyAuth: []
@@ -698,61 +698,142 @@ router.get('/movies/:id/poster', validateApiKey, getMoviePoster);
  *               title:
  *                 type: string
  *                 description: Movie title
+ *                 example: "Inception"
  *               release_year:
  *                 type: integer
  *                 description: Year the movie was released
+ *                 example: 2010
  *               runtime_minutes:
  *                 type: integer
  *                 description: Movie runtime in minutes
+ *                 example: 148
  *               rating:
  *                 type: number
  *                 format: float
  *                 description: Movie rating (0-10)
+ *                 example: 8.8
  *               box_office:
  *                 type: number
  *                 description: Box office earnings
+ *                 example: 829895144
  *               director_id:
  *                 type: integer
- *                 description: Director ID reference
+ *                 description: Director ID reference (use GET /api/v1/directors/search to find director IDs)
+ *                 example: 525
  *               country_id:
- *                 type: integer  
+ *                 type: integer
  *                 description: Country ID reference
+ *                 example: 1
  *               overview:
  *                 type: string
  *                 description: Movie plot overview
+ *                 example: "A thief who steals corporate secrets through dream-sharing technology..."
  *               genres:
  *                 type: string
  *                 description: Movie genres (comma-separated)
+ *                 example: "Action; Science Fiction; Thriller"
  *               budget:
  *                 type: number
  *                 description: Movie production budget
+ *                 example: 160000000
  *               studios:
  *                 type: string
  *                 description: Production studios
+ *                 example: "Warner Bros.; Legendary Pictures"
  *               poster_url:
  *                 type: string
  *                 description: Movie poster image URL
+ *                 example: "/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg"
  *               backdrop_url:
  *                 type: string
  *                 description: Movie backdrop image URL
+ *                 example: "/s3TBrRGB1iav7gFOCNx3H31MoES.jpg"
  *               collection:
  *                 type: string
  *                 description: Movie collection/franchise
+ *                 example: null
  *               original_title:
  *                 type: string
  *                 description: Original movie title
+ *                 example: "Inception"
  *               mpa_rating:
  *                 type: string
  *                 description: MPA rating (G, PG, PG-13, R, etc.)
+ *                 example: "PG-13"
  *     responses:
  *       200:
  *         description: Movie created successfully
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/SuccessResponse'
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: "Movie created successfully"
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     movie_id:
+ *                       type: integer
+ *                       example: 9327
+ *                     title:
+ *                       type: string
+ *                       example: "Inception"
+ *                     release_year:
+ *                       type: integer
+ *                       example: 2010
+ *                     runtime_minutes:
+ *                       type: integer
+ *                       example: 148
+ *                     rating:
+ *                       type: string
+ *                       example: "8.8"
+ *                     box_office:
+ *                       type: string
+ *                       example: "829895144.00"
+ *                     director_id:
+ *                       type: integer
+ *                       example: 525
+ *                     director_name:
+ *                       type: string
+ *                       example: "Christopher Nolan"
+ *                       description: "Automatically populated from director_id"
+ *                     country_id:
+ *                       type: integer
+ *                       example: 1
+ *                     overview:
+ *                       type: string
+ *                       example: "A thief who steals corporate secrets through dream-sharing technology..."
+ *                     genres:
+ *                       type: string
+ *                       example: "Action; Science Fiction; Thriller"
+ *                     budget:
+ *                       type: string
+ *                       example: "160000000"
+ *                     studios:
+ *                       type: string
+ *                       example: "Warner Bros.; Legendary Pictures"
+ *                     poster_url:
+ *                       type: string
+ *                       example: "/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg"
+ *                     backdrop_url:
+ *                       type: string
+ *                       example: "/s3TBrRGB1iav7gFOCNx3H31MoES.jpg"
+ *                     collection:
+ *                       type: string
+ *                       example: null
+ *                     original_title:
+ *                       type: string
+ *                       example: "Inception"
+ *                     mpa_rating:
+ *                       type: string
+ *                       example: "PG-13"
  *       400:
- *         description: Bad request - missing required fields
+ *         description: Bad request - missing required fields or invalid data
  *         content:
  *           application/json:
  *             schema:

@@ -98,6 +98,7 @@ Replace `<youruser>` and `<yourdb>` with your Postgres username and database nam
 All group members used **Discord** for meetings and messaging, sharing updates, code snippets, and testing results during the Beta II sprint.
 
 ## Beta Sprint Comments
-- None:)
+- Our Movies API and Credentials API are stored in the same GitHub repository(this one), but they are deployed as **separate Heroku links**.  
+Each service has its own independent Swagger API documentation and functions as its own standalone API, even though they share the same repo.
 
 
